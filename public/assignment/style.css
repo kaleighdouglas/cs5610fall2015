@@ -1,0 +1,16 @@
+
+/* CSS Stylesheet */
+/* Kaleigh O'Hara */
+
+
+/* Glyphicon Style */
+.glyphicon {
+  padding-top: 25%;
+}
+
+
+/* Border */
+#border {
+    border: 1px solid lightgrey;
+    padding: 10px;
+}

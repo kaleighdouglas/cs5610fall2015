@@ -16,16 +16,11 @@
 
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
+    
+    <!-- Additional CSS -->
+    <link href="style.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <!--<script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
-    <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
-    <!--<![endif]&ndash;&gt;-->
 </head>
 
 <body>
@@ -65,254 +60,248 @@
             
             
       <!---      <div class="container-fluid"> --->
-            
+           
                 <ul class="nav nav-tabs">
                         <li role="presentation"><a href="forms.html">Forms</a></li>
                         <li role="presentation" class="active"><a href="#">Fields</a></li>
                 </ul> 
             
+                <div id="border"> 
             
-                <!-- First Name -->
+                    <!-- Last Name -->
+                    <div class="row">
+                        <div class="col-xs-7 col-md-9">
+                            <form>
+                                <div class="form-group">
+                                    <label for="inputFirstname" class="col-xs-12 control-label">First Name:</label>
+                                    <div class="col-xs-12">
+                                        <input type="text" class="form-control" id="inputFirstname" placeholder="First Name">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-5 col-md-3">
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-pencil"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-plus"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-remove"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-align-justify"></scan>
+                            </a>
+                        </div> 
+                    </div>
+                
+                
+                <!-- Last Name -->
                 <div class="row">
-                    <div class="col-xs-7 col-md-9">
-                        <form>
-                            <div class="form-group">
-                                <label for="inputFirstname" class="col-xs-12 control-label">First Name:</label>
-                                <div class="col-xs-12">
-                                     <input type="text" class="form-control" id="inputFirstname" placeholder="First Name">
+                        <div class="col-xs-7 col-md-9">
+                            <form>
+                                <div class="form-group">
+                                    <label for="inputLastname" class="col-xs-12 control-label">Last Name:</label>
+                                    <div class="col-xs-12">
+                                        <input type="text" class="form-control" id="inputLastname" placeholder="Last Name">
+                                    </div>
                                 </div>
-                           </div>
-                        </form>
-                    </div>
-                    <div class="col-xs-5 col-md-3">
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-pencil"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-plus"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-remove"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-align-justify"></scan>
-                        </a>
-                   </div> 
-               </div>
-               
-               
-               <!-- Last Name -->
-               <div class="row">
-                    <div class="col-xs-7 col-md-9">
-                        <form>
-                            <div class="form-group">
-                                <label for="inputLastname" class="col-xs-12 control-label">Last Name:</label>
-                                <div class="col-xs-12">
-                                     <input type="text" class="form-control" id="inputLastname" placeholder="Last Name">
-                                </div>
-                           </div>
-                        </form>
-                    </div>
-                    <div class="col-xs-5 col-md-3">
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-pencil"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-plus"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-remove"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-align-justify"></scan>
-                        </a>
-                   </div> 
-               </div>
-               
-               
-               <!-- Date of Birth -->
-               <div class="row">
-                    <div class="col-xs-7 col-md-9">
-                        <form>
-                            <div class="form-group">
-                                <label for="inputDOB" class="col-xs-12 control-label">Date of Birth:</label>
-                                <div class="col-xs-12">
-                                     <input type="date" class="form-control" id="inputDOB" placeholder="Select Date">
-                                </div>
-                           </div>
-                        </form>
-                    </div>
-                    <div class="col-xs-5 col-md-3">
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-pencil"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-plus"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-remove"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-align-justify"></scan>
-                        </a>
-                   </div> 
-               </div>
-               
-               
-               <!-- GENDER -->
-               <div class="row"> 
-                    <div class="col-xs-7 col-md-9">
-                     <form> 
-                        <div class="form-group">
-                        <div class="dropdown">
-                            <label class="col-xs-12" control-label">Gender:</label>
-                            <div class="col-xs-2">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Male
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <li><a href="#">Male</a></li>
-                                    <li><a href="#">Female</a></li>
-                                </ul>
-                            </div>
+                            </form>
                         </div>
+                        <div class="col-xs-5 col-md-3">
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-pencil"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-plus"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-remove"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-align-justify"></scan>
+                            </a>
+                        </div> 
+                </div>
+                
+                
+                <!-- Date of Birth -->
+                <div class="row">
+                        <div class="col-xs-7 col-md-9">
+                            <form>
+                                <div class="form-group">
+                                    <label for="inputDOB" class="col-xs-12 control-label">Date of Birth:</label>
+                                    <div class="col-xs-12">
+                                        <input type="date" class="form-control" id="inputDOB" placeholder="Select Date">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </form>    
-                   </div> 
-                    
-                    <div class="col-xs-5 col-md-3">
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-pencil"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-plus"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-remove"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-align-justify"></scan>
-                        </a>
-                   </div> 
-               </div>
-               
-               
-               <!-- Roles -->              
-               <div class="row">              
-                    <div class="col-xs-7 col-md-9">
-                        <form>
-                            
-                            <div class="form-group">
-                       <!--     <div class="form-horizontal">   -->
-                                <label for="checkbox" class="col-xs-12" control-label">Roles:</label>
+                        <div class="col-xs-5 col-md-3">
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-pencil"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-plus"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-remove"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-align-justify"></scan>
+                            </a>
+                        </div> 
+                </div>
+                
+                
+                <!-- GENDER -->
+                <div class="row"> 
+                        <div class="col-xs-7 col-md-9">
+                        <form> 
+                            <div class="form-group dropdown">
+                                <label class="col-xs-12" control-label">Gender:</label>
                                 <div class="col-xs-2">
-                                    <div class="checkbox"> 
-                                        <label><input type="checkbox" id="inputRoles1">Admin</label>
-                                        <label><input type="checkbox" id="inputRoles2">Student</label>
-                                        <label><input type="checkbox" id="inputRoles3">User</label>
-                                    </div>
-                               </div>
-                            </div> 
-                              
-                        </form>
-                    </div>
-                    
-                    <div class="col-xs-5 col-md-3">
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-pencil"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-plus"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-remove"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-align-justify"></scan>
-                        </a>
-                   </div> 
-               </div>
-               
-              
-               <!-- License Agreement -->
-               <div class="row">              
-                    <div class="col-xs-7 col-md-9">
-                        <form>
-                            <div class="form-group">
-                                <label for="radio" class="col-xs-12" control-label">License Agreement:</label>
-                                <div class="col-xs-2">
-                                    <div class="radio">
-                                        <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                            Yes
-                                        </label>
-                                    </div>
-                                
-                                    <div class="radio">
-                                        <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                            No
-                                        </label>
-                                    </div>
-                                </div>         
-                           </div>     
-                        </form>
-                    </div>
-                    
-                    <div class="col-xs-5 col-md-3">
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-pencil"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-plus"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-remove"></scan>
-                        </a>
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-align-justify"></scan>
-                        </a>
-                   </div> 
-               </div>
-            
-               <hr class="divider">
-            
-            
-               <!-- Add New Field -->
-               <div class="row"> 
-                    <div class="col-xs-7 col-md-9">
-                     <form> 
-                        <div class="form-group">
-                        <div class="dropdown">
-                            <label class="col-xs-12" control-label">Add New Field:</label>
-                            <div class="col-xs-2">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Single Line Text
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <li><a href="#">Single Line Text</a></li>
-                                    <li><a href="#">Date</a></li>
-                                    <li><a href="#">Dropdown</a></li>
-                                    <li><a href="#">Checkboxes</a></li>
-                                    <li><a href="#">Radio Buttons</a></li>
-                                    <li><a href="#">Paragraph Text Field</a></li>
-                                </ul>
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Male
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Male</a></li>
+                                        <li><a href="#">Female</a></li>
+                                    </ul>
+                                </div>
                             </div>
+                        </form>    
+                    </div> 
+                        
+                        <div class="col-xs-5 col-md-3">
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-pencil"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-plus"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-remove"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-align-justify"></scan>
+                            </a>
+                    </div> 
+                </div>
+                
+                
+                <!-- Roles -->              
+                <div class="row">              
+                        <div class="col-xs-7 col-md-9">
+                            <form>
+                                <div class="form-group">
+                                    <label for="checkbox" class="col-xs-12" control-label">Roles:</label>
+                                    <div class="col-xs-2">
+                                        <div class="checkbox"> 
+                                            <label><input type="checkbox" id="inputRoles1">Admin</label>
+                                            <label><input type="checkbox" id="inputRoles2">Student</label>
+                                            <label><input type="checkbox" id="inputRoles3">User</label>
+                                        </div>
+                                    </div>
+                                </div>     
+                            </form>
                         </div>
+                        
+                        <div class="col-xs-5 col-md-3">
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-pencil"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-plus"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-remove"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-align-justify"></scan>
+                            </a>
+                    </div> 
+                </div>
+                
+                
+                <!-- License Agreement -->
+                <div class="row">              
+                        <div class="col-xs-7 col-md-9">
+                            <form>
+                                <div class="form-group">
+                                    <label for="radio" class="col-xs-12" control-label">License Agreement:</label>
+                                    <div class="col-xs-2">
+                                        <div class="radio">
+                                            <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                                Yes
+                                            </label>
+                                        </div>
+                                    
+                                        <div class="radio">
+                                            <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                No
+                                            </label>
+                                        </div>
+                                    </div>         
+                            </div>     
+                            </form>
                         </div>
-                    </form>    
-                   </div> 
-                    
-                    <div class="col-xs-5 col-md-3">
-                        <a href="#">
-                            <scan class="glyphicon glyphicon-plus"></scan>
-                        </a>
-                   </div> 
-               </div>
+                        
+                        <div class="col-xs-5 col-md-3">
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-pencil"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-plus"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-remove"></scan>
+                            </a>
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-align-justify"></scan>
+                            </a>
+                    </div> 
+                </div>
+                
+                <hr class="divider">
+                
+                
+                <!-- Add New Field -->
+                <div class="row"> 
+                        <div class="col-xs-7 col-md-9">
+                        <form> 
+                            <div class="form-group dropdown">
+                                <label class="col-xs-12" control-label">Add New Field:</label>
+                                <div class="col-xs-2">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Single Line Text
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Single Line Text</a></li>
+                                        <li><a href="#">Date</a></li>
+                                        <li><a href="#">Dropdown</a></li>
+                                        <li><a href="#">Checkboxes</a></li>
+                                        <li><a href="#">Radio Buttons</a></li>
+                                        <li><a href="#">Paragraph Text Field</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>    
+                    </div> 
+                        
+                        <div class="col-xs-5 col-md-3">
+                            <a href="#">
+                                <scan class="glyphicon glyphicon-plus"></scan>
+                            </a>
+                    </div> 
+                </div>
             
-            
+           </div>  
             
             
 
