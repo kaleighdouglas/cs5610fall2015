@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FormBuilderApp">
+<head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
+    
+    <!-- AngularJS -->
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script> -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.js"></script>
+    <!-- JS -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+    <script src="header/header.controller.js"></script>
+    <script src="sidebar/sidebar.controller.js"></script> 
+    
+    <title>Form Builder Application</title>
+    
+<!--    <script>
+        $(init);
+        function init()
+        {
+            alert("Welcome");
+        }
+    </script>   -->
+
+</head>
+
+<!--<body ng-controller="MainController"> -->
+<body> 
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderController">   <!--  -->
+        <div class="container-fluid">
+            <div ng-include="'header/header.view.html'"></div>
+        </div>
+    </nav>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar" ng-controller="SidebarController">    <!--  -->
+               <div ng-include="'sidebar/sidebar.view.html'"></div>
+            </div>
+            
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h2> Content </h2>
+            </div>
+        </div>
+    </div>  
+</body>
+
+</html>
+
+
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--<script src="../../dist/js/bootstrap.min.js"></script>-->
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<!--<script src="../../assets/js/vendor/holder.min.js"></script>-->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+
