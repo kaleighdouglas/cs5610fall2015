@@ -3,6 +3,7 @@
         .module("FormBuilderApp")
         .factory("UserService", UserService);
 
+
     function UserService() {
         var users = [];
 
@@ -30,13 +31,14 @@
         }
   
         function findUserByUsernameAndPassword(username, password, callback) {
+            var foundUser = null
             for(var i=0; i<users.length; i++) {
                 var user = users[i]
                 if(user.username == username && user.password == password) {
-                    return user;
+                    foundUser = user;
                 }
             }
-            return null;
+            callback(foundUser);
         }
 
         function findAllUsers(callback) {
@@ -67,6 +69,6 @@
                 }
             }
             callback(user);
-        }
+        }            
     }
 })();

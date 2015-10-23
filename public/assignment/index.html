@@ -28,7 +28,76 @@
         {
             alert("Welcome");
         }
-    </script>   -->
+    </script> 
+    
+    <script>
+        
+        
+        var alice = {
+            "firstName" : "Alice",
+            "lastName"  : "Wonderland",
+            };
+            //console.log(alice)
+            
+        var peter = {
+            "firstName" : "Peter",
+            "lastName"  : "Rabbit",
+            "username"  : "PR",
+            "password"  : "pr123",
+            "id"        : "12345",
+            };    
+            
+        var newpeter = {
+            "firstName" : "Peter",
+            "lastName"  : "Rabbit2",
+            "username"  : "PRWonderful",
+            "password"  : "pr123Wonderful",
+            "id"        : "12345",
+            }; 
+            
+            
+        var users = [alice, peter];
+        
+
+        // FORMS      
+        var blue = {
+            "color" : "Blue",
+            "id" : 08,
+            "userid" : 12345,
+            }; 
+        var green = {
+            "color" : "Green",
+            "id" : 09,
+            "userid" : 12345,
+            };
+        var yellow = {
+            "color" : "Yellow",
+            "id" : 07,
+            "userid" : 1234,
+            };
+        var newyellow = {
+            "color" : "Yellowish",
+            "id" : 07,
+            "userid" : 1234,
+            };    
+            
+        var forms = [blue, green, yellow];    
+            
+        function callback(value) {
+            console.log(value);
+        }
+            
+        function guid() {
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+            }
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                s4() + '-' + s4() + s4() + s4();
+        }
+              
+    </script>     -->
 
 </head>
 

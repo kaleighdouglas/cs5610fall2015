@@ -18,20 +18,52 @@
             console.log(value);
         }
         
+        function guid() {
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+            }
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                s4() + '-' + s4() + s4() + s4();
+        }
+        
         function createFormForUser(userId, form, callback) {
-            callback(forms);
+            form["id"] = guid();
+            form["userid"] = userId;
+            forms[forms.length] = form;
+            callback(form);
         }
 
         function findAllFormsForUser(userId, callback) {
-            callback(forms);
+            var userForms = []
+            for(var i=0; i<forms.length; i++) {
+                var form = forms[i]
+                if(form.userid == userId) {
+                    userForms[userForms.length] = form;
+                }
+            }
+            callback(userForms);
         }
         
         function deleteFormById(formId, callback) {
+            for(var i=0; i<forms.length; i++) {
+                var form = forms[i]
+                if(form.id == formId) {
+                    forms.splice(i,1);
+                }
+            }
             callback(forms);
         }
         
         function updateFormById(formId, newForm, callback) {
-            callback(forms);
+            for(var i=0; i<forms.length; i++) {
+                var form = forms[i]
+                if(form.id == formId) {
+                    form = newForm;
+                }
+            }
+            callback(form);
         }
     }
 })();
