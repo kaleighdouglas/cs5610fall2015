@@ -33,6 +33,7 @@
             form["userid"] = userId;
             forms[forms.length] = form;
             callback(form);
+            return form;
         }
 
         function findAllFormsForUser(userId, callback) {
@@ -44,6 +45,7 @@
                 }
             }
             callback(userForms);
+            return userForms;
         }
         
         function deleteFormById(formId, callback) {
@@ -54,6 +56,7 @@
                 }
             }
             callback(forms);
+            return forms;
         }
         
         function updateFormById(formId, newForm, callback) {
@@ -64,6 +67,7 @@
                 }
             }
             callback(form);
+            return form;
         }
     }
 })();

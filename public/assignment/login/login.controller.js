@@ -4,7 +4,8 @@
 		.controller("LoginController", LoginController);
 	    
     function LoginController($scope, $rootScope, $location, UserService) {
-      //  $scope.userName = "MyName!!!!";
+        //$scope.userName = "MyName!!!!";
+		//$scope.userPassword = "P";
 	  $scope.$location = $location
 	  
 	  
@@ -20,7 +21,7 @@
 			if (possibleUser != null) {
 				$rootScope.user = possibleUser
 				console.log("login")
-				$location.path("#/profile")
+				$location.path("/profile")
 			} else {console.log("login not valid")	
 			}
 		}

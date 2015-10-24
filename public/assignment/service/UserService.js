@@ -7,8 +7,8 @@
     function UserService() {
         
         var peter = {
-            "firstName" : "Peter",
-            "lastName"  : "Rabbit",
+            "firstname" : "Peter",
+            "lastname"  : "Rabbit",
             "username"  : "PR",
             "password"  : "pr123",
             "id"        : "12345",
@@ -53,12 +53,14 @@
 
         function findAllUsers(callback) {
             callback(users);
+            return users;
         }
         
         function createUser(user, callback) {
             user["id"] = guid();
             users[users.length] = user;
-            callback(users);
+            callback(user);
+            return user;
         }
         
         function deleteUserById(userId, callback) {
@@ -69,6 +71,7 @@
                 }
             }
             callback(users);
+            return users;
         }
         
         function updateUser(userId, user, callback) {
@@ -79,6 +82,7 @@
                 }
             }
             callback(user);
+            return user;
         }            
     }
 })();
