@@ -5,7 +5,16 @@
 
 
     function UserService() {
-        var users = [];
+        
+        var peter = {
+            "firstName" : "Peter",
+            "lastName"  : "Rabbit",
+            "username"  : "PR",
+            "password"  : "pr123",
+            "id"        : "12345",
+            };  
+        
+        var users = [peter];
 
         var service = {
             findUserByUsernameAndPassword: findUserByUsernameAndPassword,
@@ -39,6 +48,7 @@
                 }
             }
             callback(foundUser);
+            return foundUser;
         }
 
         function findAllUsers(callback) {

@@ -13,12 +13,13 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.js"></script>
     <!-- JS -->
-    <script src="config.js"></script>
     <script src="app.js"></script>
+    <script src="config.js"></script>
     <script src="header/header.controller.js"></script>
     <script src="sidebar/sidebar.controller.js"></script> 
     <script src="service/UserService.js"></script>
     <script src="service/FormService.js"></script>
+    <script src="login/login.controller.js"></script> 
     
     <title>Form Builder Application</title>
     
@@ -116,8 +117,7 @@
                <div ng-include="'sidebar/sidebar.view.html'"></div>
             </div>
             
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h2> Content </h2>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view>
             </div>
         </div>
     </div>  
