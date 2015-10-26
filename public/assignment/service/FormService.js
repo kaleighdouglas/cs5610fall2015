@@ -4,7 +4,13 @@
         .factory("FormService", FormService);
 
     function FormService() {
-        var forms = [];
+        var PRform = {
+            "name" : "form1",
+            "id" : 123,
+            "userid" : 12345,
+        }
+        
+        var forms = [PRform];
 
         var service = {
             createFormForUser: createFormForUser,
