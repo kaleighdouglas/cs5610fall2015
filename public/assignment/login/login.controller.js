@@ -3,19 +3,16 @@
 		.module("FormBuilderApp")
 		.controller("LoginController", LoginController);
 	    
-    function LoginController($scope, $rootScope, $location, UserService) {
-        //$scope.userName = "MyName!!!!";
-		//$scope.userPassword = "P";
+    function LoginController($scope, $rootScope, $location, UserService) {	
 	  $scope.$location = $location
-	  
-	  
+	  $scope.login = login;
+	  	  
+			
 	  function callback(value) {
             console.log(value);
         }
 	  
 	  
-		$scope.login = login;
-
 		function login() {
 			var possibleUser = UserService.findUserByUsernameAndPassword($scope.userName, $scope.userPassword, callback)
 			if (possibleUser != null) {

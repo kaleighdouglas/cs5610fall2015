@@ -34,8 +34,6 @@
 			}; 
 			
 			$rootScope.user = UserService.updateUser(currentUser.id, revisedUser, callback)
-			//console.log("rootScope below")
-			//console.log($rootScope.user)
 			$location.path("/profile")
 		}
 	}

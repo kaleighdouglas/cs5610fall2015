@@ -22,8 +22,6 @@
 				"email"  : $scope.userEmail,
 			}; 
 			$rootScope.user = UserService.createUser(newUser, callback)
-			//console.log("rootScope below")
-			//console.log($rootScope.user)
 			$location.path("/profile")
 		}
 	}

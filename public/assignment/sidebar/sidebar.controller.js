@@ -5,7 +5,6 @@
 	    
     function SidebarController($scope, $location) {
 		$scope.$location = $location;
-        $scope.hello = "SideBar!!!!";
     }
 	
 	
