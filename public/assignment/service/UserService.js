@@ -12,9 +12,36 @@
             "username"  : "PR",
             "password"  : "pr123",
             "id"        : "12345",
+            "email"     : "pr@abc.com",
             };  
+        var alice = {
+            "firstname" : "Alice",
+            "lastname"  : "Wonderland",
+            "username"  : "AW",
+            "password"  : "aw123",
+            "id"        : "1111",
+            "email"     : "aw@abc.com",
+            };  
+        var bob = {
+            "firstname" : "Bob",
+            "lastname"  : "Marley",
+            "username"  : "BM",
+            "password"  : "bm123",
+            "id"        : "1112",
+            "email"     : "bm@abc.com",
+            };         
+        var charlie = {
+            "firstname" : "Charlie",
+            "lastname"  : "Cholocate",
+            "username"  : "CC",
+            "password"  : "cc123",
+            "id"        : "1113",
+            "email"     : "cc@abc.com",
+            };  
+            
+            
         
-        var users = [peter];
+        var users = [peter, alice, bob, charlie];
 
         var service = {
             findUserByUsernameAndPassword: findUserByUsernameAndPassword,

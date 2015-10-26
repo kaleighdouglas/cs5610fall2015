@@ -20,7 +20,7 @@
 				<td>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input ng-model="form.name" type="text" class="form-control" id="inputName" placeholder="name">
+							<input ng-model="formName" type="text" class="form-control" id="inputName" placeholder="name">
 						</div>
 					</div>
 				</td>
@@ -28,7 +28,7 @@
 			<!--		<a href="#"><scan class="glyphicon glyphicon-plus"></scan></a>  -->
 					<button ng-click="addForm()" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
 			<!--		<a href="#"><scan class="glyphicon glyphicon-ok"></scan></a>   -->
-					<button ng-click="selectForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
+					<button ng-click="updateForm()" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
 				</td>
 			</tr>
 			</thead>
@@ -40,7 +40,7 @@
 			<!--	<td><a href="form-fields.html" class="btn" role="button">Registration Form</a></td>   -->
 				<td>
 					<button ng-click="deleteForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
-					<button ng-click="updateForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button ng-click="selectForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
 				</td>
 			</tr>
 			</tbody>

@@ -4,13 +4,28 @@
         .factory("FormService", FormService);
 
     function FormService() {
-        var PRform = {
-            "name" : "form1",
-            "id" : 123,
-            "userid" : 12345,
+        var A = {
+            "name" : "Registration Form",
+            "id" : "123",
+            "userid" : "12345",
+        }
+        var B = {
+            "name" : "Contact List",
+            "id" : "234",
+            "userid" : "12345",
+        }
+        var C = {
+            "name" : "To Do List",
+            "id" : "345",
+            "userid" : "12345",
+        }
+        var D = {
+            "name" : "To Do List",
+            "id" : "456",
+            "userid" : "1111",
         }
         
-        var forms = [PRform];
+        var forms = [A, B, C, D];
 
         var service = {
             createFormForUser: createFormForUser,
@@ -69,11 +84,11 @@
             for(var i=0; i<forms.length; i++) {
                 var form = forms[i]
                 if(form.id == formId) {
-                    form = newForm;
+                    forms[i] = newForm;
                 }
             }
-            callback(form);
-            return form;
+            callback(newForm);
+            return newForm;
         }
     }
 })();
