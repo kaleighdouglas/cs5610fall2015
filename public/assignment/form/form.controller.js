@@ -1,4 +1,5 @@
 (function() {
+	"use strict";
 	angular
 		.module("FormBuilderApp")
 		.controller("FormController", FormController);
@@ -11,7 +12,7 @@
             console.log(value);
         }
 			
-		currentUser = $rootScope.user;		
+		var currentUser = $rootScope.user;		
 		$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
 		var currentFormId = null
 		
@@ -32,11 +33,6 @@
 		
 		
 		function updateForm() {
-			console.log("Form NAME Updated");
-			console.log($scope.formName);
-			console.log("Form ID Updated");
-			console.log(currentFormId);
-			
 			var newForm = {
 				"name" : $scope.formName,
 				"id" : currentFormId,
@@ -50,7 +46,7 @@
 		
 		function deleteForm(index) {
 			$scope.selectedFormIndex = index;
-			formid = $scope.forms[index].id
+			var formid = $scope.forms[index].id
 			FormService.deleteFormById(formid, callback)
 			$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
 		}
@@ -58,11 +54,8 @@
 		
 		function selectForm(index) {
 			$scope.selectedFormIndex = index;
-			formid = $scope.forms[index].id;
+			var formid = $scope.forms[index].id;
 			currentFormId = formid
-			console.log("Form ID Selected");
-			console.log(currentFormId);
-			Zname = $scope.forms[index].name;
 			$scope.formName = $scope.forms[index].name;  
 		}
 		} 

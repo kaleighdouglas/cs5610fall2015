@@ -1,4 +1,5 @@
 (function() {
+	"use strict";
 	angular
 		.module("FormBuilderApp")
 		.controller("ProfileController", ProfileController);
@@ -9,7 +10,7 @@
 		$scope.update = update;
 		
 		// update fields to existing user
-		currentUser = $rootScope.user;
+		var currentUser = $rootScope.user;
 		$scope.userName = currentUser.username;
 		$scope.userPassword = currentUser.password;
 		$scope.userEmail = currentUser.email;
