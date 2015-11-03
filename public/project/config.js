@@ -21,10 +21,10 @@
                 templateUrl: "profile/profile.view.html",
                 controller: "ProfileController"
             })
-    /*        .when("/form", {
-                templateUrl: "form/form.view.html",
-                controller: "FormController"
-            })   */
+            .when("/history", {
+                templateUrl: "history/history.view.html",
+                controller: "HistoryController"
+            })
             .otherwise({
                 redirectTo: "/home"
             });   

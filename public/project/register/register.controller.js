@@ -5,11 +5,6 @@
 		.controller("RegisterController", RegisterController);
 	    
     function RegisterController($scope, $rootScope, $location, UserService) {
-        //$scope.firstName = "MyFirstName!!!!";
-		//$scope.lastName = "MyLastName!!!!";
-		//$scope.userPassword = "P";
-		//$scope.verifyPassword = "P";
-		//$scope.userEmail = "PQR@abc.com";
 		$scope.$location = $location
 		$scope.register = register;
 	  
