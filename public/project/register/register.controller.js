@@ -1,11 +1,12 @@
 (function() {
 	"use strict";
 	angular
-		.module("FormBuilderApp")
+		.module("DecisionsApp")
 		.controller("RegisterController", RegisterController);
 	    
     function RegisterController($scope, $rootScope, $location, UserService) {
-        //$scope.userName = "MyName!!!!";
+        //$scope.firstName = "MyFirstName!!!!";
+		//$scope.lastName = "MyLastName!!!!";
 		//$scope.userPassword = "P";
 		//$scope.verifyPassword = "P";
 		//$scope.userEmail = "PQR@abc.com";
@@ -18,7 +19,8 @@
 	  
 		function register() {
 			var newUser = {
-				"username" : $scope.userName,
+				"firstname" : $scope.firstName,
+				"lastname" : $scope.lastName,
 				"password"  : $scope.userPassword,
 				"email"  : $scope.userEmail,
 			}; 

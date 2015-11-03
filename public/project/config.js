@@ -9,10 +9,10 @@
              .when("/home",{
                 templateUrl: "home/home.view.html"
             })
-       /*     .when("/login", {
+            .when("/login", {
                 templateUrl: "login/login.view.html",
                 controller: "LoginController"
-            })
+            }) 
             .when("/register", {
                 templateUrl: "register/register.view.html",
                 controller: "RegisterController"
@@ -21,7 +21,7 @@
                 templateUrl: "profile/profile.view.html",
                 controller: "ProfileController"
             })
-            .when("/form", {
+    /*        .when("/form", {
                 templateUrl: "form/form.view.html",
                 controller: "FormController"
             })   */

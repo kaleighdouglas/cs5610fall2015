@@ -1,35 +1,42 @@
 <div ng-controller="RegisterController">
-        <h1 class="page-header">Register</h1>
+        <h3 class="page-header">Register Your Account</h3>
         
         <form class="form-horizontal">
-        <!-- Username -->
+        <!-- Firstname -->
         <div class="form-group">
-                <label for="inputUsername" class="col-sm-2 control-label">Username:</label>
+                <label for="inputFirstname" class="col-sm-2 control-label">First Name:</label>
                 <div class="col-sm-10">
-                        <input ng-model="userName" type="text" class="form-control" id="inputUsername" placeholder="Username">
+                        <input ng-model="firstName" type="text" class="form-control" id="inputFirstname" placeholder="Jane">
                 </div>
         </div>
-        <!-- Password -->
+        <!-- Lastname -->
         <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Password:</label>
+                <label for="inputLastname" class="col-sm-2 control-label">Last Name:</label>
                 <div class="col-sm-10">
-                        <input ng-model="userPassword" type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                </div>
-        </div>
-        <!-- Verify Password -->
-        <div class="form-group">
-                <label for="inputVerifyPassword" class="col-sm-2 control-label">Verify Password:</label>
-                <div class="col-sm-10">
-                        <input ng-model="verifyPassword" type="password" class="form-control" id="inputVerifyPassword" placeholder="First Name">
+                        <input ng-model="lastName" type="text" class="form-control" id="inputLastname" placeholder="Doe">
                 </div>
         </div>
         <!-- Email -->
         <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">Email:</label>
                 <div class="col-sm-10">
-                        <input ng-model="userEmail" type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        <input ng-model="userEmail" type="email" class="form-control" id="inputEmail" placeholder="janedoe@xyz.com">
                 </div>
         </div>
+        <!-- Password -->
+        <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Password:</label>
+                <div class="col-sm-10">
+                        <input ng-model="userPassword" type="password" class="form-control" id="inputPassword3" placeholder="password">
+                </div>
+        </div>
+        <!-- Verify Password -->
+        <div class="form-group">
+                <label for="inputVerifyPassword" class="col-sm-2 control-label">Verify Password:</label>
+                <div class="col-sm-10">
+                        <input ng-model="verifyPassword" type="password" class="form-control" id="inputVerifyPassword" placeholder="password">
+                </div>
+        </div>  
         <!-- Register -->
         <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
