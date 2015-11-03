@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="DecisionsApp">
+<head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
+    
+    <!-- AngularJS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.js"></script>
+    <!-- JS -->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="header/header.controller.js"></script>
+    <script src="tabs/tabs.controller.js"></script>
+
+    
+    <title>Decision Maker Application</title>
+    
+<!--   <script>
+        $(init);
+        function init()
+        {
+            alert("Welcome");
+        }
+    </script> 
+ -->
+
+</head>
+
+<body> 
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderController">   <!--  -->
+        <div class="container-fluid">
+            <div ng-include="'header/header.view.html'"></div>
+        </div>
+    </nav>
+    
+    
+    <div class="container-fluid main-content">
+        
+        <div class="panel panel-default">               
+            <div class="panel-body">
+                <nav class="navbar" ng-controller="TabsController">     
+                    <div class="container-fluid">
+                        <div ng-include="'tabs/tabs.view.html'"></div>
+                    </div>
+                </nav>
+                <div class="container-fluid main" ng-view></div>
+            </div>
+        </div>     
+                
+    </div>
+</body>
+
+</html>
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--<script src="../../dist/js/bootstrap.min.js"></script>-->
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<!--<script src="../../assets/js/vendor/holder.min.js"></script>-->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+
