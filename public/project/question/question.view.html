@@ -1,0 +1,65 @@
+
+<div ng-controller="QuestionController">
+<!--	<h3 class="page-header">New Question</h3>  -->
+	
+	<div class="container-fluid">
+		
+		
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="active"><a href="#">Question</a></li>
+				<li role="presentation"><a href="#/methodProCon">Method</a></li>
+				<li role="presentation"><a href="#">Advisors</a></li>
+				<li role="presentation"><a href="#">Decision</a></li>
+			</ul>     
+			
+			<div class="panel panel-default"> 
+			<div class="panel-body"> 
+
+
+			<form>
+				<!-- Question Name -->
+				<div class="row form-group">
+						<label for="inputQuestion" class="col-sm-2 control-label">Question:</label>
+						<div class="col-sm-10">
+							<input ng-model="questionName" type="text" class="form-control" id="inputQuestion" placeholder="Ask your question here">
+						</div>
+				</div>
+				
+				<!-- Choose Method -->
+				<div class="row form-group">
+					<label for="radio" class="col-xs-12 control-label">Choose A Method:</label>
+					<div class="col-xs-12">
+						<div class="radio">
+							<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+								Weighted Pros & Cons (for questions of action versus inaction - used alone or with others)
+							</label>
+						</div>
+					
+						<div class="radio">
+							<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+								Grid Method (for questions with multiple options - used alone or with others)
+							</label>
+						</div>
+						
+						<div class="radio">
+							<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+								Intuition Method (for questions with multiple options - used only with others)
+							</label>
+						</div>
+					</div>         
+				</div>
+				
+				<!-- To Method Button -->
+				<div class="text-center">
+					<a href="#/method" class="btn btn-default" role="button"> Next</a>
+				<!--		<button ng-click="register()" btn-default>Register</button>  -->
+				</div>     
+			</form>
+			
+            </div>
+        </div>                    
+    </div>                    
+</div>

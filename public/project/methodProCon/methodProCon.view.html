@@ -1,0 +1,136 @@
+
+<div ng-controller="MethodProConController">
+	<h3 class="text-center"> Question : Should I go home for Thanksgiving? </h3>
+	<h4 class="page-header text-center"> Weighed Pro & Con Method </h4>
+
+	<div class="table-responsive">
+		
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="#">Question</a></li>
+		<li role="presentation" class="active"><a href="#">Method</a></li>
+		<li role="presentation"><a href="#">Advisors</a></li>
+		<li role="presentation"><a href="#">Decision</a></li>
+	</ul>     
+	
+	<div class="panel panel-default"> 
+	<div class="panel-body">     
+		
+		<!-- Table -->
+		<table class="table table-striped table-bordered">
+			<thead>
+			<tr>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Positive or Negative Effect</th>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Importance</th>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Pro or Con</th>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Action</th>
+			</tr>
+			
+			<tr>
+				
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input ng-model="formName" type="text" class="form-control" id="inputProCon" placeholder="Enter Pro or Con">
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="5" value="3" class="form-control" id="inputProConRating">
+						</div>
+					</div>
+				</td>
+				<td>
+					<form> 
+						<div class="form-group dropdown">
+							<div class="col-xl-10">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownProCon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+									Pro
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownProCon">
+									<li><a href="#">Pro</a></li>
+									<li><a href="#">Con</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</td>
+				<td>
+					<button ng-click="addForm()" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
+					<button ng-click="updateForm()" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
+				</td>
+			</tr>
+			</thead>
+			
+			<tbody>
+			<!-- Existing Forms -->
+<!--			<tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
+				<td><button>{{form.name}}</button></td>
+				<td>
+					<button ng-click="deleteForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
+					<button ng-click="selectForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+				</td>
+			</tr>   -->
+			
+			
+						<!-- Example Question 1 -->
+			<tr>
+				<td>See Family</td>
+				<td>5</td>
+				<td>Pro</td>
+				<td>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+				</td>
+			</tr>
+			<!-- Example Question 2 -->
+			<tr>
+				<td>Expensive Travel</td>
+				<td>4</td>
+				<td>Con</td>
+				<td>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+				</td>
+			</tr>
+			<!-- Example Question 3 -->
+			<tr>
+				<td>Good Food</td>
+				<td>2</td>
+				<td>Pro</td>
+				<td>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+				</td>
+			</tr>
+			
+			<!-- Example Question 4 -->
+			<tr>
+				<td>Time Consuming to Travel</td>
+				<td>2</td>
+				<td>Con</td>
+				<td>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+				</td>
+			</tr>		
+			</tbody>
+		</table>
+			
+			
+		<!-- New Question Button -->
+		<div class="text-center">
+			<a href="#/decision" class="btn btn-default" role="button"> Calculate Your Decision</a>
+		<!--		<button ng-click="register()" btn-default>Register</button>  -->
+		</div>
+		
+		<div class="text-center">
+			<a href="#/advisors" class="btn btn-default" role="button"> Get More Opinions</a>
+		<!--		<button ng-click="register()" btn-default>Register</button>  -->
+		</div>
+			
+			
+	</div>                        
+</div>

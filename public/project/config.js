@@ -25,6 +25,14 @@
                 templateUrl: "history/history.view.html",
                 controller: "HistoryController"
             })
+            .when("/question", {
+                templateUrl: "question/question.view.html",
+                controller: "QuestionController"
+            })
+            .when("/methodProCon", {
+                templateUrl: "methodProCon/methodProCon.view.html",
+                controller: "MethodProConController"
+            })
             .otherwise({
                 redirectTo: "/home"
             });   
