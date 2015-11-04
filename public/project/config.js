@@ -33,6 +33,14 @@
                 templateUrl: "methodProCon/methodProCon.view.html",
                 controller: "MethodProConController"
             })
+            .when("/methodIntuitionOptions", {
+                templateUrl: "methodIntuition/methodIntuitionOptions.view.html",
+                controller: "MethodIntuitionOptionsController"
+            })
+            .when("/methodIntuitionEval", {
+                templateUrl: "methodIntuition/methodIntuitionEval.view.html",
+                controller: "MethodIntuitionEvalController"
+            })
             .otherwise({
                 redirectTo: "/home"
             });   

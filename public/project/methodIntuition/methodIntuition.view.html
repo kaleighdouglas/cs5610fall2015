@@ -1,7 +1,6 @@
 
-<div ng-controller="MethodProConController">
+<div ng-controller="MethodProConOptionsController">
 	
-
 	<div class="table-responsive">
 		
 	<ul class="nav nav-tabs">
@@ -14,50 +13,51 @@
 	<div class="panel panel-default"> 
 	<div class="panel-body">
 		
-		<h3 class="text-center"> Question : Should I go home for Thanksgiving? </h3>
-		<h4 class="page-header text-center"> Weighed Pro & Con Method </h4>    
+		<h3 class="text-center"> Question : Where should we go for dinner? </h3>
+		<h4 class="page-header text-center"> Intuition Method </h4>    
+		
+		<!-- Inner Tabs -->
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active"><a href="#">Options</a></li>
+			<li role="presentation"><a href="#">Evaluation</a></li>
+		</ul>     
+		
+		<div class="panel panel-default"> 
+		<div class="panel-body">
+		
+		
 		
 		<!-- Table -->
 		<table class="table table-striped table-bordered">
 			<thead>
 			<tr>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Positive or Negative Effect</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Importance (1-5)</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Pro or Con</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Action</th>
+				<th><scan></scan> Description</th>
+				<th><scan></scan> Image</th>
+				<th><scan></scan> URL</th>
+				<th><scan></scan> Action</th>
 			</tr>
 			
 			<tr>
-				
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input ng-model="formName" type="text" class="form-control" id="inputProCon" placeholder="Enter Pro or Con">
+							<input ng-model="optionName" type="text" class="form-control" id="inputOption" placeholder="Option 1">
 						</div>
 					</div>
 				</td>
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input type="number" min="1" max="5" value="3" class="form-control" id="inputProConRating">
+							<input type="image" class="form-control" id="inputOptionImage">
 						</div>
 					</div>
 				</td>
 				<td>
-					<form> 
-						<div class="form-group dropdown">
-							<div class="col-xl-10">
-								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownProCon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-									Pro
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" aria-labelledby="dropdownProCon">
-									<li><a href="#">Pro</a></li>
-									<li><a href="#">Con</a></li>
-								</ul>
-							</div>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="url" class="form-control" id="inputOptionURL">
 						</div>
-					</form>
+					</div>
 				</td>
 				<td>
 					<button ng-click="addForm()" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
@@ -79,9 +79,11 @@
 			
 						<!-- Example Question 1 -->
 			<tr>
-				<td>See Family</td>
-				<td>5</td>
-				<td>Pro</td>
+				<td>Brasitas</td>
+				<td></td>
+				<td>
+					<button type="button" class="btn btn-link">http://brasitas.com/</button>
+				</td>
 				<td>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
@@ -89,9 +91,10 @@
 			</tr>
 			<!-- Example Question 2 -->
 			<tr>
-				<td>Expensive Travel</td>
-				<td>4</td>
-				<td>Con</td>
+				<td>Coalhouse Pizza</td>
+				<td></td>
+				<td>
+					<button type="button" class="btn btn-link">http://coalhousepizza.com/</button>
 				<td>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
@@ -99,37 +102,25 @@
 			</tr>
 			<!-- Example Question 3 -->
 			<tr>
-				<td>Good Food</td>
-				<td>2</td>
-				<td>Pro</td>
+				<td>Kona Grill</td>
+				<td></td>
+				<td>
+					<button type="button" class="btn btn-link">http://www.konagrill.com/restaurants/stamford-ct.aspx</button>
+				</td>
 				<td>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
 				</td>
 			</tr>
-			
-			<!-- Example Question 4 -->
-			<tr>
-				<td>Time Consuming to Travel</td>
-				<td>2</td>
-				<td>Con</td>
-				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
-				</td>
-			</tr>		
+				
 			</tbody>
 		</table>
 			
 			
-		<!-- New Question Button -->
+		<!-- Next Button -->
+			
 		<div class="text-center">
-			<a href="#/decision" class="btn btn-default" role="button"> Calculate Your Decision</a>
-		<!--		<button ng-click="register()" btn-default>Register</button>  -->
-		</div>
-		
-		<div class="text-center">
-			<a href="#/advisors" class="btn btn-default" role="button"> Get More Opinions</a>
+			<a href="#/advisors" class="btn btn-default" role="button"> Next : Submit Your Opinion</a>
 		<!--		<button ng-click="register()" btn-default>Register</button>  -->
 		</div>
 			
