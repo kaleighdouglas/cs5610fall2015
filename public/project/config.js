@@ -57,6 +57,10 @@
                 templateUrl: "advice/advice.view.html",
                 controller: "AdviceController"
             })
+            .when("/decision", {
+                templateUrl: "decision/decision.view.html",
+                controller: "DecisionController"
+            })
             .otherwise({
                 redirectTo: "/home"
             });   

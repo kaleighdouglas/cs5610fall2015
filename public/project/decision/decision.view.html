@@ -1,0 +1,103 @@
+
+<div ng-controller="DecisionController">
+
+		
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="#/question">Question</a></li>
+		<li role="presentation"><a href="#/methodGridEval">Method</a></li>
+		<li role="presentation"><a href="#/advice">Advice</a></li>
+		<li role="presentation" class="active"><a href="#/decision">Decision</a></li>
+	</ul>     
+	
+	<div class="panel panel-default"> 
+	<div class="panel-body">
+		
+		<h3 class="text-center"> Question : Where should we go on vacation? </h3>
+
+		
+		<!-- Table -->
+		<table class="table table-striped table-bordered table-responsive">
+			<thead>
+			<tr>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Person</th>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Opinion</th>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Weight</th>
+				<th> Results</th>
+			</tr>
+			</thead>
+			
+			<tbody>
+			<!-- Existing Forms -->
+<!--			<tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
+				<td><button>{{form.name}}</button></td>
+				<td>
+					<button ng-click="deleteForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
+					<button ng-click="selectForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+				</td>
+			</tr>   -->
+			
+			
+			<!-- Example Question 1 -->
+			<tr>
+				<td>Me</td>
+				<td>Newport</td>
+				<td>50%</td>
+				<td>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
+				</td>
+			</tr>
+			<!-- Example Question 2 -->
+			<tr>
+				<td>Matthew</td>
+				<td>Philadelphia</td>
+				<td>25%</td>
+				<td>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
+				</td>
+			</tr>
+			<!-- Example Question 3 -->
+			<tr>
+				<td>Ryan</td>
+				<td>Newport</td>
+				<td>10%</td>
+				<td>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
+				</td>
+			</tr>	
+			<!-- Example Question 4 -->
+			<tr>
+				<td>Danielle</td>
+				<td>Portland</td>
+				<td>15%</td>
+				<td>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
+				</td>
+			</tr>	
+			</tbody>
+		</table>
+          
+		<!-- Decision -->  
+		<div class="row">   
+			<div class="col-sm-6 text-center">
+				<h3> Pie Chart Here </h3>
+			</div>  
+			<div class="col-sm-6 text-center">	
+				<h3>Decision : Newport </h3>
+			</div>
+		</div>
+			
+		
+<!--		<div class="form-group">
+			<div class="col-xl-10">
+				<input type="image" name="pie" src="vacationPie.png">
+			</div>
+		</div>   -->
+
+		
+		</div>                        
+		</div>
+	</div>
+</div>
+
+
+		
