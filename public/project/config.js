@@ -41,6 +41,14 @@
                 templateUrl: "methodIntuition/methodIntuitionEval.view.html",
                 controller: "MethodIntuitionEvalController"
             })
+            .when("/methodGridOptions", {
+                templateUrl: "methodGrid/methodGridOptions.view.html",
+                controller: "MethodGridOptionsController"
+            })
+            .when("/methodGridAttributes", {
+                templateUrl: "methodGrid/methodGridAttributes.view.html",
+                controller: "MethodGridAttributesController"
+            })
             .otherwise({
                 redirectTo: "/home"
             });   
