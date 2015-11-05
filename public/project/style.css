@@ -8,9 +8,14 @@
   padding-top: 25%;
 }
 
+.inputComment {
+  font-size:12pt;
+  width:70%;
+}
 
 /* Border */
 #border {
     border: 1px solid lightgrey;
     padding: 10px;
 }
+

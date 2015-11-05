@@ -2,9 +2,9 @@
 	"use strict";
 	angular
 		.module("DecisionsApp")
-		.controller("MethodGridEvalController", MethodGridEvalController);
+		.controller("AdviceController", AdviceController);
 	    
-    function MethodGridEvalController($scope, $rootScope, $location, FormService) {
+    function AdviceController($scope, $rootScope, $location, FormService) {
 		
 		$scope.$location = $location;
 		

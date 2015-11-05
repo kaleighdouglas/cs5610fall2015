@@ -1,0 +1,151 @@
+
+<div ng-controller="AdviceController">
+
+		
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="#/question">Question</a></li>
+		<li role="presentation"><a href="#/methodGridEval">Method</a></li>
+		<li role="presentation" class="active"><a href="#">Advice</a></li>
+		<li role="presentation"><a href="#/decision">Decision</a></li>
+	</ul>     
+	
+	<div class="panel panel-default"> 
+	<div class="panel-body">
+		
+		<h3 class="text-center"> Question : Where should we go on vacation? </h3>
+		<h4 class="page-header text-center"> Weight of your opinion: 50% </h4>    
+		    
+		
+		
+		<!-- Table -->
+		<table class="table table-striped table-bordered table-responsive">
+			<thead>
+			<tr>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Name</th>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Email</th>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Deadline</th>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Weight %</th>
+				<th> Action</th>
+			</tr>
+			
+			<tr>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input ng-model="advisorName" type="text" class="form-control" placeholder="Jane">
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input ng-model="advisorEmail" type="email" class="form-control" placeholder="janedoe@xyz.com">
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input ng-model="advisorDueDate" type="date" class="form-control">
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input class="slider" type="range" min="0" max="100" value="50" step="1">
+						</div>
+					</div>
+				</td>
+				<td>
+					<button ng-click="addForm()" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
+					<button ng-click="updateForm()" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
+				</td>			
+			</tr>
+			</thead>
+			
+			<tbody>
+			<!-- Existing Forms -->
+<!--			<tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
+				<td><button>{{form.name}}</button></td>
+				<td>
+					<button ng-click="deleteForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
+					<button ng-click="selectForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+				</td>
+			</tr>   -->
+			
+			
+			<!-- Example Question 1 -->
+			<tr>
+				<td>Matthew</td>
+				<td>matthew@xyz.com</td>
+				<td> 11/01/2015</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input class="slider" type="range" min="0" max="100" value="25" step="1">
+						</div>
+					</div>
+				</td>
+				<td>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+				</td>
+			</tr>
+			<!-- Example Question 2 -->
+			<tr>
+				<td>Ryan</td>
+				<td>ryan@xyz.com</td>
+				<td> 11/01/2015</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input class="slider" type="range" min="0" max="100" value="10" step="1">
+						</div>
+					</div>
+				</td>
+				<td>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+				</td>
+			</tr>
+			<!-- Example Question 3 -->
+			<tr>
+				<td>Danielle</td>
+				<td>danielle@xyz.com</td>
+				<td>11/01/2015</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input class="slider" type="range" min="0" max="100" value="15" step="1">
+						</div>
+					</div>
+				</td>
+				<td>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+				</td>
+			</tr>		
+			</tbody>
+		</table>
+                
+			
+		<!-- Decision Button -->
+		<div class="row col-xl-10 text-center">
+			<a href="#/advice" class="btn btn-default" role="button"> Submit Request for Opinions </a>
+		<!--		<button ng-click="register()" btn-default>Register</button>  -->
+		</div>
+			
+		<!-- Next Button -->
+		<div class="row col-xl-10 text-center">
+			<a href="#/decision" class="btn btn-default" role="button"> Next : View Decision</a>
+		<!--		<button ng-click="register()" btn-default>Register</button>  -->
+		</div>
+		
+		</div>                        
+		</div>
+	</div>
+</div>
+
+
+		

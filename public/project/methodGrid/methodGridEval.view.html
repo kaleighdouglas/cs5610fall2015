@@ -1,145 +1,72 @@
 
-<div ng-controller="MethodIntuitionEvalController">
-	
-	<div class="table-responsive">
+<div ng-controller="MethodGridEvalController">
+
 		
 	<ul class="nav nav-tabs">
 		<li role="presentation"><a href="#/question">Question</a></li>
 		<li role="presentation" class="active"><a href="#">Method</a></li>
-		<li role="presentation"><a href="#">Advisors</a></li>
-		<li role="presentation"><a href="#">Decision</a></li>
+		<li role="presentation"><a href="#/advice">Advice</a></li>
+		<li role="presentation"><a href="#/decision">Decision</a></li>
 	</ul>     
 	
 	<div class="panel panel-default"> 
 	<div class="panel-body">
 		
-		<h3 class="text-center"> Question : Where should we go for dinner? </h3>
-		<h4 class="page-header text-center"> Intuition Method </h4>    
+		<h3 class="text-center"> Question : Where should we go on vacation? </h3>
+		<h4 class="page-header text-center"> Grid Method </h4>    
 		
 		<!-- Inner Tabs -->
 		<ul class="nav nav-tabs">
-			<li role="presentation"><a href="#/methodIntuitionOptions">Options</a></li>
+			<li role="presentation"><a href="#/methodGridOptions">Options</a></li>
+			<li role="presentation"><a href="#/methodGridAttributes">Attributes</a></li>
 			<li role="presentation" class="active"><a href="#">Evaluation</a></li>
 		</ul>     
 		
 		<div class="panel panel-default"> 
 		<div class="panel-body">
 		
-		
-		<div class="container-fluid"
-     
-			<!-- Options -->
-			<div class="row col-xl-12">              
-				<form>
-					<div class="form-group">
-						<label for="radio" class="col-xs-12" control-label">Choose One:</label>
-						<div class="col-xs-12">
-							<!-- Option 1 -->
-							<div class="row">
-								<div class="radio col-xs-2" align="right">
-									<input type="radio" name="optionsRadios" id="optionsRadiosC1" value="option1" checked>
-								</div>
-								<div class="col-xs-5">
-									<h5> Zaza </h5>
-								</div>
-								<div class="col-xs-3">
-									<h5>IMG </h5>
-								</div>
-								<div class="col-xs-2">
-									<a href="http://www.zazagastrobar.com/" target="_blank" class="btn btn-default">
-										<span class="glyphicon glyphicon-link"></span>
-									</a>
-								</div>
-							</div>
-						
-							<!-- Option 2 -->
-							<div class="row">
-								<div class="radio col-xs-2" align="right">
-									<input type="radio" name="optionsRadios" id="optionsRadiosC2" value="option2">
-								</div>
-								<div class="col-xs-5">
-									<h5> Brazitas </h5>
-								</div>
-								<div class="col-xs-3">
-									<h5>IMG </h5>
-								</div>
-								<div class="col-xs-2">
-									<a href="http://brasitas.com/" target="_blank" class="btn btn-default">
-										<span class="glyphicon glyphicon-link"></span>
-									</a>
-								</div>
-							</div>
-							
-							<!-- Option 3 -->
-							<div class="row">
-								<div class="radio col-xs-2" align="right">
-									<input type="radio" name="optionsRadios" id="optionsRadiosC3" value="option3">
-								</div>
-								<div class="col-xs-5">
-									<h5> Coalhouse Pizza </h5>
-								</div>
-								<div class="col-xs-3">
-									<h5>IMG </h5>
-								</div>
-								<div class="col-xs-2">
-									<a href="http://coalhousepizza.com/" target="_blank" class="btn btn-default">
-										<span class="glyphicon glyphicon-link"></span>
-									</a>
-								</div>
-							</div>
-							
-							<!-- Option 4 -->
-							<div class="row">
-								<div class="radio col-xs-2" align="right">
-									<input type="radio" name="optionsRadios" id="optionsRadiosC4" value="option4">
-								</div>
-								<div class="col-xs-5">
-									<h5> Kona Grill </h5>
-								</div>
-								<div class="col-xs-3">
-									<h5>IMG </h5>
-								</div>
-								<div class="col-xs-2">
-									<a href="http://www.konagrill.com/restaurants/stamford-ct.aspx" target="_blank" class="btn btn-default">
-										<span class="glyphicon glyphicon-link"></span>
-									</a>
-								</div>
-							</div>
-						</div>         
-					</div>     
-				</form> 
-			</div>
-                
-			
-			
-		<!-- Next Button -->
-			
-		<div class="row col-xl-10 text-center">
-			<a href="#/advisors" class="btn btn-default" role="button"> Next : Get More Opinions</a>
-		<!--		<button ng-click="register()" btn-default>Register</button>  -->
-		</div>
-			
-	</div>		
-	</div>                        
-</div>
-
-
-
-
-
-
-
-
-
-
-				<!-- Table -->
-<!--		<table class="table">
+		<!-- Table -->
+		<table class="table table-striped table-bordered table-responsive">
 			<thead>
-				<h4> Choose One: </h4>
+			<tr>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Attribute</th>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Weight %</th>
+				<th> Newport</th>
+				<th> Philadelphia</th>
+				<th> Portland</th>
+			</tr>
+			
+			<tr>
+				<td>&nbsp</td>
+				<td>&nbsp</td>
+				<td>
+					<div>
+						<a href="http://www.discovernewport.org/" target="_blank" class="btn btn-default">
+							<span class="glyphicon glyphicon-link"></span>
+						</a>
+					</div>
+				</td>
+				<td>
+					<div>
+						<a href="http://www.visitphilly.com/" target="_blank" class="btn btn-default">
+							<span class="glyphicon glyphicon-link"></span>
+						</a>
+					</div>
+				</td>
+				<td>
+					<div>
+						<a href="http://www.visitportland.com/" target="_blank" class="btn btn-default">
+							<span class="glyphicon glyphicon-link"></span>
+						</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				</tr>
 			</thead>
 			
 			<tbody>
-			<!-- Existing Forms
+			<!-- Existing Forms -->
 <!--			<tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
 				<td><button>{{form.name}}</button></td>
 				<td>
@@ -149,86 +76,138 @@
 			</tr>   -->
 			
 			
-			<!-- Example Question 1
+			<!-- Example Question 1 -->
 			<tr>
+				<td>Affordability</td>
+				<td>10%</td>
 				<td>
-					<form>
-						<div class="form-group col-xs-10 radio text-center">
-							<input type="radio" name="optionsRadios" id="optionsRadiosC1" unchecked>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="2" class="form-control" id="inputGridRating">
 						</div>
-					</form>
+					</div>
 				</td>
 				<td>
-					<h5>Zaza</h5>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="4" class="form-control" id="inputGridRating">
+						</div>
+					</div>
 				</td>
-				<td></td>
 				<td>
-					<a href="http://www.zazagastrobar.com/" target="_blank" class="btn btn-default">
-						<span class="glyphicon glyphicon-link"></span>
-					</a>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="6" class="form-control" id="inputGridRating">
+						</div>
+					</div>
+				</td>
+			</tr>
+			<!-- Example Question 2 -->
+			<tr>
+				<td>Short Travel Time</td>
+				<td>20%</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="5" class="form-control" id="inputGridRating">
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="4" class="form-control" id="inputGridRating">
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="3" class="form-control" id="inputGridRating">
+						</div>
+					</div>
+				</td>
+			</tr>
+			<!-- Example Question 3 -->
+			<tr>
+				<td>Restaurants</td>
+				<td>40%</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="8" class="form-control" id="inputGridRating">
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="9" class="form-control" id="inputGridRating">
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="8" class="form-control" id="inputGridRating">
+						</div>
+					</div>
 				</td>
 			</tr>
 			
-			<!-- Example Question 2
+			<!-- Example Question 4 -->
 			<tr>
+				<td>Near the Beach</td>
+				<td>30%</td>
 				<td>
-					<form>
-						<div class="form-group col-xs-10 radio text-center">
-							<input type="radio" name="optionsRadios" id="optionsRadiosC2" unchecked>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="8" class="form-control" id="inputGridRating">
 						</div>
-					</form>
+					</div>
 				</td>
 				<td>
-					<h5>Brasitas</h5>
-				</td>
-				<td></td>
-				<td>
-					<a href="http://brasitas.com/" target="_blank" class="btn btn-default">
-						<span class="glyphicon glyphicon-link"></span>
-					</a>
-				</td>
-			</tr>
-
-			<!-- Example Question 3 
-			<tr>
-				<td>
-					<form>
-						<div class="form-group col-xs-10 radio text-center">
-							<input type="radio" name="optionsRadios" id="optionsRadiosC3" unchecked>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="1" class="form-control" id="inputGridRating">
 						</div>
-					</form>
+					</div>
 				</td>
 				<td>
-					<h5>Coalhouse Pizza</h5>
-				</td>
-				<td></td>
-				<td>
-					<a href="http://coalhousepizza.com/" target="_blank" class="btn btn-default">
-						<span class="glyphicon glyphicon-link"></span>
-					</a>
-				</td>
-			</tr>
-			
-			<!-- Example Question 4 
-			<tr>
-				<td>
-					<form>
-						<div class="form-group col-xs-10 radio text-center">
-							<input type="radio" name="optionsRadios" id="optionsRadiosC4" unchecked>
+					<div class="form-group">
+						<div class="col-xl-10">
+							<input type="number" min="1" max="10" value="7" class="form-control" id="inputGridRating">
 						</div>
-					</form>
+					</div>
 				</td>
-				<td>
-					<h5>Kona Grill</h5>
-				</td>
-				<td></td>
-				<td>
-					<a href="http://www.konagrill.com/restaurants/stamford-ct.aspx" target="_blank" class="btn btn-default">
-						<span class="glyphicon glyphicon-link"></span>
-					</a>
-				</td>
-			</tr>
-				
+			</tr>		
 			</tbody>
-		</table>    -->
+		</table>
+
+     	<!-- Comment Box -->
+		<div class="form-group">
+			<div class="text-center">
+				<input type="text" placeholder="Comment" class="inputComment">
+			</div>
+		</div>
+                
+			
+		<!-- Decision Button -->
+		<div class="row col-xl-10 text-center">
+			<a href="#/decision" class="btn btn-default" role="button"> Calculate Your Decision </a>
+		<!--		<button ng-click="register()" btn-default>Register</button>  -->
+		</div>
+			
+		<!-- Next Button -->
+		<div class="row col-xl-10 text-center">
+			<a href="#/advice" class="btn btn-default" role="button"> Next : Get More Opinions</a>
+		<!--		<button ng-click="register()" btn-default>Register</button>  -->
+		</div>
+		
+		</div>                        
+		</div>
+	</div>
+</div>
+
+
 		
