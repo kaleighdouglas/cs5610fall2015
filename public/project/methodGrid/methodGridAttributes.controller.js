@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("MethodGridAttributesController", MethodGridAttributesController);
 	    
-    function MethodGridAttributesController($scope, $rootScope, $location, FormService) {
+    function MethodGridAttributesController($scope, $rootScope, $location) {
 		
 		$scope.$location = $location;		
 		

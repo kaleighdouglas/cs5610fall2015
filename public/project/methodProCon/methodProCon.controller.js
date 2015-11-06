@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("MethodProConController", MethodProConController);
 	    
-    function MethodProConController($scope, $rootScope, $location, FormService) {
+    function MethodProConController($scope, $rootScope, $location) {
 		
 		$scope.$location = $location;
 		

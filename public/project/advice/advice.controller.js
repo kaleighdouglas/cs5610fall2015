@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("AdviceController", AdviceController);
 	    
-    function AdviceController($scope, $rootScope, $location, FormService) {
+    function AdviceController($scope, $rootScope, $location) {
 		
 		$scope.$location = $location;
 		

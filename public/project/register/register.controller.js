@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("RegisterController", RegisterController);
 	    
-    function RegisterController($scope, $rootScope, $location, UserService) {
+    function RegisterController($scope, $rootScope, $location) {
 		$scope.$location = $location
 		$scope.register = register;
 	  

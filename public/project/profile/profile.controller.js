@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("ProfileController", ProfileController);
 	    
-    function ProfileController($scope, $rootScope, $location, UserService) {
+    function ProfileController($scope, $rootScope, $location) {
 		
 		$scope.$location = $location;
 /*		$scope.update = update;

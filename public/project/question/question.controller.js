@@ -4,9 +4,29 @@
 		.module("DecisionsApp")
 		.controller("QuestionController", QuestionController);
 	    
-    function QuestionController($scope, $rootScope, $location, FormService) {
+    function QuestionController($scope, $rootScope, $location) {
 		
 		$scope.$location = $location;
+		$scope.gotoMethod = gotoMethod;
+		
+		/* Citations for help with radio buttons: 
+		http://stackoverflow.com/questions/1423777/javascript-how-can-i-check-whether-a-radio-button-is-selected
+		http://stackoverflow.com/questions/8681505/on-select-radio-redirect-to-a-link   */
+		function gotoMethod() {  	
+			if(document.getElementById('RadioProCon').checked) {
+				window.location = "#/methodProCon";
+			}
+			else if(document.getElementById('RadioGrid').checked) {
+				window.location = "#/methodGridOptions";
+			}
+			else if(document.getElementById('RadioIntuition').checked) {
+				window.location = "#/methodIntuitionOptions";
+			}
+			else {
+				alert("NO");
+			}
+		}
+		
 		
 /*		function callback(value) {
             console.log(value);

@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("LoginController", LoginController);
 	    
-    function LoginController($scope, $rootScope, $location, UserService) {	
+    function LoginController($scope, $rootScope, $location) {	
 	  $scope.$location = $location
 //	  $scope.login = login;
 	  	  

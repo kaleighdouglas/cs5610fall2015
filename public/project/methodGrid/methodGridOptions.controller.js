@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("MethodGridOptionsController", MethodGridOptionsController);
 	    
-    function MethodGridOptionsController($scope, $rootScope, $location, FormService) {
+    function MethodGridOptionsController($scope, $rootScope, $location) {
 		
 		$scope.$location = $location;
 		

@@ -6,7 +6,7 @@
 		
 		
 			<ul class="nav nav-tabs">
-				<li role="presentation" class="active"><a href="#">Question</a></li>
+				<li role="presentation" class="active"><a href="#/question">Question</a></li>
 				<li role="presentation"><a href="#/methodGridOptions">Method</a></li>
 				<li role="presentation"><a href="#/advice">Advice</a></li>
 				<li role="presentation"><a href="#/decision">Decision</a></li>
@@ -29,23 +29,24 @@
 				<div class="row form-group">
 					<label for="radio" class="col-xs-12 control-label">Choose A Method:</label>
 					<div class="col-xs-12">
-						<div class="radio">
-							<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-								Weighted Pros & Cons (for questions of action versus inaction - used alone or with others)
-							</label>
-						</div>
-					
-						<div class="radio">
-							<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-								Grid Method (for questions with multiple options - used alone or with others)
-							</label>
-						</div>
 						
 						<div class="radio">
 							<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							<input type="radio" name="optionsRadios" id="RadioGrid" value="option2">
+								Grid Method (for questions with multiple options - used alone or with others)
+							</label>
+						</div>
+	
+						<div class="radio">
+							<label>
+							<input type="radio" name="optionsRadios" id="RadioProCon" value="option1" checked>
+								Weighted Pros & Cons (for questions of action versus inaction - used alone or with others)
+							</label>
+						</div>	
+						
+						<div class="radio">
+							<label>
+							<input type="radio" name="optionsRadios" id="RadioIntuition" value="option2">
 								Intuition Method (for questions with multiple options - used only with others)
 							</label>
 						</div>
@@ -54,8 +55,8 @@
 				
 				<!-- To Method Button -->
 				<div class="text-center">
-					<a href="#/methodGridOptions" class="btn btn-default" role="button"> Next</a>
-				<!--		<button ng-click="register()" btn-default>Register</button>  -->
+			<!--		<a href="#/methodGridOptions" class="btn btn-default" role="button"> Next</a> -->
+						<button ng-click="gotoMethod()" btn-default>Next</button>  
 				</div>     
 			</form>
 			

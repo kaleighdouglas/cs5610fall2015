@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("MethodIntuitionEvalController", MethodIntuitionEvalController);
 	    
-    function MethodIntuitionEvalController($scope, $rootScope, $location, FormService) {
+    function MethodIntuitionEvalController($scope, $rootScope, $location) {
 		
 		$scope.$location = $location;
 		

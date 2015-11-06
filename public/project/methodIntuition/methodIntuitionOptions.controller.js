@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("MethodIntuitionOptionsController", MethodIntuitionOptionsController);
 	    
-    function MethodIntuitionOptionsController($scope, $rootScope, $location, FormService) {
+    function MethodIntuitionOptionsController($scope, $rootScope, $location) {
 		
 		$scope.$location = $location;
 		

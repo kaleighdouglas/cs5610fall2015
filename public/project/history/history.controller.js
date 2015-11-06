@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("HistoryController", HistoryController);
 	    
-    function HistoryController($scope, $rootScope, $location, FormService) {
+    function HistoryController($scope, $rootScope, $location) {
 		
 		$scope.$location = $location;
 		$scope.title = "where to go for dinner";
