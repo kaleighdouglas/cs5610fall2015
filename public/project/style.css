@@ -3,6 +3,11 @@
 /* Kaleigh O'Hara */
 
 
+/* Move down content  (dashboard moved only 50px to account for nav bar) */
+body {
+  padding-top: 80px;
+}
+
 /* Glyphicon Style */
 .glyphicon {
   padding-top: 25%;
