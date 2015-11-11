@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FormBuilderApp">
+<head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    
+    <!-- AngularJS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.js"></script>
+    <!-- JS -->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/sidebar/sidebar.controller.js"></script> 
+    <script src="services/UserService.js"></script>
+    <script src="services/FormService.js"></script>
+    <script src="views/login/login.controller.js"></script> 
+    <script src="views/register/register.controller.js"></script> 
+    <script src="views/profile/profile.controller.js"></script> 
+    <script src="views/form/form.controller.js"></script> 
+    
+    <title>Form Builder Application</title>
+    
+<!--   <script>
+        $(init);
+        function init()
+        {
+            alert("Welcome");
+        }
+    </script> 
+    
+    <script>
+        
+        
+        var alice = {
+            "firstName" : "Alice",
+            "lastName"  : "Wonderland",
+            };
+            //console.log(alice)
+            
+        var peter = {
+            "firstName" : "Peter",
+            "lastName"  : "Rabbit",
+            "username"  : "PR",
+            "password"  : "pr123",
+            "id"        : "12345",
+            };    
+            
+        var newpeter = {
+            "firstName" : "Peter",
+            "lastName"  : "Rabbit2",
+            "username"  : "PRWonderful",
+            "password"  : "pr123Wonderful",
+            "id"        : "12345",
+            }; 
+            
+            
+        var users = [alice, peter];
+        
+
+        // FORMS      
+        var blue = {
+            "color" : "Blue",
+            "id" : "08",
+            "userid" : "12345",
+            }; 
+        var green = {
+            "color" : "Green",
+            "id" : "09",
+            "userid" : "12345",
+            };
+        var yellow = {
+            "color" : "Yellow",
+            "id" : "07",
+            "userid" : "1234",
+            };
+        var newyellow = {
+            "color" : "Yellowish",
+            "id" : "07",
+            "userid" : "1234",
+            };    
+            
+        var forms = [blue, green, yellow];    
+            
+        function callback(value) {
+            console.log(value);
+        }
+            
+        function guid() {
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+            }
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                s4() + '-' + s4() + s4() + s4();
+        }
+              
+              
+    </script>  -->
+
+</head>
+
+
+<body> 
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderController">   <!--  -->
+        <div class="container-fluid">
+            <div ng-include="'views/header/header.view.html'"></div>
+        </div>
+    </nav>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar" ng-controller="SidebarController">    <!--  -->
+               <div ng-include="'views/sidebar/sidebar.view.html'"></div>
+            </div>
+            
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view>
+            </div>
+        </div>
+    </div>  
+</body>
+
+</html>
+
+
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--<script src="../../dist/js/bootstrap.min.js"></script>-->
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<!--<script src="../../assets/js/vendor/holder.min.js"></script>-->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+
