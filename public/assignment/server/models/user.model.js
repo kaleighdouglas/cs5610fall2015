@@ -3,23 +3,17 @@ var users = require("./user.mock.json");
 
 module.exports = function(app){
     var api = {
-		findUserByUsername: findUserByUsername,
-		findUserByCredentials: findUserByCredentials,
 		Create: Create,
 		FindAll: FindAll,
 		FindById: FindById,
+        findUserByUsername: findUserByUsername,
+		findUserByCredentials: findUserByCredentials,
 		Update: Update,
 		Delete: Delete
     };
     return api;
 	
 	
-	function findUserByUsername(username) {}
-	
-	function findUserByCredentials(credentials) {
-		credentials.username
-		credentials.password
-	}
 	
 	function Create(user) {
         users.push(user);
@@ -30,60 +24,49 @@ module.exports = function(app){
         return users;
     }
 	
-	function FindById(ID) {}
+	function FindById(ID) {      
+       var foundUser = null
+        for(var i=0; i<users.length; i++) {
+            var user = users[i]
+            if(user.id == ID) {
+                foundUser = user;
+            }
+        }    
+        return foundUser; 
+    }
+    
+    function findUserByUsername(username) {
+        var foundUser = null
+        for(var i=0; i<users.length; i++) {
+            var user = users[i]
+            if(user.username == username) {
+                foundUser = user;
+            }
+        }
+        return foundUser; 
+    }
+	
+	function findUserByCredentials(credentials) {  // iterate over list of users to find match
+        var foundUser = null
+        for(var i=0; i<users.length; i++) {
+            var user = users[i]
+            if(user.username == credentials.username && user.password == credentials.password) {
+                foundUser = user;
+            }
+        }
+        return foundUser; 
+	}
 	
 	function Update(ID) {}
 	
-	function Delete(ID) {}
-	
-	
-/*
-    function addContent(pageId, contentType) {
-        var deferred = q.defer();
-
-        PageModel.findById(pageId, function(err, page){
-            var content = {
-                contentType: contentType,
-                list: {listType: 'ORDERED', items: ["Item 1", "Item 2", "Item 3"]}
-            };
-            page.content.push(content);
-            page.save(function(err, doc){
-                deferred.resolve(doc);
-            });
-        });
-
-        return deferred.promise;
+	function Delete(ID) {
+        for(var i=0; i<users.length; i++) {
+            var user = users[i]
+            if(user.id == ID) {
+                users.splice(i, 1);
+            }
+        }
+        return users;
     }
 
-    function getPageById(id) {
-        var deferred = q.defer();
-
-        PageModel.findById(id, function(err, page){
-            deferred.resolve(page);
-        });
-
-        return deferred.promise;
-    }
-
-    function getAllPages() {
-        var deferred = q.defer();
-
-        PageModel.find(function(err, pages){
-            deferred.resolve(pages);
-        });
-
-        return deferred.promise;
-    }
-
-    function addPage(page) {
-        var deferred = q.defer();
-
-        PageModel.create(page, function(err, doc){
-            PageModel.find(function(err, pages){
-                deferred.resolve(pages);
-            });
-        });
-
-        return deferred.promise;
-    }  */
 };

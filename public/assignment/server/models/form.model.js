@@ -1,31 +1,33 @@
 //var q = require("q");
-var forms = require("form.mock.json")
+var forms = require("./form.mock.json");
 
 module.exports = function(app){
     var api = {
-		findFormByTitle: findFormByTitle,
 		Create: Create,
 		FindAll: FindAll,
 		FindById: FindById,
+		findFormByTitle: findFormByTitle,
 		Update: Update,
 		Delete: Delete
     };
     return api;
 	
 	
-	function findFormByTitle(title) {}
-	
-	function Create(user) {
-        users.push(user);
-        return users;
+	function Create(form) {
+        forms.push(form);
+        return forms;
     }
 	
 	function FindAll() {
-        return users;
+        return forms;
     }
 	
 	function FindById(ID) {}
 	
+	function findFormByTitle(title) {}
+	
 	function Update(ID) {}
 	
 	function Delete(ID) {}
+	
+};
