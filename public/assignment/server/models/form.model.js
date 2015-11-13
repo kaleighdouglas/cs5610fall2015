@@ -8,7 +8,10 @@ module.exports = function(app){
 		FindById: FindById,
 		findFormByTitle: findFormByTitle,
 		Update: Update,
-		Delete: Delete
+		Delete: Delete,
+        
+        FindAllFields: FindAllFields,
+        FindField: FindField
     };
     return api;
 	
@@ -27,6 +30,29 @@ module.exports = function(app){
             }
         }
         return userForms;
+    }
+    
+    function FindAllFields(formId) {   // Fields Function
+        var Fields = []
+        for(var i=0; i<forms.length; i++) {
+            var form = forms[i]
+            if(form.id == formId) {
+                Fields = form.fields;
+            }
+        }
+        return Fields;
+    }
+    
+    function FindField(formId, fieldId) {  // Fields Function
+        var Fields = FindAllFields(formId)
+        var foundField = null
+        for(var i=0; i<Fields.length; i++) {
+            var field = Fields[i]
+            if(field.id == fieldId) {
+                foundField = field;
+            }
+        }
+        return foundField;
     }
 	
 	function FindById(ID) {
