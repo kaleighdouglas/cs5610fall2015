@@ -17,7 +17,15 @@ module.exports = function(app) {
 	}
 	
 	function FindAll(req, res) {
-		res.json(model.FindAll());
+		if(req.query.password != null) {
+			findUserByCredentials(req, res);
+		}
+		else if(req.query.username != null) {
+            findUserByUsername(req, res);
+		}
+			else {
+				res.json(model.FindAll());
+			}		
 	}
 	
 	function FindById(req, res) {
@@ -33,8 +41,6 @@ module.exports = function(app) {
 	}
 	
 	function findUserByCredentials(req, res) {
-//		var username = req.query.username;
-//		var password = req.query.password;
 		var credentials = {"username" : req.query.username, "password": req.query.password};
 		res.json(model.findUserByCredentials(credentials));
 	}
