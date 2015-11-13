@@ -9,8 +9,9 @@ module.exports = function(app) {
 	
 	
 	function Create(req, res) {
-		var form = req.body;
-		model.Create(form);
+		var formId = req.params.formId;
+		var field = req.body;
+		model.CreateField(formId, field);
 	}
 	
 	function FindAll(req, res) {
@@ -25,14 +26,16 @@ module.exports = function(app) {
 	}
 	
 	function Delete(req, res) {
-		var id = req.params.formId;
-		res.json(model.Delete(id));
+		var formId = req.params.formId;
+		var fieldId = req.params.fieldId;
+		res.json(model.DeleteField(formId, fieldId));
 	}
 	
 	function Update(req, res) {
-		var id = req.params.formId;
-		var form = req.body;
-		res.json(model.Update(id, form));
+		var formId = req.params.formId
+		var fieldId = req.params.fieldId;
+		var field = req.body
+		res.json(model.UpdateField(formId, fieldId, field));
 	}
 	
 	

@@ -11,7 +11,10 @@ module.exports = function(app){
 		Delete: Delete,
         
         FindAllFields: FindAllFields,
-        FindField: FindField
+        FindField: FindField,
+        DeleteField: DeleteField,
+        CreateField: CreateField,
+        UpdateField: UpdateField
     };
     return api;
 	
@@ -32,28 +35,7 @@ module.exports = function(app){
         return userForms;
     }
     
-    function FindAllFields(formId) {   // Fields Function
-        var Fields = []
-        for(var i=0; i<forms.length; i++) {
-            var form = forms[i]
-            if(form.id == formId) {
-                Fields = form.fields;
-            }
-        }
-        return Fields;
-    }
-    
-    function FindField(formId, fieldId) {  // Fields Function
-        var Fields = FindAllFields(formId)
-        var foundField = null
-        for(var i=0; i<Fields.length; i++) {
-            var field = Fields[i]
-            if(field.id == fieldId) {
-                foundField = field;
-            }
-        }
-        return foundField;
-    }
+
 	
 	function FindById(ID) {
 		var foundForm = null
@@ -66,7 +48,16 @@ module.exports = function(app){
         return foundForm; 
 	}
 	
-	function findFormByTitle(title) {}
+	function findFormByTitle(title) {
+        var foundForm = null;
+        for(var i=0; i<forms.length; i++) {
+            var form = forms[i]
+            if(form.title == title) {
+                foundForm = form;
+            }
+        }    
+        return foundForm; 
+    }  
 	
 	function Update(ID, form) {
         for(var i=0; i<forms.length; i++) {
@@ -87,5 +78,55 @@ module.exports = function(app){
         }
         return forms;
     }
+    
+    
+        // Fields Functions
+    
+        function FindAllFields(formId) {   
+        var Fields = []
+        for(var i=0; i<forms.length; i++) {
+            var form = forms[i]
+            if(form.id == formId) {
+                Fields = form.fields;
+            }
+        }
+        return Fields;
+    }
+    
+    function FindField(formId, fieldId) {  
+        var Fields = FindAllFields(formId)
+        var foundField = null
+        for(var i=0; i<Fields.length; i++) {
+            var field = Fields[i]
+            if(field.id == fieldId) {
+                foundField = field;
+            }
+        }
+        return foundField;
+    }
+    
+    
+    function DeleteField(formId, fieldId) {  
+        var Fields = FindAllFields(formId)
+        for(var i=0; i<Fields.length; i++) {
+            var field = Fields[i]
+            if(field.id == fieldId) {
+                Fields.splice(i, 1);
+            }
+        }
+        return forms;
+    }
+    
+    function CreateField(formId, field) {   // change
+        var Fields = FindAllFields(formId)
+        Fields.push(field);
+        FindById(formId).fields = Fields;
+        return forms;
+        
+    }
+  
+    function UpdateField(formId, fieldId, field) {  //complete
+    }
+    
 	
 };
