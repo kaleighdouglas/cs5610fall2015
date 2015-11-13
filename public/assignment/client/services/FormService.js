@@ -5,7 +5,67 @@
         .factory("FormService", FormService);
 
     function FormService() {
-        var A = {
+        
+
+        var service = {
+            createFormForUser: createFormForUser,
+            findAllFormsForUser: findAllFormsForUser,
+            deleteFormById: deleteFormById,
+            updateFormById: updateFormById
+        };
+        return service;     
+        
+        
+        function createFormForUser(userId, form) {
+            var deferred = $q.defer();
+            $http.post("/api/assignment/user/"+userId+"/form" , form)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
+
+        function findAllFormsForUser(userId) {
+            var deferred = $q.defer();
+            $http.get("/api/assignment/user/"+userId+"/form")
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
+        
+        function deleteFormById(formId) {
+            var deferred = $q.defer();
+            $http.delete("/api/assignment/form/"+formId)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
+        
+        function updateFormById(formId, newForm) {
+            var deferred = $q.defer();
+            $http.put("/api/assignment/form/"+formId, newForm)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
+    }
+})();
+
+
+
+
+
+
+
+
+/*  var A = {
             "name" : "Registration Form",
             "id" : "123",
             "userid" : "12345",
@@ -27,14 +87,6 @@
         }
         
         var forms = [A, B, C, D];
-
-        var service = {
-            createFormForUser: createFormForUser,
-            findAllFormsForUser: findAllFormsForUser,
-            deleteFormById: deleteFormById,
-            updateFormById: updateFormById
-        };
-        return service;
         
         function callback(value) {
             console.log(value);
@@ -91,6 +143,4 @@
             }
             callback(newForm);
             return newForm;
-        }
-    }
-})();
+        }    */
