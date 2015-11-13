@@ -39,7 +39,11 @@ module.exports = function(app) {
 		res.json(model.findUserByCredentials(credentials));
 	}
 	
-	function Update(req, res) {}
+	function Update(req, res) {
+		var id = req.params.id;
+		var user = req.body;
+		res.json(model.Update(id, user));
+	}
 	
 	function Delete(req, res) {
 		var id = req.params["id"];

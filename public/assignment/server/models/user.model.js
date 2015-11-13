@@ -57,7 +57,15 @@ module.exports = function(app){
         return foundUser; 
 	}
 	
-	function Update(ID) {}
+	function Update(ID, user) {
+        for(var i=0; i<users.length; i++) {
+            var currentUser = users[i]
+            if(currentUser.id == ID) {
+                users[i] = user;
+            }
+        }
+        return user;
+    }
 	
 	function Delete(ID) {
         for(var i=0; i<users.length; i++) {
