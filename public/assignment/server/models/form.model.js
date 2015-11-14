@@ -7,6 +7,7 @@ module.exports = function(app){
 		FindAll: FindAll,
 		FindById: FindById,
 		findFormByTitle: findFormByTitle,
+        FindFormIdByIndex: FindFormIdByIndex,
 		Update: Update,
 		Delete: Delete,
         
@@ -19,9 +20,11 @@ module.exports = function(app){
     return api;
 	
 	
-	function Create(form) {  //change
+	function Create(userId, form) {  //change
+        form["userId"] = userId;
         forms.push(form);
-        return forms;
+        var userForms = FindAll(userId);
+        return userForms;
     }
 	
 	function FindAll(userId) {
@@ -58,12 +61,17 @@ module.exports = function(app){
         }    
         return foundForm; 
     }  
+    
+    function FindFormIdByIndex(index) {
+        var form = forms[index];
+        return form.id;
+    }
 	
-	function Update(ID, form) {
+	function Update(ID, form) {   //change to only update title field
         for(var i=0; i<forms.length; i++) {
             var currentForm = forms[i]
             if(currentForm.id == ID) {
-                forms[i] = form;
+                forms[i].title = form.title;
             }
         }
         return form;

@@ -11,7 +11,7 @@ module.exports = function(app) {
 	function Create(req, res) {
 		var formId = req.params.formId;
 		var field = req.body;
-		model.CreateField(formId, field);
+		res.json(model.CreateField(formId, field));
 	}
 	
 	function FindAll(req, res) {

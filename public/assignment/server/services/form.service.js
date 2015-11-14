@@ -5,13 +5,15 @@ module.exports = function(app) {
 	app.get("/api/assignment/user/:userId/form", FindAll);
 	app.get("/api/assignment/form/:formId", FindById);
 	app.get("/api/assignment/form?title=title", FindFormByTitle);
+	app.get("/api/assignment/form?index=index", FindFormIdByIndex);
 	app.delete("/api/assignment/form/:formId", Delete);
 	app.put("/api/assignment/form/:formId", Update);
 	
 	
 	function Create(req, res) {
+		var userId = req.params.userId;
 		var form = req.body;
-		model.Create(form);
+		res.json(model.Create(userId, form));
 	}
 	
 	function FindAll(req, res) {
@@ -29,6 +31,12 @@ module.exports = function(app) {
 		var title = req.query.title;
 		console.log(title);
 		res.json(model.findFormByTitle(title));
+	}
+	
+	function FindFormIdByIndex(req, res) {
+		var index = req.query.index;
+		console.log(index);
+		res.send(model.FindFormIdByIndex(index));
 	}
 	
 	function Delete(req, res) {

@@ -25,19 +25,19 @@
 					</div>
 				</td>
 				<td>
-					<button ng-click="addForm()" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
-					<button ng-click="updateForm()" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
+					<button ng-click="model.addForm(formName)" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
+					<button ng-click="model.updateForm(formName)" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
 				</td>
 			</tr>
 			</thead>
 			
 			<tbody>
 			<!-- Existing Forms -->
-			<tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
-				<td><button>{{form.name}}</button></td>
+			<tr ng-repeat="form in model.forms" ng-class="{'success' : $index == selectedFormIndex}">
+				<td><button>{{form.title}}</button></td>
 				<td>
-					<button ng-click="deleteForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
-					<button ng-click="selectForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button ng-click="model.deleteForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
+					<button ng-click="model.selectForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
 				</td>
 			</tr>
 			</tbody>

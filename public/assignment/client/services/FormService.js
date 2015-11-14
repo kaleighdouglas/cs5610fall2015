@@ -4,14 +4,16 @@
         .module("FormBuilderApp")
         .factory("FormService", FormService);
 
-    function FormService() {
+    function FormService($http, $q) {
         
 
         var service = {
             createFormForUser: createFormForUser,
             findAllFormsForUser: findAllFormsForUser,
             deleteFormById: deleteFormById,
-            updateFormById: updateFormById
+            updateFormById: updateFormById,
+            findFormByTitle: findFormByTitle,
+            findFormIdByIndex: findFormIdByIndex
         };
         return service;     
         
@@ -49,6 +51,26 @@
         function updateFormById(formId, newForm) {
             var deferred = $q.defer();
             $http.put("/api/assignment/form/"+formId, newForm)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
+        
+        function findFormByTitle(title){
+            var deferred = $q.defer();
+            $http.get("/api/assignment/form?title="+title)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
+        
+        function findFormIdByIndex(index) {
+            var deferred = $q.defer();
+            $http.get("/api/assignment/form?index="+index)
                 .success(function(response){
                     deferred.resolve(response);
                 });
