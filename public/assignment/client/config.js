@@ -25,6 +25,10 @@
                 templateUrl: "views/form/form.view.html",
                 controller: "FormController as model"
             })
+            .when("/user", {
+                templateUrl: "views/field/field.view.html"
+               // controller: "FormController as model"
+            })
             .otherwise({
                 redirectTo: "/home"
             });

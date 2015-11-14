@@ -1,0 +1,58 @@
+ <div>
+            <h2 class="page-header">Forms : Registration Form</h2>
+            
+            
+      <!---      <div class="container-fluid"> --->
+           
+                <ul class="nav nav-tabs">
+                        <li role="presentation"><a href="forms.html">Forms</a></li>
+                        <li role="presentation" class="active"><a href="#">Fields</a></li>
+                </ul> 
+            
+                <div id="border"> 
+ 
+ 
+                <hr class="divider">
+ 
+ 
+ <!-- Add New Field -->
+                <div class="row"> 
+                        <div class="col-xs-7 col-md-9">
+                        <form> 
+                            <div class="form-group dropdown">
+                                <label for="NewField" class="col-xs-12" control-label">Add New Field:</label>
+                                <div class="col-xs-8">
+                                    
+                                    <select ng-model="model.fieldType" name="NewField" id="NewFieldSelect" class="form-control">
+                                        <option value="" selected disabled>Choose Field Type</option>
+                                        <option value="text">Single Line Text</option>
+                                        <option value="textarea">Multi Line Text</option>
+                                        <option value="date">Date</option>
+                                        <option value="select">Dropdown</option>
+                                        <option value="checkbox">Checkboxes</option>
+                                        <option value="radio">Radio Buttons</option>
+                                    </select>
+                               <!--    <button ng-click="model.addField(model.fieldType)" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Single Line Text
+                                        <span class="caret"></span>
+                                    </button>   -->
+                                </div>
+                            </div>
+                        </form>    
+                    </div> 
+                        
+                        <div class="col-xs-5 col-md-3">
+                            
+                            <button ng-click="model.addField(model.fieldType)" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
+                            
+                            
+                    <!--        <a href="#">
+                                <scan class="glyphicon glyphicon-plus"></scan>
+                            </a>  -->
+                    </div> 
+                </div>
+                
+                
+            </div>
+</div>
+            
