@@ -44,7 +44,9 @@
 			};
 			FormService.createFormForUser(userId, newForm).then(function(response){
 				model.forms = response;
-			});
+				var newFormIndex = model.forms.length - 1;
+				selectForm(newFormIndex);
+			});	
 		}  
 		
 		
@@ -52,27 +54,43 @@
 			//var currentForm = FormService.findFormByTitle(title);
 			//var formId = currentForm.id;
 			//var formId = FormService.FindFormIdByIndex(index);
-			var newForm = {"title" : title};
-			FormService.updateFormById(formId, newForm).then(function(response){
+	//		var newForm = {"title" : title};
+	//		FormService.updateFormById(formId, newForm).then(function(response){
+	//			model.forms = response;
+	//		});
+					
+			var newForm = {
+				"title" : title,
+				"id" : currentFormId,
+				"userId" : currentUser.id,		
+			};
+			FormService.updateFormById(currentFormId, newForm).then(function(response){
 				model.forms = response;
 			});
 		}     
 		
 		
-		function deleteForm(id) {
-			FormService.deleteFormById(id).then(function(response){
+		function deleteForm(index) {
+			selectForm(index);
+			FormService.deleteFormById(currentFormId).then(function(response){
 				model.forms = response;
+				if (model.forms.length > index) {
+					selectForm(index);
+				} else if (model.forms.length > 0) {
+					selectForm(0);
+				}
 			});			
 		}
 		
 		
 		function selectForm(index) {
 			$scope.selectedFormIndex = index;
-			var formid = $scope.forms[index].id;
-			currentFormId = formid
-			$scope.formName = $scope.forms[index].name;  
+			var formid = model.forms[index].id;
+			currentFormId = formid;
+			model.formName = model.forms[index].title;
+			console.log(currentFormId);  
 		}
-		} 
+	} 
 		
 		
 		

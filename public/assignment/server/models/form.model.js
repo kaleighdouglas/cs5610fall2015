@@ -19,8 +19,19 @@ module.exports = function(app){
     };
     return api;
 	
+    
+    function guid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+    }
 	
 	function Create(userId, form) {  //change
+        form["id"] = guid();
         form["userId"] = userId;
         forms.push(form);
         var userForms = FindAll(userId);
@@ -63,28 +74,42 @@ module.exports = function(app){
     }  
     
     function FindFormIdByIndex(index) {
+    //    userForms =
         var form = forms[index];
         return form.id;
     }
 	
 	function Update(ID, form) {   //change to only update title field
+        //var userId = 0;
+        console.log("form sent to model");
+        console.log(form);
+        console.log(form.userId);
         for(var i=0; i<forms.length; i++) {
             var currentForm = forms[i]
             if(currentForm.id == ID) {
-                forms[i].title = form.title;
+              //  userId = form.userId;
+              //  console.log("userId of form being updated in model: ");
+              //  console.log(userId);
+                forms[i] = form;
+                console.log("form being updated in model: ");
+                console.log(form);
+                
+                
             }
         }
-        return form;
+        return FindAll(form.userId);
     }
 	
 	function Delete(ID) {
+        var userId = 0;
         for(var i=0; i<forms.length; i++) {
             var form = forms[i]
             if(form.id == ID) {
+                userId = form.userId;
                 forms.splice(i, 1);
             }
         }
-        return forms;
+        return FindAll(userId);
     }
     
     
