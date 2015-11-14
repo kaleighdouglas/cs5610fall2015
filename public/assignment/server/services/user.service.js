@@ -13,7 +13,7 @@ module.exports = function(app) {
 	function Create(req, res) {
 		var user = req.body;
 		//var user = {"id": 678, "firstName": "K", "lastName": "O", "username": "k", "password": "k"}
-		model.Create(user);
+		res.json(model.Create(user));
 	}
 	
 	function FindAll(req, res) {

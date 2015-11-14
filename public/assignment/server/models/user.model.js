@@ -17,7 +17,7 @@ module.exports = function(app){
 	
 	function Create(user) {
         users.push(user);
-        return users;
+        return user;
     }
 	
 	function FindAll() {

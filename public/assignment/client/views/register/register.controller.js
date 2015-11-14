@@ -10,9 +10,30 @@
 		//$scope.verifyPassword = "P";
 		//$scope.userEmail = "PQR@abc.com";
 		$scope.$location = $location
-		$scope.register = register;
+		//$scope.register = register;
+		
+		var model = this;
+	  	model.register = register;
 	  
-	  	function callback(value) {
+	  
+		function register(userName, userPassword, userEmail) {
+			var newUser = {
+				"username" : userName,
+				"password"  : userPassword,
+				"email"  : userEmail
+			};
+			
+			UserService.createUser(newUser).then(function(response){
+				$rootScope.user = response;    // Should use if possibleUser != null?
+				$location.path("/profile");
+			});
+			}
+	  
+	  
+	  
+	  
+	  
+/*	  	function callback(value) {
             console.log(value);
         }
 	  
@@ -24,7 +45,7 @@
 			}; 
 			$rootScope.user = UserService.createUser(newUser, callback)
 			$location.path("/profile")
-		}
+		}   */
 	}
 	
 }) ();
