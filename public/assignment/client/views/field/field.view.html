@@ -18,14 +18,16 @@
 			<tbody>
 			<!-- Fields -->
 			<tr ng-repeat="field in model.fields">
+               <h2>{{field.label}}</h2>  <!--for testing -->
                 
                 <td ng-switch="field.fieldType">
+                    
                     <!-- Text -->
                     <div ng-switch-when="TEXT">
                         <div class="form-group">
                             <label for="inputText" class="col-xs-12 control-label">{{field.label}}</label>
                             <div class="col-xs-12">
-                                <input type="text" class="form-control" id="inputText" placeholder={{field.placeholder}}>
+                                <input type="text" class="form-control" id="inputText" placeholder="{{field.placeholder}}">
                             </div>
                         </div>
                     </div>
@@ -34,7 +36,7 @@
                         <div class="form-group">
                             <label for="inputTextArea" class="col-xs-12 control-label">{{field.label}}</label>
                             <div class="col-xs-12">
-                                <input type="text" class="form-control" id="inputTextArea" placeholder={{field.placeholder}}>
+                                <input type="text" class="form-control" id="inputTextArea" placeholder="{{field.placeholder}}">
                             </div>
                         </div>
                     </div>
@@ -76,45 +78,76 @@
                     </div>
                     <!-- Radios -->
                     <div ng-switch-when="RADIOS">
-                            <div class="form-group">
-                                <label for="radio" class="col-xs-12 control-label">{{field.label}}</label>
-                                <div class="col-xs-2">
-                                    <div class="radio">
-                                        <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadiosX" value="OPTION_X">
-                                            Option X
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadiosY" value="OPTION_Y">
-                                            Option Y
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadiosZ" value="OPTION_Z">
-                                            Option Z
-                                        </label>
-                                    </div>
-                                </div>         
-                            </div> 
+                        <div class="form-group">
+                            <label for="radio" class="col-xs-12 control-label">{{field.label}}</label>
+                            <div class="col-xs-2">
+                                <div class="radio">
+                                    <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadiosX" value="OPTION_X">
+                                        Option X
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadiosY" value="OPTION_Y">
+                                        Option Y
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadiosZ" value="OPTION_Z">
+                                        Option Z
+                                    </label>
+                                </div>
+                            </div>         
+                        </div> 
+                    </div>
+                </td>
+   
+                <td>
+                    <button ng-click="model.removeField(field)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
+                </td>
+                    
+            </tr>
+                <!-- New Field Dropdown --> 
+            <tr>
+                <td>
+                    <div class="form-group dropdown">
+                        <label for="NewField" class="col-xs-12 control-label">Add New Field:</label>
+                        <div class="col-xs-8">
+                            
+                            <select ng-model="field.fieldType" name="NewField" id="NewFieldSelect" class="form-control">
+                        <!--      <option value="" selected disabled>Choose Field Type</option>  -->
+                                <option value="TEXT" selected="selected">Single Line Text</option>
+                                <option value="TEXTAREA">Multi Line Text</option>
+                                <option value="DATE">Date</option>
+                                <option value="OPTIONS">Dropdown</option>
+                                <option value="CHECKBOXES">Checkboxes</option>
+                                <option value="RADIOS">Radio Buttons</option>
+                            </select>
                         </div>
-                    </td>
-                    
-                    <td>
-                        <button ng-click="model.removeField(field)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
-                    </td>
-                    
-                </tr>
-                </tbody>
-            </table>
-                    
+                    </div>
+                </td>
+                
+                <td> 
+                    <button ng-click="model.addField(field.fieldType)" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>   
+                </td>
+            </tr>
+               
+        </tbody>
+        </table>            
  
- <!-- Divider --> 
-        <hr class="divider">
+        </div>
+    </div>
+</div>
 
- <!-- Add New Field -->
+
+
+
+
+
+
+ <!-- Add New Field 
         <div class="row"> 
             <div class="col-xs-7 col-md-9">
             <form> 
@@ -123,8 +156,7 @@
                     <div class="col-xs-8">
                         
                         <select ng-model="field.fieldType" name="NewField" id="NewFieldSelect" class="form-control">
-                            <option value="" selected disabled>Choose Field Type</option>
-                            <option value="TEXT">Single Line Text</option>
+                            <option value="TEXT" selected="selected">Single Line Text</option>
                             <option value="TEXTAREA">Multi Line Text</option>
                             <option value="DATE">Date</option>
                             <option value="OPTIONS">Dropdown</option>
@@ -137,14 +169,12 @@
             </div>
             
             <div class="col-xs-5 col-md-3">  
-                <button ng-click="addField(field.fieldType)" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>   
+                <button ng-click="model.addField(field.fieldType)" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>   
             </div> 
-        </div>
+        </div> -->
                 
                 
-        </div>
-    </div>
-</div>
+
 
             
             

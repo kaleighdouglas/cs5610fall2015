@@ -120,7 +120,7 @@ module.exports = function(app){
         for(var i=0; i<forms.length; i++) {
             var form = forms[i]
             if(form.id == formId) {
-                Fields = form.fields;
+                Fields = form.fields;   
             }
         }
         return Fields;
@@ -147,15 +147,23 @@ module.exports = function(app){
                 Fields.splice(i, 1);
             }
         }
-        return forms;
+        console.log("fieldId");
+        console.log(fieldId);
+        console.log("remaining fields");
+        console.log(Fields);
+        return Fields;
     }
     
     function CreateField(formId, field) {   // change
+        field["id"] = guid();
         var Fields = FindAllFields(formId)
         Fields.push(field);
-        FindById(formId).fields = Fields;
-        return forms;
+        return Fields;
         
+      //  FindById(formId).fields = Fields;
+       // console.log("label");
+      //  console.log(field.label);
+      //  return forms;
     }
   
     function UpdateField(formId, fieldId, field) {  //complete

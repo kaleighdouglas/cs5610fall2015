@@ -4,7 +4,7 @@
 		.module("FormBuilderApp")
 		.controller("FieldController", FieldController);
 	    
-    function FieldController($scope, $rootScope, $location, $routeParams, FieldService) {
+    function FieldController($routeParams, FieldService) { //$scope, $rootScope, $location, 
 		var model = this;
 		model.addField = addField;
 		model.removeField = removeField;
@@ -17,12 +17,16 @@
 				console.log("list of fields");
 				console.log(response);
 				model.fields = response;
+				console.log("model.fields:");
+				console.log(model.fields);
 		});
 		
 		
 		
 		function addField(fieldType) {
+			console.log("addField button pressed");
 			var newField = {}
+			
 			if(fieldType == "TEXT") {
 				newField = {
 					"id" : null,
@@ -30,7 +34,7 @@
 					"type" : "TEXT",
 					"placeholder" : "New Field"
 				};
-			} else if (fieldType == "TEXTBOX") {
+			} else if (fieldType == "TEXTAREA") {
 				newField = {
 					"id" : null,
 					"label" : "New Text Field",
