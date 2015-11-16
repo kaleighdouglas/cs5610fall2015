@@ -12,7 +12,7 @@
 		model.updateForm = updateForm;
 		model.deleteForm = deleteForm;
 		model.selectForm = selectForm;
-		
+		model.url = url;
 		
 
 		var currentUser = $rootScope.user;		
@@ -24,7 +24,13 @@
 		});
 		var currentFormId = null
 		
-		
+		function url(index) {
+			selectForm(index);
+			var link = "#/user/"+currentUser.id+"/form/"+currentFormId+"/fields";
+			console.log(currentFormId);
+			console.log(link);
+			window.location = link;
+		}
 		
 /*		function addForm(form) {
 			console.log("new form: ");

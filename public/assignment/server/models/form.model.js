@@ -74,7 +74,6 @@ module.exports = function(app){
     }  
     
     function FindFormIdByIndex(index) {
-    //    userForms =
         var form = forms[index];
         return form.id;
     }
