@@ -24,6 +24,8 @@
 		
 		
 		function addField(fieldType) {
+			console.log("field type");
+			console.log(fieldType);
 			console.log("addField button pressed");
 			var newField = {}
 			
@@ -80,7 +82,9 @@
 						{"label": "Option Z", "value": "OPTION_Z"}
 					]
 				};
-			} 
+			}
+			console.log("new field:");
+			console.log(newField); 
 			FieldService.createFieldForForm(formId, newField).then(function(response){
 				model.fields = response;
 			});	

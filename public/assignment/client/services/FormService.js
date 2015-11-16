@@ -13,7 +13,7 @@
             deleteFormById: deleteFormById,
             updateFormById: updateFormById,
             findFormByTitle: findFormByTitle,
-            findFormIdByIndex: findFormIdByIndex
+        //    findFormIdByIndex: findFormIdByIndex
         };
         return service;     
         
@@ -68,7 +68,7 @@
             return deferred.promise;
         }
         
-        function findFormIdByIndex(index) {
+ /*       function findFormIdByIndex(index) {
             var deferred = $q.defer();
             $http.get("/api/assignment/form?index="+index)
                 .success(function(response){
@@ -76,7 +76,7 @@
                 });
                 
             return deferred.promise;
-        }
+        } */
     }
 })();
 

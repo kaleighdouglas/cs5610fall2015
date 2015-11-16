@@ -12,7 +12,6 @@ module.exports = function(app) {
 	
 	function Create(req, res) {
 		var user = req.body;
-		//var user = {"id": 678, "firstName": "K", "lastName": "O", "username": "k", "password": "k"}
 		res.json(model.Create(user));
 	}
 	

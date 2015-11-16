@@ -1,4 +1,3 @@
-//var q = require("q");
 var forms = require("./form.mock.json");
 
 module.exports = function(app){
@@ -7,7 +6,6 @@ module.exports = function(app){
 		FindAll: FindAll,
 		FindById: FindById,
 		findFormByTitle: findFormByTitle,
-        FindFormIdByIndex: FindFormIdByIndex,
 		Update: Update,
 		Delete: Delete,
         
@@ -30,9 +28,10 @@ module.exports = function(app){
             s4() + '-' + s4() + s4() + s4();
     }
 	
-	function Create(userId, form) {  //change
+	function Create(userId, form) { 
         form["id"] = guid();
         form["userId"] = userId;
+        form["fields"] = [];
         forms.push(form);
         var userForms = FindAll(userId);
         return userForms;
@@ -49,7 +48,6 @@ module.exports = function(app){
         return userForms;
     }
     
-
 	
 	function FindById(ID) {
 		var foundForm = null
@@ -73,27 +71,18 @@ module.exports = function(app){
         return foundForm; 
     }  
     
-    function FindFormIdByIndex(index) {
+/*    function FindFormIdByIndex(index) {
         var form = forms[index];
         return form.id;
-    }
+    } */
 	
-	function Update(ID, form) {   //change to only update title field
-        //var userId = 0;
-        console.log("form sent to model");
-        console.log(form);
-        console.log(form.userId);
+	function Update(ID, form) { 
         for(var i=0; i<forms.length; i++) {
             var currentForm = forms[i]
             if(currentForm.id == ID) {
-              //  userId = form.userId;
-              //  console.log("userId of form being updated in model: ");
-              //  console.log(userId);
                 forms[i] = form;
                 console.log("form being updated in model: ");
-                console.log(form);
-                
-                
+                console.log(form); 
             }
         }
         return FindAll(form.userId);
@@ -116,10 +105,14 @@ module.exports = function(app){
     
         function FindAllFields(formId) {   
         var Fields = []
+        console.log("FindAllFields called");
         for(var i=0; i<forms.length; i++) {
             var form = forms[i]
             if(form.id == formId) {
+                console.log("match found");
                 Fields = form.fields;   
+                console.log("Fields assigned");
+                console.log(Fields);
             }
         }
         return Fields;
@@ -153,20 +146,29 @@ module.exports = function(app){
         return Fields;
     }
     
-    function CreateField(formId, field) {   // change
+    function CreateField(formId, field) {
+        console.log("new field in form.models");
+        console.log("field:");
+        console.log(field);
+        console.log("formId");
+        console.log(formId);
         field["id"] = guid();
-        var Fields = FindAllFields(formId)
+        var Fields = FindAllFields(formId);
+        console.log("Fields");
+        console.log(Fields);
         Fields.push(field);
         return Fields;
-        
-      //  FindById(formId).fields = Fields;
-       // console.log("label");
-      //  console.log(field.label);
-      //  return forms;
     }
   
-    function UpdateField(formId, fieldId, field) {  //complete
+    function UpdateField(formId, fieldId, field) {
+        var Fields = FindAllFields(formId);
+        for(var i=0; i<Fields.length; i++) {
+            var currentField = Fields[i]
+            if(currentField.id == fieldId) {
+                Fields[i] = field;
+            }
+        }
+        return Fields;
     }
-    
 	
 };
