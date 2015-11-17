@@ -10,7 +10,7 @@
     
         <div id="border"> 
  
- 
+    {{model.fields}}
  
  		<!-- Table -->
 		<table class="table">
@@ -18,7 +18,7 @@
 			<tbody>
 			<!-- Fields -->
 			<tr ng-repeat="field in model.fields">
-               <h2>{{field.label}}</h2>  <!--for testing -->
+            <!--   <td>{{field}}</td>  for testing -->
                 
                 <td ng-switch="field.fieldType">
                     
@@ -101,12 +101,12 @@
                             
                             <select ng-model="field.fieldType" name="NewField" id="NewFieldSelect" class="form-control">
                         <!--      <option value="" selected disabled>Choose Field Type</option>  -->
-                                <option value="TEXT" selected="selected">Single Line Text</option>
-                                <option value="TEXTAREA">Multi Line Text</option>
-                                <option value="DATE">Date</option>
-                                <option value="OPTIONS">Dropdown</option>
-                                <option value="CHECKBOXES">Checkboxes</option>
-                                <option value="RADIOS">Radio Buttons</option>
+                                <option ng-value="TEXT" selected="selected">Single Line Text</option>
+                                <option ng-value="TEXTAREA">Multi Line Text</option>
+                                <option ng-value="DATE">Date</option>
+                                <option ng-value="OPTIONS">Dropdown</option>
+                                <option ng-value="CHECKBOXES">Checkboxes</option>
+                                <option ng-value="RADIOS">Radio Buttons</option>
                             </select>
                         </div>
                     </div>
