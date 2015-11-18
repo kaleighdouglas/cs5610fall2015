@@ -24,7 +24,7 @@
 			};
 			
 			UserService.createUser(newUser).then(function(response){
-				$rootScope.user = response;    // Should use if possibleUser != null?
+				$rootScope.user = response; 
 				$location.path("/profile");
 			});
 			}

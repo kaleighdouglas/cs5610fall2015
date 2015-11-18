@@ -28,6 +28,8 @@ module.exports = function(app){
 	function Create(user) {
         user["id"] = guid();
         users.push(user);
+        console.log("user created. New user:");
+        console.log(user);
         return user;
     }
 	
@@ -75,6 +77,8 @@ module.exports = function(app){
                 users[i] = user;
             }
         }
+        console.log("updating user in model");
+        console.log(user);
         return user;
     }
 	

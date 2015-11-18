@@ -11,12 +11,17 @@
 		
 		// update fields to existing user
 		var currentUser = $rootScope.user;
-		$scope.userName = currentUser.username;
-		$scope.userPassword = currentUser.password;
-		$scope.userEmail = currentUser.email;
-		$scope.userFName = currentUser.firstname;
-		$scope.userLName = currentUser.lastname;
+		//function init() {
+			
+			$scope.userName = currentUser.username;
+			$scope.userPassword = currentUser.password;
+			$scope.userEmail = currentUser.email;
+			$scope.userFName = currentUser.firstname;
+			$scope.userLName = currentUser.lastname;
+		//}
+		//init()
   
+  		
 	  
 	  	function callback(value) {
             console.log(value);
@@ -33,9 +38,11 @@
 				"lastname"  : $scope.userLName,
 				"id" : currentUser.id,
 			}; 
-			
-			$rootScope.user = UserService.updateUser(currentUser.id, revisedUser, callback)
-			$location.path("/profile")
+
+			UserService.updateUser(currentUser.id, revisedUser).then(function(response){
+				$rootScope.user = response;
+				$location.path("/profile");
+			});	
 		}
 	}
 	
