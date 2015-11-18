@@ -10,21 +10,19 @@
     
         <div id="border"> 
  
-    {{model.fields}}
+ <!--   {{model.fields}}  -->
  
  		<!-- Table -->
-		<table class="table">
+		<table class="table table-borderless">
 			
 			<tbody>
 			<!-- Fields -->
-			<tr ng-repeat="field in model.fields">
-            <!--   <td>{{field}}</td>  for testing -->
-                
-                <td ng-switch="field.fieldType">
-                    
+			<tr ng-repeat="field in model.fields">               
+                <td ng-switch="field.type">
+          
                     <!-- Text -->
                     <div ng-switch-when="TEXT">
-                        <div class="form-group">
+                        <div class="form-group">  
                             <label for="inputText" class="col-xs-12 control-label">{{field.label}}</label>
                             <div class="col-xs-12">
                                 <input type="text" class="form-control" id="inputText" placeholder={{field.placeholder}}>
@@ -53,9 +51,10 @@
                     <div ng-switch-when="OPTIONS">
                         <div class="form-group dropdown">
                             <label for="inputDropdown" class="col-xs-12 control-label">{{field.label}}</label>
-                            <div class="col-xs-8">
+                            <div class="col-xs-12">
                                 <select name="inputDropdown" id="inputDropdown" class="form-control">
-                                    <option value={{options.value}}>{{options.label}}</option>
+                                    <option ng-repeat="option in field.options" ng-value={{option.value}}>{{option.label}}</option>
+                                    
                                 </select>
                             </div>
                         </div>
@@ -64,9 +63,9 @@
                     <div ng-switch-when="CHECKBOXES">
                         <div class="form-group">
                             <label for="checkbox" class="col-xs-12 control-label">{{field.label}}</label>
-                            <div class="col-xs-2">
-                                <div class="checkbox"> 
-                                    <label><input type="checkbox" id="inputCheckbox1">{{options.label}}</label>
+                            <div class="col-xs-6">
+                                <div ng-repeat="option in field.options" ng-value={{option.value}} class="checkbox"> 
+                                    <label><input  type="checkbox" id="inputCheckbox1">{{option.label}}</label>
                                 </div>
                             </div>
                         </div>
@@ -75,11 +74,11 @@
                     <div ng-switch-when="RADIOS">
                         <div class="form-group">
                             <label for="radio" class="col-xs-12 control-label">{{field.label}}</label>
-                            <div class="col-xs-2">
-                                <div class="radio">
+                            <div class="col-xs-6">
+                                <div ng-repeat="option in field.options" ng-value={{option.value}} class="radio">
                                     <label>
-                                    <input type="radio" name="optionsRadios" id="optionsRadiosX" value={{options.value}}>
-                                        {{options.label}}
+                                    <input type="radio" name="optionsRadios" id="optionsRadiosX">
+                                        {{option.label}}
                                     </label>
                                 </div>
                             </div>         
@@ -87,34 +86,43 @@
                     </div>
                 </td>
    
-                <td>
+                <td class="table-button">
                     <button ng-click="model.removeField(field)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
                 </td>
                     
             </tr>
-                <!-- New Field Dropdown --> 
             <tr>
                 <td>
+                    &nbsp
+                </td>
+                <td>
+                    &nbsp
+                </td>
+            </tr>
+                
+  
+                <!-- New Field Dropdown --> 
+            <tr>
+                <td id="row-divider">
                     <div class="form-group dropdown">
                         <label for="NewField" class="col-xs-12 control-label">Add New Field:</label>
-                        <div class="col-xs-8">
-                            
-                            <select ng-model="field.fieldType" name="NewField" id="NewFieldSelect" class="form-control">
+                        <div class="col-xs-12">
+                            <select ng-model="field.type" name="NewField" id="NewFieldSelect" class="form-control">  <!-- ng-options="field.type for field in model.fields"-->
                         <!--      <option value="" selected disabled>Choose Field Type</option>  -->
-                                <option ng-value="TEXT" selected="selected">Single Line Text</option>
-                                <option ng-value="TEXTAREA">Multi Line Text</option>
-                                <option ng-value="DATE">Date</option>
-                                <option ng-value="OPTIONS">Dropdown</option>
-                                <option ng-value="CHECKBOXES">Checkboxes</option>
-                                <option ng-value="RADIOS">Radio Buttons</option>
+                                <option value="TEXT" selected="selected">Single Line Text</option>
+                                <option value="TEXTAREA">Multi Line Text</option>
+                                <option value="DATE">Date</option>
+                                <option value="OPTIONS">Dropdown</option>
+                                <option value="CHECKBOXES">Checkboxes</option>
+                                <option value="RADIOS">Radio Buttons</option>
                             </select>
                         </div>
                     </div>
                 </td>
                 
-                <td> 
-                    <button ng-click="model.addField(field.fieldType)" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>   
-                </td>
+                <td id="row-divider" class="table-button"> 
+                    <button ng-click="model.addField(field.type)" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>   
+                </td>   <!-- field.type -->
             </tr>
                
         </tbody>

@@ -42,8 +42,7 @@
 		function updateForm(title) {					
 			var newForm = {
 				"title" : title,
-				"id" : currentFormId,
-				"userId" : currentUser.id,		
+				"userId" : currentUser.id,	
 			};
 			FormService.updateFormById(currentFormId, newForm).then(function(response){
 				model.forms = response;

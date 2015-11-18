@@ -80,7 +80,7 @@ module.exports = function(app){
         for(var i=0; i<forms.length; i++) {
             var currentForm = forms[i]
             if(currentForm.id == ID) {
-                forms[i] = form;
+                forms[i].title = form.title;
                 console.log("form being updated in model: ");
                 console.log(form); 
             }

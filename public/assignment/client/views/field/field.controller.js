@@ -29,14 +29,7 @@
 			console.log("addField button pressed");
 			var newField = {}
 			
-			if(fieldType == "TEXT") {
-				newField = {
-					"id" : null,
-					"label" : "New Text Field",
-					"type" : "TEXT",
-					"placeholder" : "New Field"
-				};
-			} else if (fieldType == "TEXTAREA") {
+			if (fieldType == "TEXTAREA") {
 				newField = {
 					"id" : null,
 					"label" : "New Text Field",
@@ -82,7 +75,15 @@
 						{"label": "Option Z", "value": "OPTION_Z"}
 					]
 				};
+			} else {
+				newField = {
+					"id" : null,
+					"label" : "New Text Field",
+					"type" : "TEXT",
+					"placeholder" : "New Field"
+				};
 			}
+			
 			console.log("new field:");
 			console.log(newField); 
 			FieldService.createFieldForForm(formId, newField).then(function(response){
