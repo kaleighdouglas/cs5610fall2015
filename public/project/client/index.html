@@ -5,9 +5,9 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="dashboard.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
     
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     
     <!-- AngularJS -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
@@ -15,21 +15,20 @@
     <!-- JS -->
     <script src="app.js"></script>
     <script src="config.js"></script>
-    <script src="header/header.controller.js"></script>
-    <script src="tabs/tabs.controller.js"></script>
-    <script src="register/register.controller.js"></script>
-    <script src="login/login.controller.js"></script>
-    <script src="profile/profile.controller.js"></script>
-    <script src="history/history.controller.js"></script>
-    <script src="question/question.controller.js"></script>
-    <script src="methodProCon/MethodProCon.controller.js"></script>
-    <script src="methodIntuition/MethodIntuitionOptions.controller.js"></script>
-    <script src="methodIntuition/MethodIntuitionEval.controller.js"></script>
-    <script src="methodGrid/MethodGridOptions.controller.js"></script>
-    <script src="methodGrid/MethodGridAttributes.controller.js"></script>
-    <script src="methodGrid/MethodGridEval.controller.js"></script>
-    <script src="advice/advice.controller.js"></script>
-    <script src="decision/decision.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/register/register.controller.js"></script>
+    <script src="views/login/login.controller.js"></script>
+    <script src="views/profile/profile.controller.js"></script>
+    <script src="views/history/history.controller.js"></script>
+    <script src="views/question/question.controller.js"></script>
+    <script src="views/methodProCon/MethodProCon.controller.js"></script>
+    <script src="views/methodIntuition/MethodIntuitionOptions.controller.js"></script>
+    <script src="views/methodIntuition/MethodIntuitionEval.controller.js"></script>
+    <script src="views/methodGrid/MethodGridOptions.controller.js"></script>
+    <script src="views/methodGrid/MethodGridAttributes.controller.js"></script>
+    <script src="views/methodGrid/MethodGridEval.controller.js"></script>
+    <script src="views/advice/advice.controller.js"></script>
+    <script src="views/decision/decision.controller.js"></script>
 
     
     <title>Decision Maker Application</title>
@@ -49,7 +48,7 @@
 
     <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderController">   <!--  -->
         <div class="container-fluid">
-            <div ng-include="'header/header.view.html'"></div>
+            <div ng-include="'views/header/header.view.html'"></div>
         </div>
     </nav>
     
