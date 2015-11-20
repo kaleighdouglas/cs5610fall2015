@@ -1,5 +1,5 @@
 
-<div ng-controller="MethodProConController">
+<div ng-controller="MethodProConController as model">
 	
 
 	<div class="table-responsive">
@@ -22,8 +22,7 @@
 			<thead>
 			<tr>
 				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Positive or Negative Effect</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Importance (1-5)</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Pro or Con</th>
+				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Impact (-5 to 5)</th>
 				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Action</th>
 			</tr>
 			
@@ -39,11 +38,11 @@
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input type="number" min="1" max="5" value="3" class="form-control" id="inputProConRating">
+							<input type="number" min="-5" max="5" value="3" class="form-control" id="inputProConRating">
 						</div>
 					</div>
 				</td>
-				<td>
+	<!--			<td>
 					<form> 
 						<div class="form-group dropdown">
 							<div class="col-xl-10">
@@ -58,10 +57,10 @@
 							</div>
 						</div>
 					</form>
-				</td>
+				</td>  -->
 				<td>
-					<button ng-click="addForm()" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
-					<button ng-click="updateForm()" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
+					<button ng-click="createProCon()" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
+					<button ng-click="updateProCon()" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
 				</td>
 			</tr>
 			</thead>
@@ -78,16 +77,15 @@
 			
 			
 						<!-- Example Question 1 -->
-			<tr>
-				<td>See Family</td>
-				<td>5</td>
-				<td>Pro</td>
+			<tr ng-repeat="procon in model.procons">
+				<td>{{procon.label}}</td>
+				<td>{{procon.impact}}</td>
 				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+					<button ng-click="selectProCon()" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button ng-click="deleteProCon()" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
 				</td>
 			</tr>
-			<!-- Example Question 2 -->
+			<!-- Example Question 2 
 			<tr>
 				<td>Expensive Travel</td>
 				<td>4</td>
@@ -96,8 +94,8 @@
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
 				</td>
-			</tr>
-			<!-- Example Question 3 -->
+			</tr> -->
+			<!-- Example Question 3 
 			<tr>
 				<td>Good Food</td>
 				<td>2</td>
@@ -106,9 +104,9 @@
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
 				</td>
-			</tr>
+			</tr>  -->
 			
-			<!-- Example Question 4 -->
+			<!-- Example Question 4
 			<tr>
 				<td>Time Consuming to Travel</td>
 				<td>2</td>
@@ -117,7 +115,7 @@
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
 				</td>
-			</tr>		
+			</tr>		 -->
 			</tbody>
 		</table>
 			

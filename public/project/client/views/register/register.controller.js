@@ -4,23 +4,22 @@
 		.module("DecisionsApp")
 		.controller("RegisterController", RegisterController);
 	    
-    function RegisterController($scope, $rootScope, $location) {
+    function RegisterController($scope, $rootScope, $location, UserService) {
 		$scope.$location = $location
-		$scope.register = register;
+		var model = this;
+		model.register = register;
 	  
-	  	function callback(value) {
-            console.log(value);
-        }
 	  
-		function register() {
+		function register(username, userEmail, userPassword) {
 			var newUser = {
-				"firstname" : $scope.firstName,
-				"lastname" : $scope.lastName,
-				"password"  : $scope.userPassword,
-				"email"  : $scope.userEmail,
+				"username" : username,
+				"password"  : userPassword,
+				"email"  : userEmail,
 			}; 
-			$rootScope.user = UserService.createUser(newUser, callback)
-			$location.path("/profile")
+			UserService.createUser(newUser).then(function(response){
+				$rootScope.user = response;
+				$location.path("/profile");
+		});
 		}
 	}
 	

@@ -4,9 +4,30 @@
 		.module("DecisionsApp")
 		.controller("MethodProConController", MethodProConController);
 	    
-    function MethodProConController($scope, $rootScope, $location) {
+    function MethodProConController($routeParams, ProConService) { //$scope, $rootScope, $location
 		
-		$scope.$location = $location;
+		//$scope.$location = $location;
+		var model = this;
+		model.createProCon = createProCon;
+		model.deleteProCon = deleteProCon;
+		
+		
+		var userId = $routeParams.userId;
+		var decisionId = $routeParams.decisionId;
+		
+		function init() {
+			ProConService.getAllProCons(decisionId);
+		}
+		init()
+		
+		function createProCon() {
+			
+		}
+		
+		function deleteProCon() {
+			
+		}
+		
 		
 /*		function callback(value) {
             console.log(value);
