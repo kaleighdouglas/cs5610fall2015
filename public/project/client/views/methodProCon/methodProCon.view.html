@@ -14,16 +14,16 @@
 	<div class="panel panel-default"> 
 	<div class="panel-body">
 		
-		<h3 class="text-center"> Question : Should I go home for Thanksgiving? </h3>
+		<h3 class="text-center"> Question : {{model.decision.question}} </h3>
 		<h4 class="page-header text-center"> Weighed Pro & Con Method </h4>    
 		
 		<!-- Table -->
 		<table class="table table-striped table-bordered">
 			<thead>
 			<tr>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Positive or Negative Effect</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Impact (-5 to 5)</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Action</th>
+				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Negative or Positive Effect</th>
+				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Impact (-5 to 5)</th>
+				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Action</th>
 			</tr>
 			
 			<tr>
@@ -31,14 +31,14 @@
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input ng-model="formName" type="text" class="form-control" id="inputProCon" placeholder="Enter Pro or Con">
+							<input ng-model="model.selected.label" type="text" class="form-control" id="inputProCon" placeholder="Enter Pro or Con">
 						</div>
 					</div>
 				</td>
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input type="number" min="-5" max="5" value="3" class="form-control" id="inputProConRating">
+							<input ng-model="model.selected.impact" type="number" min="-5" max="5" value="3" class="form-control" id="inputProConRating">
 						</div>
 					</div>
 				</td>
@@ -59,8 +59,8 @@
 					</form>
 				</td>  -->
 				<td>
-					<button ng-click="createProCon()" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
-					<button ng-click="updateProCon()" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
+					<button ng-click="model.createProCon(model.selected.label, model.selected.impact)" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+					<button ng-click="model.updateProCon(model.selected.label, model.selected.impact)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button>
 				</td>
 			</tr>
 			</thead>
@@ -81,8 +81,8 @@
 				<td>{{procon.label}}</td>
 				<td>{{procon.impact}}</td>
 				<td>
-					<button ng-click="selectProCon()" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-					<button ng-click="deleteProCon()" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+					<button ng-click="model.selectProCon(procon)" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+					<button ng-click="model.deleteProCon(procon)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
 				</td>
 			</tr>
 			<!-- Example Question 2 
@@ -121,14 +121,30 @@
 			
 			
 		<!-- New Question Button -->
-		<div class="text-center">
-			<a href="#/decision" class="btn btn-default" role="button"> Calculate Your Decision</a>
-		<!--		<button ng-click="register()" btn-default>Register</button>  -->
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<button ng-click="model.calculateDecision()" ng-hide="model.decision.myDecision" class="btn btn-default btn-colorful col-sm-12" role="button"> Calculate Your Decision</button>
+			</div>
 		</div>
 		
-		<div class="text-center">
-			<a href="#/advice" class="btn btn-default" role="button"> Get More Opinions</a>
-		<!--		<button ng-click="register()" btn-default>Register</button>  -->
+		<div clas="row">
+			<h4 class="text-center" ng-show="model.decision.myDecision">My Decision: {{model.decision.myDecision}}</h4>
+		</div>
+		
+		<div class="row button">
+			<div class="col-xs-4 text-center">
+				<a href="#/question" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Question</a>
+			</div>
+			
+			<div class="col-xs-4 text-center">
+				<button ng-click="model.calculateDecision()" ng-show="model.decision.myDecision" class="btn btn-default btn-sm" role="button"> Recalculate Your Decision</button>
+			</div>
+			
+			<div class=" col-xs-4 text-center">
+				<a href="#/advice" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
+			<!--		<button ng-click="register()" btn-default>Register</button>  -->
+			</div>
 		</div>
 			
 			

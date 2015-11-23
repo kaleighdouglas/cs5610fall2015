@@ -18,9 +18,9 @@
 	{"id": "010", "creatorId": 123, "userId": 123, "question": "Should I go home for Thanksgiving?", 
 	"myDecision": "Yes", "deadline": "", "finalDecision": "Yes",
 	"methodtype": "ProCon", "procons":[
-		{"id": "1", "label": "See Family", "impact": "3"}, 
-		{"id": "2", "label": "Expensive Travel", "impact": "-4"}, 
-		{"id": "3", "label": "Good Food", "impact": "2"},
-		{"id": "4", "label": "Time Consuming to Travel", "impact": "-2"}
+		{"id": "1", "label": "See Family", "impact": 3}, 
+		{"id": "2", "label": "Expensive Travel", "impact": -4}, 
+		{"id": "3", "label": "Good Food", "impact": 2},
+		{"id": "4", "label": "Time Consuming to Travel", "impact": -2}
 	]}
 ]

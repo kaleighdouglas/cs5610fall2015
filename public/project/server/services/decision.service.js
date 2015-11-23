@@ -10,13 +10,13 @@ module.exports = function(app) {
 	
 	function createDecision(req, res) {
 		console.log("creating new decision in decision.service");
-		var userId = req.params.decisionId;
+		var userId = req.params.userId;
 		var decision = req.body;
 		res.json(model.createDecision(userId, decision));
 	}
 	
 	function getAllDecisions(req, res) {
-		var userId = req.params.decisionId;
+		var userId = req.params.userId;
 		res.json(model.getAllDecisions(userId));		
 	}
 	

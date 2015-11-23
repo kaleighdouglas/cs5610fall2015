@@ -12,7 +12,8 @@
 			getAllProCons: getAllProCons,
 			getProCon: getProCon,
 			deleteProCon: deleteProCon,
-			updateProCon: updateProCon
+			updateProCon: updateProCon,
+            getProConResult: getProConResult
         };
         return service; 
 		
@@ -60,6 +61,17 @@
         function updateProCon(decisionId, id, procon) {
             var deferred = $q.defer();
             $http.put("/api/decision/"+decisionId+"/procon/"+id, procon)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
+        
+        function getProConResult(decisionId) {
+            console.log("getting pro con result in client service");
+            var deferred = $q.defer();
+            $http.get("/api/decision/"+decisionId+"/proconResult")
                 .success(function(response){
                     deferred.resolve(response);
                 });

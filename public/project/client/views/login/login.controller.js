@@ -15,7 +15,7 @@
 				$rootScope.user = response; 
 				console.log("user login");
 				console.log(response);
-				$location.path("/profile");
+				$location.path("/question");
 				
 			});
 	/*		if (possibleUser != null) {

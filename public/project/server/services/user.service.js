@@ -1,13 +1,13 @@
 var model = require("../models/user.model.js")();
 
 module.exports = function(app) {
-	app.post("/api/assignment/user", CreateUser);
-	app.get("/api/assignment/user", FindAllUsers);
-	app.get("/api/assignment/user/:id", FindUserById);
-	app.get("/api/assignment/user?username=username", findUserByUsername);
-	app.get("/api/assignment/user?username=username&password=password", findUserByCredentials);
-	app.put("/api/assignment/user/:id", UpdateUser);
-	app.delete("/api/assignment/user/:id", DeleteUser);
+	app.post("/api/user", CreateUser);
+	app.get("/api/user", FindAllUsers);
+	app.get("/api/user/:id", FindUserById);
+	app.get("/api/user?username=username", findUserByUsername);
+	app.get("/api/user?username=username&password=password", findUserByCredentials);
+	app.put("/api/user/:id", UpdateUser);
+	app.delete("/api/user/:id", DeleteUser);
 	
 	
 	function CreateUser(req, res) {

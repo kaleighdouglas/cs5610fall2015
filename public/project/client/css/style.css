@@ -8,10 +8,16 @@ body {
   padding-top: 80px;
 }
 
-/* Glyphicon Style */
-.glyphicon {
-  padding-top: 25%;
+/* Button Spacing */
+.button {
+  margin-top: 4%;
 }
+
+.btn-colorful {
+  background-color: darkslategray;
+  color: whitesmoke;
+}
+
 
 .inputComment {
   font-size:12pt;

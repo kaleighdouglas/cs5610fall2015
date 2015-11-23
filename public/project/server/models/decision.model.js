@@ -13,7 +13,8 @@ module.exports = function(app){
         getProCon: getProCon,
         deleteProCon: deleteProCon,
         createProCon: createProCon,
-        updateProCon: updateProCon
+        updateProCon: updateProCon,
+        getProConResult: getProConResult
     };
     return api;
     
@@ -41,9 +42,11 @@ module.exports = function(app){
             decision["attributes"] = [];
         }    
         decision["advisors"] = [];
+        console.log(decision);
         decisions.push(decision);
-        var userDecisions = getAllDecisions(userId);
-        return userDecisions;
+        //console.log("all decisions for user");
+        //console.log(decisions);
+        return decision;
     }
 	
 	function getAllDecisions(userId) {
@@ -156,10 +159,10 @@ module.exports = function(app){
     
     function createProCon(decisionId, procon) {
         console.log("new procon in decision.models");
-        console.log("procon:");
-        console.log(procon);
-        console.log("decisionId");
-        console.log(decisionId);
+        //console.log("procon:");
+        //console.log(procon);
+        //console.log("decisionId");
+        //console.log(decisionId);
         procon["id"] = guid();
         var ProCons = getAllProCons(decisionId);
         ProCons.push(procon);
@@ -175,6 +178,33 @@ module.exports = function(app){
             }
         }
         return ProCons;
+    }
+    
+    function getProConResult(decisionId) {
+        console.log("ProCon Result in Model");
+        var ProCons = getAllProCons(decisionId);
+        var sum = 0;
+        for(var i=0; i<ProCons.length; i++) {
+            var currentProCon = ProCons[i]
+            sum = sum + currentProCon.impact;
+        }
+        
+        console.log("Pro Con sum:");
+        console.log(sum);
+        var decision = getDecision(decisionId);
+        var posResult = "YES!";
+        var negResult = "NO";
+        var undecidedResult = "Undecided. Try asking friends or using another method."
+        if (sum > 0) {
+            decision["myDecision"] = posResult;
+        } else if(sum < 0) {
+            decision["myDecision"] = negResult;
+        } else {
+            decision["myDecision"] = undecidedResult;
+        }
+        console.log("my decision");
+        console.log(decision.myDecision);
+        return decision;
     }
 	
 };

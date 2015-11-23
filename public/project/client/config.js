@@ -36,6 +36,10 @@
                 templateUrl: "views/methodProCon/methodProCon.view.html",
                 controller: "MethodProConController"
             })
+            .when("/user/:userId/decision/:decisionId/ProCon", {
+                templateUrl: "views/methodProCon/methodProCon.view.html",
+               // controller: "MethodProConController"
+            })
             .when("/methodIntuitionOptions", {
                 templateUrl: "views/methodIntuition/methodIntuitionOptions.view.html",
                 controller: "MethodIntuitionOptionsController"

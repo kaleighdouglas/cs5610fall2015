@@ -10,6 +10,8 @@
 		model.gotoMethod = gotoMethod;
 		
 		var userId = $rootScope.user.id;
+		console.log("rootscope userId in question.controller:");
+		console.log(userId);
 		
 				
 		/* Citations for help with radio buttons: 
@@ -23,9 +25,10 @@
 					"methodtype": "ProCon"
 				}
 				DecisionService.createDecision(userId, ProConDecision).then(function(response){
-				model.decisions = response;
+				model.decision = response;
 				console.log(response);
-				$location.path("/methodProCon");
+				var decisionId = model.decision.id;
+				$location.path("/user/"+userId+"/decision/"+decisionId+"/ProCon");
 				});
 				
 				//window.location = "#/methodProCon";
@@ -36,7 +39,7 @@
 					"methodtype": "Grid"
 				}
 				DecisionService.createDecision(userId, GridDecision).then(function(response){
-				model.decisions = response;
+				model.decision = response;
 				console.log(response);
 				$location.path("/methodGridOptions");
 				});
@@ -48,7 +51,7 @@
 					"methodtype": "Guess"
 				}
 				DecisionService.createDecision(userId, GuessDecision).then(function(response){
-				model.decisions = response;
+				model.decision = response;
 				console.log(response);
 				$location.path("/methodIntuitionOptions");
 				});
