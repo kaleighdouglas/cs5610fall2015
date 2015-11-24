@@ -2,37 +2,25 @@
     "use strict";
     angular
         .module("DecisionsApp")
-        .factory("UserService", UserService);
+        .factory("IntuitionService", IntuitionService);
 
-
-    function UserService($http, $q) {
+    function IntuitionService($http, $q) {
         
+
         var service = {
-            findUserByUsernameAndPassword: findUserByUsernameAndPassword,
-            findAllUsers: findAllUsers,
-            findUserById: findUserById,
-            createUser: createUser,
-            deleteUserById: deleteUserById,
-            updateUser: updateUser
+            createOption: createOption,
+			getAllOptions: getAllOptions,
+			getOption: getOption,
+			deleteOption: deleteOption,
+			updateOption: updateOption,
+            getIntuitionResult: getIntuitionResult
         };
-        return service;
-         
-  
-        function findUserByUsernameAndPassword(username, password) {
-            console.log("UserService");
+        return service; 
+		
+        
+        function createOption(decisionId, option) {
             var deferred = $q.defer();
-            $http.get("/api/user?username="+username+"&password="+password)
-                .success(function(response){
-                    deferred.resolve(response);
-                });
-                
-            return deferred.promise;
-        }
-            
-
-        function findAllUsers() {
-            var deferred = $q.defer();
-            $http.get("/api/user")
+            $http.post("/api/decision/"+decisionId+"/intuition" , option)
                 .success(function(response){
                     deferred.resolve(response);
                 });
@@ -40,9 +28,9 @@
             return deferred.promise;
         }
         
-        function findUserById(id) {
+        function getAllOptions(decisionId) {
             var deferred = $q.defer();
-            $http.get("/api/user"+id)
+            $http.get("/api/decision/"+decisionId+"/intuition")
                 .success(function(response){
                     deferred.resolve(response);
                 });
@@ -50,9 +38,9 @@
             return deferred.promise;
         }
         
-        function createUser(user) {
+        function getOption(decisionId, id) {
             var deferred = $q.defer();
-            $http.post("/api/user", user)
+            $http.get("/api/decision/"+decisionId+"/intuition/"+id)
                 .success(function(response){
                     deferred.resolve(response);
                 });
@@ -60,9 +48,9 @@
             return deferred.promise;
         }
         
-        function deleteUserById(id) {
+        function deleteOption(decisionId, id) {
             var deferred = $q.defer();
-            $http.delete("/api/user/"+id)
+            $http.delete("/api/decision/"+decisionId+"/intuition/"+id)
                 .success(function(response){
                     deferred.resolve(response);
                 });
@@ -70,16 +58,26 @@
             return deferred.promise;
         }
         
-        function updateUser(id, user) {
+        function updateOption(decisionId, id, option) {
             var deferred = $q.defer();
-            $http.put("/api/user/"+id , user)
+            $http.put("/api/decision/"+decisionId+"/intuition/"+id, option)
                 .success(function(response){
                     deferred.resolve(response);
                 });
                 
-            return deferred.promise
+            return deferred.promise;
         }
-    
         
+        function getIntuitionResult(decisionId) {
+            console.log("getting intuition result in client service");
+            var deferred = $q.defer();
+            $http.get("/api/decision/"+decisionId+"/intuitionResult")
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
+			
     }
-})();    
+})();

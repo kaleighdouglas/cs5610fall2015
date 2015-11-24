@@ -4,15 +4,64 @@
 		.module("DecisionsApp")
 		.controller("HistoryController", HistoryController);
 	    
-    function HistoryController($scope, $rootScope, $location) {
+    function HistoryController($routeParams, $scope, $rootScope, $location, DecisionService, UserService) {
+		var model = this;
+		model.deleteDecision = deleteDecision;
+		model.decisionDetails = decisionDetails;
+
 		
-		$scope.$location = $location;
-		$scope.title = "where to go for dinner";
+		//model.getAllDecisions = getAllDecisions;
+		//$scope.$location = $location;
+		//$scope.title = "where to go for dinner";
+		//var userId = $routeParams.userId;
+		var userId = $rootScope.user.id;
 		
-/*		function callback(value) {
-            console.log(value);
-        }
+		
+		function init() {
+			DecisionService.getAllDecisions(userId).then(function(response){
+				model.decisions = response;
+			});
+		}
+		init()
+		
+		
+/*		function creatorName(id) {
+			UserService.findUserById(id).then(function(response){
+				var creator = response;
+				model.creatorName = creator.firstName;
+			});
+		} */
+		
+		function deleteDecision(decision) {
+			console.log("deleting decision in history");
+			DecisionService.deleteDecision(decision.id).then(function(response){
+				model.decisions = response;
+				console.log("deleted decision:");
+				console.log(response);
+			});
+		}
+		
+		function decisionDetails(decision) {
+			var method = decision.methodtype;
+			var decisionId = decision.id;
 			
+			if(method == "ProCon") {
+				$location.path("/user/"+userId+"/decision/"+decisionId+"/ProCon");
+			}
+			else if(method == "Grid") {
+				$location.path("/methodGridOptions");
+			}
+			else if(method == "Guess") {
+				$location.path("/user/"+userId+"/decision/"+decisionId+"/IntuitionOptions");
+			}
+			else {
+				alert("Invalid path to decision details");
+			}
+		}
+		
+		
+/*		
+	
 		var currentUser = $rootScope.user;		
 		$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
 		var currentFormId = null

@@ -9,12 +9,21 @@ module.exports = function(app){
 		updateDecision: updateDecision,
 		deleteDecision: deleteDecision,
         
+        //Pro Con Functions
         getAllProCons: getAllProCons,
         getProCon: getProCon,
         deleteProCon: deleteProCon,
         createProCon: createProCon,
         updateProCon: updateProCon,
-        getProConResult: getProConResult
+        getProConResult: getProConResult,
+        
+        //Intuition Functions
+        createOption: createOption,
+        getAllOptions: getAllOptions,
+        getOption: getOption,
+        getIntuitionResult: getIntuitionResult,
+        updateOption: updateOption,
+        deleteOption: deleteOption
     };
     return api;
     
@@ -113,7 +122,7 @@ module.exports = function(app){
     }
     
     
-        // ProCon Functions
+ /////////// ProCon Functions
     
         function getAllProCons(decisionId) {   
         var ProCons = []
@@ -202,9 +211,53 @@ module.exports = function(app){
         } else {
             decision["myDecision"] = undecidedResult;
         }
+        decision["finalDecision"] = decision["myDecision"];
         console.log("my decision");
         console.log(decision.myDecision);
         return decision;
+    }
+    
+    
+/////// Intuition Functions
+    function createOption(decisionId, option) {
+        console.log("decisionId in createOption function in model");
+        console.log(decisionId);
+        option["id"] = guid();
+        var Options = getAllOptions(decisionId);
+        console.log("existing options in createOption function in model");
+        console.log(Options);
+        Options.push(option);
+        console.log("all options after adding new");
+        console.log(Options);
+        return Options;
+    }
+    
+    function getAllOptions(decisionId) {
+        var Options = []
+        for(var i=0; i<decisions.length; i++) {
+            var decision = decisions[i]
+            if(decision.id == decisionId) {
+                console.log("existing options")
+                console.log(decision.options);
+                Options = decision.options;   
+            }
+        }
+        return Options;
+    }
+    
+    function getOption() {
+    }
+    
+    function getIntuitionResult() {
+        
+    }
+    
+    function updateOption() {
+        
+    }
+    
+    function deleteOption() {
+        
     }
 	
 };

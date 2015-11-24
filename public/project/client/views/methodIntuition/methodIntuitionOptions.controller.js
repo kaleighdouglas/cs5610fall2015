@@ -4,9 +4,63 @@
 		.module("DecisionsApp")
 		.controller("MethodIntuitionOptionsController", MethodIntuitionOptionsController);
 	    
-    function MethodIntuitionOptionsController($scope, $rootScope, $location) {
+    function MethodIntuitionOptionsController($routeParams, DecisionService, IntuitionService) {  //$scope, $rootScope, $location,
+		var model = this;
+		model.create
+		model.createOption = createOption;
+		model.updateOption = updateOption;
+		model.deleteOption = deleteOption;
+		model.selectOption = selectOption;
 		
-		$scope.$location = $location;
+		var userId = $routeParams.userId;
+		console.log("userId in procon method");
+		console.log(userId);
+		var decisionId = $routeParams.decisionId;
+		console.log("decisionId in procon method:");
+		console.log(decisionId);
+		
+		
+		function init() {
+			DecisionService.getDecision(decisionId).then(function(response){
+				model.decision = response;
+			});
+			
+			IntuitionService.getAllOptions(decisionId).then(function(response){
+				model.options = response;
+			});
+		}
+		init()
+		
+		function createOption(name, description, url) {
+			var newOption = {
+					"label" : name,
+					"description": description,
+					"url": url
+				}
+				console.log("new Guess Option url");
+				console.log(url);
+				IntuitionService.createOption(decisionId, newOption).then(function(response){
+				model.options = response;
+				console.log("options returned to controller:");
+				console.log(response);
+				});
+		}
+		
+		function updateOption() {
+			
+		}
+		
+		function deleteOption() {
+			
+		}
+		
+		function selectOption() {
+			
+		}
+		
+		
+		
+		//$scope.$location = $location;
 		
 /*		function callback(value) {
             console.log(value);

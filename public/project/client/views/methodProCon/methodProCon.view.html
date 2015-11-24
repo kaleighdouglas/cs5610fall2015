@@ -60,7 +60,7 @@
 				</td>  -->
 				<td>
 					<button ng-click="model.createProCon(model.selected.label, model.selected.impact)" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
-					<button ng-click="model.updateProCon(model.selected.label, model.selected.impact)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button>
+					<button ng-click="model.updateProCon(model.selected.label, model.selected.impact)" ng-show="model.selected" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button>
 				</td>
 			</tr>
 			</thead>
@@ -123,8 +123,8 @@
 		<!-- New Question Button -->
 		
 		<div class="row">
-			<div class="col-sm-12">
-				<button ng-click="model.calculateDecision()" ng-hide="model.decision.myDecision" class="btn btn-default btn-colorful col-sm-12" role="button"> Calculate Your Decision</button>
+			<div class="col-xs-12">
+				<button ng-click="model.calculateDecision()" ng-hide="model.decision.myDecision" class="btn btn-default btn-colorful btn-block" role="button"> Calculate Your Decision</button>
 			</div>
 		</div>
 		
@@ -132,16 +132,16 @@
 			<h4 class="text-center" ng-show="model.decision.myDecision">My Decision: {{model.decision.myDecision}}</h4>
 		</div>
 		
-		<div class="row button">
-			<div class="col-xs-4 text-center">
+		<div class="row button col-xs-12">
+			<div class="col-sm-4 text-center">
 				<a href="#/question" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Question</a>
 			</div>
 			
-			<div class="col-xs-4 text-center">
+			<div class="col-sm-4 text-center">
 				<button ng-click="model.calculateDecision()" ng-show="model.decision.myDecision" class="btn btn-default btn-sm" role="button"> Recalculate Your Decision</button>
 			</div>
 			
-			<div class=" col-xs-4 text-center">
+			<div class=" col-sm-4 text-center">
 				<a href="#/advice" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
 			<!--		<button ng-click="register()" btn-default>Register</button>  -->
 			</div>

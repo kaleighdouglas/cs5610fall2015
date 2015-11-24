@@ -32,6 +32,7 @@
                 templateUrl: "views/question/question.view.html",
                 controller: "QuestionController"
             })
+            // ProCon Method
             .when("/methodProCon", {
                 templateUrl: "views/methodProCon/methodProCon.view.html",
                 controller: "MethodProConController"
@@ -40,14 +41,24 @@
                 templateUrl: "views/methodProCon/methodProCon.view.html",
                // controller: "MethodProConController"
             })
+            // IntuitionMethod
             .when("/methodIntuitionOptions", {
                 templateUrl: "views/methodIntuition/methodIntuitionOptions.view.html",
                 controller: "MethodIntuitionOptionsController"
+            })
+            .when("/user/:userId/decision/:decisionId/IntuitionOptions", {
+                templateUrl: "views/methodIntuition/methodIntuitionOptions.view.html",
+               // controller: "MethodProConController"
             })
             .when("/methodIntuitionEval", {
                 templateUrl: "views/methodIntuition/methodIntuitionEval.view.html",
                 controller: "MethodIntuitionEvalController"
             })
+            .when("/user/:userId/decision/:decisionId/IntuitionEval", {
+                templateUrl: "views/methodIntuition/methodIntuitionEval.view.html",
+               // controller: "MethodProConController"
+            })
+            // Grid Method
             .when("/methodGridOptions", {
                 templateUrl: "views/methodGrid/methodGridOptions.view.html",
                 controller: "MethodGridOptionsController"

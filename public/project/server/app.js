@@ -5,4 +5,5 @@ module.exports = function(app) {
     var decisionModel = require("./models/decision.model.js")();
     require("./services/decision.service.js")(app, decisionModel);
     require("./services/procon.service.js")(app, decisionModel);
+    require("./services/intuition.service.js")(app, decisionModel);
 };

@@ -2,9 +2,9 @@
 	{"id": "000", "creatorId": 123, "userId": 123, "question": "Where should we go for dinner?", 
 	"myDecision": "1", "deadline": "", "finalDecision": "1",
 	"methodtype": "Guess", "options":[
-		{"id": "1", "label": "Brasitas", "url": "brasitas.com"}, 
-		{"id": "2", "label": "Coalhouse Pizza", "url": "coalhousepizza.com"}, 
-		{"id": "3", "label": "Kona Grill", "url": "konagrill.com"}
+		{"id": "1", "label": "Brasitas", "description": "excellent fish", "url": "brasitas.com"}, 
+		{"id": "2", "label": "Coalhouse Pizza", "description": "yummy pizza", "url": "coalhousepizza.com"}, 
+		{"id": "3", "label": "Kona Grill", "description": "great happy hour", "url": "konagrill.com"}
 		],  
 		"advisors": [
 			{"userId": 234, "weight": ".25", "decision": "1"},
@@ -16,7 +16,7 @@
 	
 	
 	{"id": "010", "creatorId": 123, "userId": 123, "question": "Should I go home for Thanksgiving?", 
-	"myDecision": "Yes", "deadline": "", "finalDecision": "Yes",
+	"myDecision": "Yes", "deadline": "", "finalDecision": "NO",
 	"methodtype": "ProCon", "procons":[
 		{"id": "1", "label": "See Family", "impact": 3}, 
 		{"id": "2", "label": "Expensive Travel", "impact": -4}, 

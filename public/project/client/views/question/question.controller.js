@@ -10,8 +10,8 @@
 		model.gotoMethod = gotoMethod;
 		
 		var userId = $rootScope.user.id;
-		console.log("rootscope userId in question.controller:");
-		console.log(userId);
+
+		
 		
 				
 		/* Citations for help with radio buttons: 
@@ -53,7 +53,9 @@
 				DecisionService.createDecision(userId, GuessDecision).then(function(response){
 				model.decision = response;
 				console.log(response);
-				$location.path("/methodIntuitionOptions");
+				var decisionId = model.decision.id;
+				$location.path("/user/"+userId+"/decision/"+decisionId+"/IntuitionOptions");
+				//$location.path("/methodIntuitionOptions");
 				});
 				//window.location = "#/methodIntuitionOptions";
 			}
@@ -62,57 +64,6 @@
 			}
 		}
 		
-		
-/*		function callback(value) {
-            console.log(value);
-        }
-			
-		var currentUser = $rootScope.user;		
-		$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-		var currentFormId = null
-		
-		$scope.addForm = addForm;
-		$scope.updateForm = updateForm;
-		$scope.deleteForm = deleteForm;
-		$scope.selectForm = selectForm;   
-		
-
-		
-		function addForm() {
-			var newForm = {
-				"name" : $scope.formName,
-			}; 
-			FormService.createFormForUser($rootScope.user.id, newForm, callback);
-			$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-		}
-		
-		
-		function updateForm() {
-			var newForm = {
-				"name" : $scope.formName,
-				"id" : currentFormId,
-				"userid" : currentUser.id,		
-			};
-			FormService.updateFormById(currentFormId, newForm, callback);
-			$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-			console.log($scope.forms);
-		}   
-		
-		
-		function deleteForm(index) {
-			$scope.selectedFormIndex = index;
-			var formid = $scope.forms[index].id
-			FormService.deleteFormById(formid, callback)
-			$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-		}
-		
-		
-		function selectForm(index) {
-			$scope.selectedFormIndex = index;
-			var formid = $scope.forms[index].id;
-			currentFormId = formid
-			$scope.formName = $scope.forms[index].name;  
-		}  */
 		} 
 }) ();
 

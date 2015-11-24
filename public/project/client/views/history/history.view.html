@@ -1,5 +1,5 @@
 
-<div ng-controller="HistoryController">
+<div ng-controller="HistoryController as model">
 	<h3 class="page-header">Decision Making History</h3>
 	
 	<div class="table-responsive">     
@@ -8,11 +8,11 @@
 		<table class="table table-striped table-bordered">
 			<thead>
 			<tr>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Question</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Decision</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Decision Maker</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Date Created</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Action</th>
+				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Question</th>
+				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Decision</th>
+				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Decision Maker</th>
+				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Date Created</th>
+				<th> Action</th>
 			</tr>
 			</thead>
 			
@@ -24,56 +24,56 @@
 				<td><button>{{question.creator}}</button></td>
 				<td><button>{{question.date}}</button></td>
 				<td>
-					<button ng-click="selectForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>
-					<button ng-click="deleteForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+					<button ng-click="selectForm($index)" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span></button>
+					<button ng-click="deleteForm($index)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
 				</td>
 			</tr>   -->
 			
 			<!-- Example Question 1 -->
-			<tr>
-				<td><a href="#" class="btn" role="button">Where should we go on vacation?</a></td>
-				<td>Newport</td>
-				<td>Me</td>
-				<td>10/9/15</td>
+			<tr ng-repeat="decision in model.decisions">
+		<!--		<td><a ng-href="#/user/{{decision.userId}}/decision/{{decision.id}}/IntuitionOptions" class="btn" role="button">{{decision.question}}</a></td>  --->
+				<td><button ng-click="model.decisionDetails(decision)" class="btn-link" role="button">{{decision.question}}</button></td>
+				<td>{{decision.finalDecision}}</td>
+				<td>{{decision.creatorId}}</td>  <!-- change to creator's name -->
+				<td>{{decision.deadline}}</td>
 				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+					<button ng-click="model.deleteDecision(decision)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
 				</td>
 			</tr>
-			<!-- Example Question 2 -->
+			<!-- Example Question 2 
 			<tr>
 				<td><a href="#" class="btn" role="button">Which apartment should I rent?</a></td>
 				<td>Bedford Street</td>
 				<td>Ryan</td>
 				<td>10/7/15</td>
 				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+					<button class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span></button>
+					<button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
 				</td>
-			</tr>
-			<!-- Example Question 3 -->
+			</tr> -->
+			<!-- Example Question 3
 			<tr>
 				<td><a href="#" class="btn" role="button">Which restaurant should we go to for dinner?</a></td>
 				<td>Zaza</td>
 				<td>Matthew</td>
 				<td>10/5/15</td>
 				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+					<button class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span></button>
+					<button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
 				</td>
-			</tr>
+			</tr>  -->
 			
-			<!-- Example Question 4 -->
+			<!-- Example Question 4
 			<tr>
 				<td><a href="#" class="btn" role="button">Which course should I take?</a></td>
 				<td>Web Development</td>
 				<td>Me</td>
 				<td>8/15/15</td>
 				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+					<button class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span></button>
+					<button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
 				</td>
-			</tr>		
+			</tr>		 -->
 			</tbody>
 		</table>
 			
