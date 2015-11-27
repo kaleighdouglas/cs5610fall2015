@@ -1,6 +1,6 @@
-var model = require("../models/user.model.js")();
+//var model = require("../models/user.model.js")();
 
-module.exports = function(app) {
+module.exports = function(app, model) {
 	app.post("/api/assignment/user", Create);
 	app.get("/api/assignment/user", FindAll);
 	app.get("/api/assignment/user/:id", FindById);
@@ -23,7 +23,10 @@ module.exports = function(app) {
             findUserByUsername(req, res);
 		}
 			else {
-				res.json(model.FindAll());
+				model.FindAll().then(function(users){
+					res.json(users);
+            });
+				//res.json(model.FindAll());
 			}		
 	}
 	

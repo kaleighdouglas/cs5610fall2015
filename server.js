@@ -4,7 +4,8 @@ var bodyParser = require('body-parser');
 var multer = require('multer'); // v1.0.5
 //var upload = multer(); // for parsing multipart/form-data
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/cs5610');
+var db = mongoose.connect('mongodb://localhost/cs5610');
+//console.log(mongoose);
 
 
 app.use(express.static(__dirname + '/public'));
@@ -19,7 +20,7 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
 
 
-require("./public/assignment/server/app.js")(app);
-require("./public/project/server/app.js")(app);
+require("./public/assignment/server/app.js")(app, db, mongoose);
+require("./public/project/server/app.js")(app, db, mongoose);
 
 app.listen(port, ipaddress);
