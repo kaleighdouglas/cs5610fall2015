@@ -3,9 +3,8 @@ var q = require("q");
 
 module.exports = function(app, db, mongoose){
     var FormSchema = require("./form.schema.js") (mongoose);
-    var FieldSchema = require("./field.schema.js") (mongoose);  // here?
+    //var FieldSchema = require("./field.schema.js") (mongoose);  // here?
     var FormModel = mongoose.model("FormModel", FormSchema);
- //   var FieldModel = mongoose.model("FieldModel", FieldSchema);  //necessary?
     var api = {
 		Create: CreateForm,
 		FindAll: FindAllForms,
@@ -155,22 +154,23 @@ module.exports = function(app, db, mongoose){
     
         // Fields Functions
     
-        function FindAllFields(formId) {   
-        var Fields = []
-        console.log("FindAllFields called");
-        for(var i=0; i<forms.length; i++) {
-            var form = forms[i]
-            if(form.id == formId) {
-                console.log("match found");
-                Fields = form.fields;   
-                console.log("Fields assigned");
-                console.log(Fields);
-            }
-        }
-        return Fields;
+        function FindAllFields(formId) {  
+            var deferred = q.defer();
+
+            FormModel.findById(formId, function(err, form){
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    console.log("form in field model");
+                    console.log(form);
+                    deferred.resolve(form.fields);
+                }
+            });
+    
+            return deferred.promise;
     }
     
-    function FindField(formId, fieldId) {  
+    function FindField(formId, fieldId) {    // need to do
         var Fields = FindAllFields(formId)
         var foundField = null
         for(var i=0; i<Fields.length; i++) {

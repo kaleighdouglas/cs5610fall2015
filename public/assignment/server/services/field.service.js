@@ -11,31 +11,47 @@ module.exports = function(app, model) {
 	function Create(req, res) {
 		var formId = req.params.formId;
 		var field = req.body;
-		res.json(model.CreateField(formId, field));
+		model.CreateField(formId, field).then(function(field){
+					res.json(field);
+            });
+		//res.json(model.CreateField(formId, field));
 	}
 	
 	function FindAll(req, res) {
 		var formId = req.params.formId;  // Should I be passing userId as argument?
-		res.json(model.FindAllFields(formId));
+		
+		model.FindAllFields(formId).then(function(fields){
+			res.json(fields);
+            });
+		//res.json(model.FindAllFields(formId));
 	}
 	
 	function FindById(req, res) {
 		var formId = req.params.formId
 		var fieldId = req.params.fieldId;
-		res.json(model.FindField(formId, fieldId));
+		model.FindField(formId, fieldId).then(function(field){
+					res.json(field);
+            });
+		//res.json(model.FindField(formId, fieldId));
 	}
 	
 	function Delete(req, res) {
 		var formId = req.params.formId;
 		var fieldId = req.params.fieldId;
-		res.json(model.DeleteField(formId, fieldId));
+		model.DeleteField(formId, fieldId).then(function(status){
+					res.json(status);
+            });
+		//res.json(model.DeleteField(formId, fieldId));
 	}
 	
 	function Update(req, res) {
 		var formId = req.params.formId
 		var fieldId = req.params.fieldId;
 		var field = req.body
-		res.json(model.UpdateField(formId, fieldId, field));
+		model.UpdateField(formId, fieldId, field).then(function(field){
+					res.json(field);
+            });
+		//res.json(model.UpdateField(formId, fieldId, field));
 	}
 	
 	
