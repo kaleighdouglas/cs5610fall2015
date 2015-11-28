@@ -1,6 +1,6 @@
-var model = require("../models/form.model.js")();
+//var model = require("../models/form.model.js")();
 
-module.exports = function(app) {
+module.exports = function(app, model) {
 	app.post("/api/assignment/user/:userId/form", Create);
 	app.get("/api/assignment/user/:userId/form", FindAll);
 	app.get("/api/assignment/form/:formId", FindById);
@@ -12,36 +12,59 @@ module.exports = function(app) {
 	function Create(req, res) {
 		var userId = req.params.userId;
 		var form = req.body;
-		res.json(model.Create(userId, form));
+		model.Create(userId, form).then(function(form){
+					res.json(form);
+            });
+		//res.json(model.Create(userId, form));
 	}
 	
 	function FindAll(req, res) {
-		var userId = req.params.userId;  // Should I be passing userId as argument?
-		res.json(model.FindAll(userId));
+		var userId = req.params.userId;
+		console.log("userId");
+		console.log(userId);
+		
+		model.FindAll(userId).then(function(forms){
+			console.log("finding all users from service");
+			console.log(forms);
+			res.json(forms);
+            });
+		//res.json(model.FindAll(userId));
 	}
 	
 	function FindById(req, res) {
 		var id = req.params.formId;
 		console.log(id);
-		res.json(model.FindById(id));
+		model.FindById(id).then(function(form){
+					res.json(form);
+            });
+		//res.json(model.FindById(id));
 	}
 	
 	function FindFormByTitle(req, res) {
 		var title = req.query.title;
 		console.log(title);
-		res.json(model.findFormByTitle(title));
+		model.findFormByTitle(title).then(function(form){
+					res.json(form);
+            });
+		//res.json(model.findFormByTitle(title));
 	}
 	
 	
 	function Delete(req, res) {
 		var id = req.params.formId;
-		res.json(model.Delete(id));
+		model.Delete(id).then(function(status){
+					res.json(status);
+            });
+		//res.json(model.Delete(id));
 	}
 	
 	function Update(req, res) {
 		var id = req.params.formId;
 		var form = req.body;
-		res.json(model.Update(id, form));
+		model.Update(id, form).then(function(form){
+					res.json(form);
+            });
+		//res.json(model.Update(id, form));
 	}
 	
 	
