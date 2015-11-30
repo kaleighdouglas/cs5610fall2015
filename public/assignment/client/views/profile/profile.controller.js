@@ -11,15 +11,11 @@
 		
 		// update fields to existing user
 		model.user = $rootScope.user;
-		console.log("model user in profile controller");
-		console.log(model.user);
 		
 		
 		var currentUser = $rootScope.user;
 		console.log("current user");
 		console.log(currentUser);
-		console.log("password:")
-		console.log(currentUser.password);
 		//function init() {
 			
 		model.userName = currentUser.username;
@@ -29,15 +25,10 @@
 		model.userLName = currentUser.lastName;
 		//}
 		//init()
-  
-  		
-	  
-	  	function callback(value) {
-            console.log(value);
-        }
+ 
 	  	
 		function update() {
-			console.log("updating user...")			
+			console.log("updating user")			
 			
 			var revisedUser = {
 				"username" : model.userName,
@@ -52,8 +43,8 @@
 				console.log(response);
 				UserService.findUserById(currentUser._id).then(function(response){
 					$rootScope.user = response;
-					console.log("updated user");
-					console.log(response);
+					//console.log("updated user");
+					//console.log(response);
 					$location.path("/profile");
 				})
 			});	

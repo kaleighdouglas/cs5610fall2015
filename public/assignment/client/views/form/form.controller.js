@@ -15,8 +15,8 @@
 		
 
 		var currentUser = $rootScope.user;
-		console.log("user in forms controller");
-		console.log(currentUser);
+		//console.log("user in forms controller");
+		//console.log(currentUser);
 		FormService.findAllFormsForUser(currentUser._id).then(function(response){
 				model.forms = response;
 		});
@@ -44,8 +44,6 @@
 			};
 			FormService.updateFormById(model.form._id, newForm).then(function(response){ 
 				FormService.findAllFormsForUser(currentUser._id).then(function(response){
-					console.log("update form title response");
-					console.log(response);
 					model.forms = response;
 				});
 			});
@@ -67,36 +65,18 @@
 				});
 			});			
 		}
-		
-		
-	/*	function selectForm(form) {
-			//$scope.selectedFormIndex = index;
-			console.log("form in selectForm in form controller");
-			console.log(form);
-			model.form = {
-				title: model.forms[index].title,
-				_id: model.forms[index]._id,
-				userId: model.forms[index].userId,
-				fields: model.forms[index].fields
-			}
-			console.log("selecting form");
-			console.log(model.form);
-			return model.form;
-		} */
-		
+
 		
 		function selectForm(index) {
 			$scope.selectedFormIndex = index;
-			//console.log("index in selectForm in controller");
-			//console.log(index);
 			model.form = {
 				title: model.forms[index].title,
 				_id: model.forms[index]._id,
 				userId: model.forms[index].userId,
 				fields: model.forms[index].fields
 			}
-			console.log("selecting form");
-			console.log(model.form);
+			//console.log("selecting form");
+			//console.log(model.form);
 			return model.form;
 		}
 	} 

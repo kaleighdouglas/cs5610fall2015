@@ -9,24 +9,19 @@
 		model.addField = addField;
 		model.removeField = removeField;
 		
-		var userId = $routeParams.userId;
+		//var userId = $routeParams.userId;
 		var formId = $routeParams.formId;
 		
 		//var currentUser = $rootScope.user;
 		FieldService.getFieldsForForm(formId).then(function(response){
-				console.log("list of fields");
-				console.log(response);
 				model.fields = response;
-				console.log("model.fields:");
-				console.log(model.fields);
+				//console.log("list of fields:");
+				//console.log(model.fields);
 		});
 		
 		
 		
 		function addField(fieldType) {
-			console.log("field type");
-			console.log(fieldType);
-			console.log("addField button pressed");
 			var newField = {}
 			
 			if (fieldType == "TEXTAREA") {
@@ -88,8 +83,8 @@
 			console.log(newField); 
 			FieldService.createFieldForForm(formId, newField).then(function(response){
 				FieldService.getFieldsForForm(formId).then(function(response){
-					console.log("Create field response");
-					console.log(response);
+					//console.log("Create field response");
+					//console.log(response);
 					model.fields = response;
 				});
 			});	

@@ -17,28 +17,12 @@
 				if(response == null) {
 					alert("invalid username / password combination");
 				} else {
-					$rootScope.user = response;    // Should use if possibleUser != null?
+					$rootScope.user = response; 
 					$location.path("/profile");
 				}	
 			});
 		}	   
 		   
-		    
-			
-/*	  function callback(value) {
-            console.log(value);
-        }
-	  
-	  
-		function login() {
-			var possibleUser = UserService.findUserByUsernameAndPassword($scope.userName, $scope.userPassword, callback)
-			if (possibleUser != null) {
-				$rootScope.user = possibleUser
-				console.log("login")
-				$location.path("/profile")
-			} else {console.log("login not valid")	
-			}
-		}   */
 	}
 	
 }) ();

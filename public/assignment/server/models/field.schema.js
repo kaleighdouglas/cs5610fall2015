@@ -6,10 +6,10 @@ module.exports = function(mongoose) {
         "type" : {type: String, enum: ["TEXT", "TEXTAREA", "RADIO", "CHECKBOX", "SELECT", "DATE"]},
         "options" : [{
                     "label" : {type: String, default: "label"},
-                    "value" : String //mongoose.Schema.Types.Mixed  //String?  
+                    "value" : String //mongoose.Schema.Types.Mixed?  
                 }],
         "placeholder": String
-    }, {collection: "cs5610.assignment.form"});  //collection?
+    }, {collection: "cs5610.assignment.form"}); 
     
     return FieldSchema;
 };
