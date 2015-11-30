@@ -31,44 +31,44 @@
 			
 			if (fieldType == "TEXTAREA") {
 				newField = {
-					"id" : null,
+					"_id" : null,
 					"label" : "New Text Field",
 					"type" : "TEXTAREA",
 					"placeholder" : "New Field"
 				};
 			} else if (fieldType == "DATE") {
 				newField = {
-					"id" : null,
+					"_id" : null,
 					"label" : "New Date Field",
 					"type" : "DATE"
 				};
-			} else if (fieldType == "OPTIONS") {
+			} else if (fieldType == "SELECT") {
 				newField = {
-					"id" : null,
+					"_id" : null,
 					"label" : "New Dropdown",
-					"type" : "OPTIONS",
+					"type" : "SELECT",
 					"options" : [
 						{"label": "Option 1", "value": "OPTION_1"},
 						{"label": "Option 2", "value": "OPTION_2"},
 						{"label": "Option 3", "value": "OPTION_3"}
 					]
 				};
-			} else if (fieldType == "CHECKBOXES") {
+			} else if (fieldType == "CHECKBOX") {
 				newField = {
-					"id" : null,
+					"_id" : null,
 					"label" : "New Checkboxes",
-					"type" : "CHECKBOXES",
+					"type" : "CHECKBOX",
 					"options" : [
 						{"label": "Option A", "value": "OPTION_A"},
 						{"label": "Option B", "value": "OPTION_B"},
 						{"label": "Option C", "value": "OPTION_C"}
 					]
 				};	
-			} else if (fieldType == "RADIOS") {
+			} else if (fieldType == "RADIO") {
 				newField = {
-					"id" : null,
+					"_id" : null,
 					"label" : "New Radio Buttons",
-					"type" : "RADIOS",
+					"type" : "RADIO",
 					"options" : [
 						{"label": "Option X", "value": "OPTION_X"},
 						{"label": "Option Y", "value": "OPTION_Y"},
@@ -77,24 +77,30 @@
 				};
 			} else {
 				newField = {
-					"id" : null,
+					"_id" : null,
 					"label" : "New Text Field",
 					"type" : "TEXT",
 					"placeholder" : "New Field"
 				};
 			}
 			
-			console.log("new field:");
+			console.log("new field in controller:");
 			console.log(newField); 
 			FieldService.createFieldForForm(formId, newField).then(function(response){
-				model.fields = response;
+				FieldService.getFieldsForForm(formId).then(function(response){
+					console.log("Create field response");
+					console.log(response);
+					model.fields = response;
+				});
 			});	
 		}
 
 		
 		function removeField(field) {
-			FieldService.deleteFieldFromForm(formId, field.id).then(function(response){
-				model.fields = response;
+			FieldService.deleteFieldFromForm(formId, field._id).then(function(response){
+				FieldService.getFieldsForForm(formId).then(function(response){
+					model.fields = response;
+				});
 			});
 		}
 		

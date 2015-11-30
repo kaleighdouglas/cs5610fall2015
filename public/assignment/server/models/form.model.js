@@ -94,7 +94,7 @@ module.exports = function(app, db, mongoose){
 	function UpdateForm(ID, form) { 
         var deferred = q.defer();
 
-        form.delete("_id");
+        //form.delete("_id");
 
         FormModel.update({_id: ID}, {$set: form}, function(err, form) {
             if(err) {
@@ -220,14 +220,21 @@ module.exports = function(app, db, mongoose){
     
     function CreateField(formId, field) {
         var deferred = q.defer();
+        console.log("new field in form.model");
+        console.log(field);
 
         FormModel.findById(formId, function(err, form){
             if(err) {
                     deferred.reject(err);
             } else {
+                field._id = mongoose.Types.ObjectId();
+                console.log("field id in model");
+                console.log(field._id);
                 form.fields.push(field);
                 console.log("Form after adding new field");
                 console.log(form);
+                console.log("Fields after adding new field");
+                console.log(form.fields);
                 form.save(function(err, form){
                     deferred.resolve(form);
                 });

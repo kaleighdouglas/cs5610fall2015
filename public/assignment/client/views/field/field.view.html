@@ -47,8 +47,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Dropdown (Options) -->
-                    <div ng-switch-when="OPTIONS">
+                    <!-- Dropdown (Options/SELECT) -->
+                    <div ng-switch-when="SELECT">
                         <div class="form-group dropdown">
                             <label for="inputDropdown" class="col-xs-12 control-label">{{field.label}}</label>
                             <div class="col-xs-12">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <!-- Checkboxes -->
-                    <div ng-switch-when="CHECKBOXES">
+                    <div ng-switch-when="CHECKBOX">
                         <div class="form-group">
                             <label for="checkbox" class="col-xs-12 control-label">{{field.label}}</label>
                             <div class="col-xs-6">
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <!-- Radios -->
-                    <div ng-switch-when="RADIOS">
+                    <div ng-switch-when="RADIO">
                         <div class="form-group">
                             <label for="radio" class="col-xs-12 control-label">{{field.label}}</label>
                             <div class="col-xs-6">
@@ -83,6 +83,15 @@
                                 </div>
                             </div>         
                         </div> 
+                    </div>
+                    <!-- Email -->
+                    <div ng-switch-when="EMAIL">
+                        <div class="form-group">  
+                            <label for="inputEmail" class="col-xs-12 control-label">{{field.label}}</label>
+                            <div class="col-xs-12">
+                                <input type="email" class="form-control" id="inputEmail" placeholder={{field.placeholder}}>
+                            </div>
+                        </div>
                     </div>
                 </td>
    
@@ -112,9 +121,9 @@
                                 <option value="TEXT" selected="selected">Single Line Text</option>
                                 <option value="TEXTAREA">Multi Line Text</option>
                                 <option value="DATE">Date</option>
-                                <option value="OPTIONS">Dropdown</option>
-                                <option value="CHECKBOXES">Checkboxes</option>
-                                <option value="RADIOS">Radio Buttons</option>
+                                <option value="SELECT">Dropdown</option>
+                                <option value="CHECKBOX">Checkboxes</option>
+                                <option value="RADIO">Radio Buttons</option>
                             </select>
                         </div>
                     </div>
