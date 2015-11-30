@@ -49,8 +49,13 @@
 			}; 
 
 			UserService.updateUser(currentUser._id, revisedUser).then(function(response){
-				$rootScope.user = response;
-				$location.path("/profile");
+				console.log(response);
+				UserService.findUserById(currentUser._id).then(function(response){
+					$rootScope.user = response;
+					console.log("updated user");
+					console.log(response);
+					$location.path("/profile");
+				})
 			});	
 		}
 	}

@@ -14,9 +14,12 @@
 	  
 		function login(userName, userPassword) {
 			UserService.findUserByUsernameAndPassword(userName, userPassword).then(function(response){
-				$rootScope.user = response;    // Should use if possibleUser != null?
-				$location.path("/profile");
-				
+				if(response == null) {
+					alert("invalid username / password combination");
+				} else {
+					$rootScope.user = response;    // Should use if possibleUser != null?
+					$location.path("/profile");
+				}	
 			});
 		}	   
 		   

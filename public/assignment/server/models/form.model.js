@@ -21,16 +21,6 @@ module.exports = function(app, db, mongoose){
     };
     return api;
 	
-    
- /*   function guid() {
-        function s4() {
-            return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-        }
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-            s4() + '-' + s4() + s4() + s4();
-    } */
 	
 	function CreateForm(userId, form) {
         form["userId"] = userId;
@@ -85,7 +75,7 @@ module.exports = function(app, db, mongoose){
 	function FindFormByTitle(title) {
         var deferred = q.defer();
         
-        FormModel.find({title: title}, function(err, form){
+        FormModel.findOne({title: title}, function(err, form){
             if(err) {
                 deferred.reject(err);
             } else {

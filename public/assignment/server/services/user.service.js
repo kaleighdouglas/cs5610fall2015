@@ -15,7 +15,6 @@ module.exports = function(app, model) {
 		model.Create(user).then(function(user){
 					res.json(user);
             });
-		//res.json(model.Create(user));
 	}
 	
 	function FindAll(req, res) {
@@ -29,7 +28,6 @@ module.exports = function(app, model) {
 				model.FindAll().then(function(users){
 					res.json(users);
             });
-				//res.json(model.FindAll());
 			}		
 	}
 	
@@ -39,7 +37,6 @@ module.exports = function(app, model) {
 		model.FindById(id).then(function(user){
 					res.json(user);
             });
-		//res.json(model.FindById(id));
 	}
 	
 	function findUserByUsername(req, res) {
@@ -48,7 +45,6 @@ module.exports = function(app, model) {
 		model.findUserByUsername(username).then(function(user){
 					res.json(user);
             });
-		//res.json(model.findUserByUsername(username));
 	}
 	
 	function findUserByCredentials(req, res) {
@@ -56,16 +52,14 @@ module.exports = function(app, model) {
 		model.findUserByCredentials(credentials).then(function(user){
 					res.json(user);
             });
-		//res.json(model.findUserByCredentials(credentials));
 	}
 	
 	function Update(req, res) {
 		var id = req.params.id;
 		var user = req.body;
-		model.Update(id, user).then(function(user){
-					res.json(user);
+		model.Update(id, user).then(function(status){
+					res.json(status);
             });
-		//res.json(model.Update(id, user));
 	}
 	
 	function Delete(req, res) {
@@ -73,6 +67,5 @@ module.exports = function(app, model) {
 		model.Delete(id).then(function(status){
 					res.json(status);
             });
-		//res.json(model.Delete(id));
 	}
 }
