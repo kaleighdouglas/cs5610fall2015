@@ -7,14 +7,14 @@
     function FieldService($http, $q) {
         
 
-        var service = {
+        var api = {
             createFieldForForm: createFieldForForm,
 			getFieldsForForm: getFieldsForForm,
 			getFieldForForm: getFieldForForm,
 			deleteFieldFromForm: deleteFieldFromForm,
 			updateField: updateField
         };
-        return service; 
+        return api; 
 		
 		
 		function createFieldForForm(formId, field) {

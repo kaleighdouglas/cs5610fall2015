@@ -7,14 +7,14 @@
 
     function UserService($http, $q) {
         
-        var service = {
+        var api = {
             findUserByUsernameAndPassword: findUserByUsernameAndPassword,
             findAllUsers: findAllUsers,
             createUser: createUser,
             deleteUserById: deleteUserById,
             updateUser: updateUser
         };
-        return service;
+        return api;
          
   
         function findUserByUsernameAndPassword(username, password) {

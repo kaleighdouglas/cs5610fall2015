@@ -5,19 +5,28 @@
 		.controller("ProfileController", ProfileController);
 	    
     function ProfileController($scope, $rootScope, $location, UserService) {
-		
+		var model = this;
 		$scope.$location = $location;
-		$scope.update = update;
+		model.update = update;
 		
 		// update fields to existing user
+		model.user = $rootScope.user;
+		console.log("model user in profile controller");
+		console.log(model.user);
+		
+		
 		var currentUser = $rootScope.user;
+		console.log("current user");
+		console.log(currentUser);
+		console.log("password:")
+		console.log(currentUser.password);
 		//function init() {
 			
-			$scope.userName = currentUser.username;
-			$scope.userPassword = currentUser.password;
-			$scope.userEmail = currentUser.email;
-			$scope.userFName = currentUser.firstname;
-			$scope.userLName = currentUser.lastname;
+		model.userName = currentUser.username;
+		model.userPassword = currentUser.password;
+		model.userEmail = currentUser.email;
+		model.userFName = currentUser.firstName;
+		model.userLName = currentUser.lastName;
 		//}
 		//init()
   
@@ -31,15 +40,15 @@
 			console.log("updating user...")			
 			
 			var revisedUser = {
-				"username" : $scope.userName,
-				"password"  : $scope.userPassword,
-				"email"  : $scope.userEmail,
-				"firstname" : $scope.userFName,
-				"lastname"  : $scope.userLName,
-				"id" : currentUser.id,
+				"username" : model.userName,
+				"password"  : model.userPassword,
+				"email"  : model.userEmail,
+				"firstName" : model.userFName,
+				"lastName"  : model.userLName,
+				"_id" : currentUser._id,
 			}; 
 
-			UserService.updateUser(currentUser.id, revisedUser).then(function(response){
+			UserService.updateUser(currentUser._id, revisedUser).then(function(response){
 				$rootScope.user = response;
 				$location.path("/profile");
 			});	

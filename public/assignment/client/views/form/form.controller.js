@@ -15,7 +15,9 @@
 		
 
 		var currentUser = $rootScope.user;
-		FormService.findAllFormsForUser(currentUser.id).then(function(response){
+		console.log("userId in forms controller");
+		console.log(currentUser.id);
+		FormService.findAllFormsForUser(currentUser._id).then(function(response){
 				console.log("list of forms");
 				console.log(response);
 				model.forms = response;
@@ -23,7 +25,7 @@
 		
 		
 		function addForm(formName) {
-			var userId = currentUser.id;
+			var userId = currentUser._id;
 			var newForm = {
 				"title" : formName
 			};
@@ -39,9 +41,9 @@
 		function updateForm(title) {					
 			var newForm = {
 				"title" : title,
-				"userId" : currentUser.id,	
+				"userId" : currentUser._id,	
 			};
-			FormService.updateFormById(model.form.id, newForm).then(function(response){ 
+			FormService.updateFormById(model.form._id, newForm).then(function(response){ 
 				model.forms = response;
 			});
 		}     
@@ -49,7 +51,7 @@
 		
 		function deleteForm(index) {
 			selectForm(index);
-			FormService.deleteFormById(model.form.id).then(function(response){  
+			FormService.deleteFormById(model.form._id).then(function(response){  
 				model.forms = response;
 				if (model.forms.length > index) {
 					selectForm(index);
@@ -64,7 +66,7 @@
 			$scope.selectedFormIndex = index;
 			model.form = {
 				title: model.forms[index].title,
-				id: model.forms[index].id,
+				_id: model.forms[index]._id,
 				userId: model.forms[index].userId,
 				fields: model.forms[index].fields
 			}

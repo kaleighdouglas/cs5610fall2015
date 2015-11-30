@@ -7,7 +7,7 @@
     function FormService($http, $q) {
         
 
-        var service = {
+        var api = {
             createFormForUser: createFormForUser,
             findAllFormsForUser: findAllFormsForUser,
             deleteFormById: deleteFormById,
@@ -15,7 +15,7 @@
             findFormByTitle: findFormByTitle,
         //    findFormIdByIndex: findFormIdByIndex
         };
-        return service;     
+        return api;     
         
         
         function createFormForUser(userId, form) {
