@@ -13,10 +13,10 @@
 		model.selectOption = selectOption;
 		
 		var userId = $routeParams.userId;
-		console.log("userId in procon method");
+		console.log("userId in intuition-options method");
 		console.log(userId);
 		var decisionId = $routeParams.decisionId;
-		console.log("decisionId in procon method:");
+		console.log("decisionId in intuition-options method:");
 		console.log(decisionId);
 		
 		
@@ -47,6 +47,7 @@
 		}
 		
 		function updateOption() {
+			
 			
 		}
 		

@@ -9,7 +9,7 @@
 		$scope.$location = $location;
 		model.gotoMethod = gotoMethod;
 		
-		var userId = $rootScope.user.id;
+		var userId = $rootScope.user._id;
 
 		
 		

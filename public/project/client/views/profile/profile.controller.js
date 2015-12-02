@@ -33,10 +33,10 @@
 				"email"  : userEmail,
 				"firstname" : firstName,
 				"lastname"  : lastName,
-				"id" : currentUser.id,
+				"_id" : currentUser._id,
 			}; 
 
-			UserService.updateUser(currentUser.id, revisedUser).then(function(response){
+			UserService.updateUser(currentUser._id, revisedUser).then(function(response){
 				$rootScope.user = response;
 				$location.path("/profile");
 			});	

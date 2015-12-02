@@ -1,7 +1,9 @@
-//var q = require("q");
-var users = require("./user.mock.json");
+var q = require("q");
+//var users = require("./user.mock.json");
 
-module.exports = function(app){
+module.exports = function(app, db, mongoose){
+    var DecisionUserSchema = require("./user.schema.js") (mongoose);
+    var DecisionUserModel = mongoose.model("DecisionUserModel", DecisionUserSchema);
     var api = {
 		CreateUser: CreateUser,
 		FindAllUsers: FindAllUsers,
@@ -14,7 +16,7 @@ module.exports = function(app){
     return api;
 	
     
-    function guid() {
+ /*   function guid() {
         function s4() {
             return Math.floor((1 + Math.random()) * 0x10000)
             .toString(16)
@@ -22,23 +24,64 @@ module.exports = function(app){
         }
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
             s4() + '-' + s4() + s4() + s4();
-    }
+    } */
 	
 	
 	function CreateUser(user) {
-        user["id"] = guid();
+        var deferred = q.defer();
+
+        DecisionUserModel.create(user, function(err, user) {
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(user);
+            }
+        });
+        
+        return deferred.promise;
+    }
+
+  /*      user["id"] = guid();
         users.push(user);
         console.log("user created. New user:");
         console.log(user);
         return user;
-    }
+    } */
 	
+    
 	function FindAllUsers() {
-        return users;
+        var deferred = q.defer();
+
+        DecisionUserModel.find(function(err, users){
+            if(err) {
+                console.log(err);
+                deferred.reject(err);
+            } else {
+                console.log(users);
+                deferred.resolve(users);
+            }
+        });
+
+        return deferred.promise;
     }
+  /*      return users;
+    } */
 	
-	function FindUserById(ID) {      
-       var foundUser = null
+	function FindUserById(ID) {   
+        var deferred = q.defer();
+
+        DecisionUserModel.findById(ID, function(err, user){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(user);
+            }
+        });
+
+        return deferred.promise;
+    }
+      
+ /*      var foundUser = null
         for(var i=0; i<users.length; i++) {
             var user = users[i]
             if(user.id == ID) {
@@ -46,10 +89,23 @@ module.exports = function(app){
             }
         }    
         return foundUser; 
-    }
+    } */
     
     function findUserByUsername(username) {
-        var foundUser = null
+        var deferred = q.defer();
+        
+        DecisionUserModel.findOne({username: username}, function(err, user){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(user);
+            }
+        });
+
+        return deferred.promise;
+    } 
+    
+  /*      var foundUser = null
         for(var i=0; i<users.length; i++) {
             var user = users[i]
             if(user.username == username) {
@@ -57,10 +113,27 @@ module.exports = function(app){
             }
         }
         return foundUser; 
-    }
+    } */
 	
-	function findUserByCredentials(credentials) {  // iterate over list of users to find match
-        var foundUser = null
+    
+	function findUserByCredentials(credentials) {
+        var deferred = q.defer();
+        
+        var username = credentials.username;
+        var password = credentials.password;
+        DecisionUserModel.findOne({$and : [{username: username}, {password: password}]}, function(err, user){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(user);
+            }
+        });
+
+        return deferred.promise;
+    
+    }
+
+ /*       var foundUser = null
         for(var i=0; i<users.length; i++) {
             var user = users[i]
             if(user.username == credentials.username && user.password == credentials.password) {
@@ -68,10 +141,25 @@ module.exports = function(app){
             }
         }
         return foundUser; 
-	}
+	}  */
 	
+    
 	function UpdateUser(ID, user) {
-        for(var i=0; i<users.length; i++) {
+        var deferred = q.defer();
+        //user.delete("_id");
+
+        DecisionUserModel.update({_id: ID}, {$set: user}, function(err, status) {
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(status);
+            }
+        });
+
+        return deferred.promise;
+    }   
+        
+ /*       for(var i=0; i<users.length; i++) {
             var currentUser = users[i]
             if(currentUser.id == ID) {
                 users[i] = user;
@@ -80,16 +168,29 @@ module.exports = function(app){
         console.log("updating user in model");
         console.log(user);
         return user;
-    }
+    } */
 	
 	function DeleteUser(ID) {
-        for(var i=0; i<users.length; i++) {
+        var deferred = q.defer();
+
+        DecisionUserModel.remove({_id: ID}, function(err, status) {
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(status);
+            }
+        });
+
+        return deferred.promise;
+    }
+        
+  /*      for(var i=0; i<users.length; i++) {
             var user = users[i]
             if(user.id == ID) {
                 users.splice(i, 1);
             }
         }
         return users;
-    }
+    } */
 
 };
