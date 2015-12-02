@@ -1,4 +1,4 @@
-var model = require("../models/decision.model.js")();
+//var model = require("../models/decision.model.js")();
 
 module.exports = function(app) {
 	app.post("/api/decision/:decisionId/procon", createProCon);

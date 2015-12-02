@@ -22,12 +22,12 @@
 			if(document.getElementById('RadioProCon').checked) {
 				var ProConDecision = {
 					"question" : question,
-					"methodtype": "ProCon"
+					"methodType": "ProCon"
 				}
 				DecisionService.createDecision(userId, ProConDecision).then(function(response){
 				model.decision = response;
 				console.log(response);
-				var decisionId = model.decision.id;
+				var decisionId = model.decision._id;
 				$location.path("/user/"+userId+"/decision/"+decisionId+"/ProCon");
 				});
 				
@@ -36,7 +36,7 @@
 			else if(document.getElementById('RadioGrid').checked) {
 				var GridDecision = {
 					"question" : question,
-					"methodtype": "Grid"
+					"methodType": "Grid"
 				}
 				DecisionService.createDecision(userId, GridDecision).then(function(response){
 				model.decision = response;
@@ -48,12 +48,12 @@
 			else if(document.getElementById('RadioIntuition').checked) {
 				var GuessDecision = {
 					"question" : question,
-					"methodtype": "Guess"
+					"methodType": "Guess"
 				}
 				DecisionService.createDecision(userId, GuessDecision).then(function(response){
 				model.decision = response;
 				console.log(response);
-				var decisionId = model.decision.id;
+				var decisionId = model.decision._id;
 				$location.path("/user/"+userId+"/decision/"+decisionId+"/IntuitionOptions");
 				//$location.path("/methodIntuitionOptions");
 				});

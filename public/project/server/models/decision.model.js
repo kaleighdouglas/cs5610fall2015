@@ -1,10 +1,13 @@
-var decisions = require("./decision.mock.json");
+//var decisions = require("./decision.mock.json");
+var q = require("q");
 
-module.exports = function(app){
+module.exports = function(app, db, mongoose){
+    var DecisionSchema = require("./decision.schema.js") (mongoose);
+    var DecisionModel = mongoose.model("DecisionModel", DecisionSchema);
     var api = {
 		createDecision: createDecision,
 		getAllDecisions: getAllDecisions,
-		getDecision: getDecision,
+		getDecisionById: getDecisionById,
 	//	findFormByTitle: findFormByTitle,
 		updateDecision: updateDecision,
 		deleteDecision: deleteDecision,
@@ -39,27 +42,51 @@ module.exports = function(app){
 	
 	function createDecision(userId, decision) { 
         console.log("creating new decision in decision.model");
-        decision["id"] = guid();
         decision["creatorId"] = userId;
         decision["userId"] = userId;
-        if (decision.methodtype == "ProCon") {
+        if (decision.methodType == "ProCon") {
             decision["procons"] = [];  
-        } else if (decision.methodtype == "Guess") {
+        } else if (decision.methodType == "Guess") {
             decision["options"] = []; 
-        } else if (decision.methodtype == "Grid") {
+        } else if (decision.methodType == "Grid") {
             decision["options"] = [];
             decision["attributes"] = [];
         }    
         decision["advisors"] = [];
-        console.log(decision);
+        
+        var deferred = q.defer();
+        DecisionModel.create(decision, function(err, decision) {
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(decision);
+            }
+        });
+        return deferred.promise;     
+    }
+     
+  /*      console.log(decision);
         decisions.push(decision);
         //console.log("all decisions for user");
         //console.log(decisions);
         return decision;
-    }
+    } */
 	
 	function getAllDecisions(userId) {
-        var userDecisions = []
+        var deferred = q.defer();
+        DecisionModel.find({userId: userId}, function(err, decisions) {
+            if(err) {
+                //console.log(err);
+                deferred.reject(err);
+            } else {
+                //console.log(forms);
+                deferred.resolve(decisions);
+            }
+        });
+        return deferred.promise;
+    }   
+        
+ /*       var userDecisions = []
         for(var i=0; i<decisions.length; i++) {
             var decision = decisions[i]
             if(decision.userId == userId) {
@@ -67,11 +94,23 @@ module.exports = function(app){
             }
         }
         return userDecisions;
-    }
+    } */
     
 	
-	function getDecision(ID) {
-		var foundDecision = null
+	function getDecisionById(ID) {
+        var deferred = q.defer();
+
+        DecisionModel.findById(ID, function(err, decision){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(decision);
+            }
+        });
+        return deferred.promise;
+	}
+    
+	/*	var foundDecision = null
         for(var i=0; i<decisions.length; i++) {
             var decision = decisions[i]
             if(decision.id == ID) {
@@ -79,26 +118,26 @@ module.exports = function(app){
             }
         }    
         return foundDecision; 
-	}
+	} */
 	
 /*	function findFormByTitle(title) {
-        var foundForm = null;
-        for(var i=0; i<forms.length; i++) {
-            var form = forms[i]
-            if(form.title == title) {
-                foundForm = form;
-            }
-        }    
-        return foundForm; 
     }   */
-    
-/*    function FindFormIdByIndex(index) {
-        var form = forms[index];
-        return form.id;
-    } */
+
 	
 	function updateDecision(ID, decision) { 
-        for(var i=0; i<decisions.length; i++) {
+        var deferred = q.defer();
+        //form.delete("_id");
+        DecisionModel.update({_id: ID}, {$set: decision}, function(err, status) {
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(status);
+            }
+        });
+        return deferred.promise; 
+    }
+        
+  /*      for(var i=0; i<decisions.length; i++) {
             var currentDecision = decisions[i]
             if(currentDecision.id == ID) {
                 decisions[i].question = decision.question;
@@ -107,10 +146,22 @@ module.exports = function(app){
             }
         }
         return getAllDecisions(decision.userId);
-    }
+    } */
 	
 	function deleteDecision(ID) {
-        var userId = 0;
+        var deferred = q.defer();
+
+        DecisionModel.remove({_id: ID}, function(err, status) {
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(status);
+            }
+        });
+        return deferred.promise;    
+    }
+    
+    /*    var userId = 0;
         for(var i=0; i<decisions.length; i++) {
             var decision = decisions[i]
             if(decision.id == ID) {
@@ -119,7 +170,7 @@ module.exports = function(app){
             }
         }
         return getAllDecisions(userId);
-    }
+    } */
     
     
  /////////// ProCon Functions
@@ -200,7 +251,7 @@ module.exports = function(app){
         
         console.log("Pro Con sum:");
         console.log(sum);
-        var decision = getDecision(decisionId);
+        var decision = getDecisionById(decisionId);
         var posResult = "YES!";
         var negResult = "NO";
         var undecidedResult = "Undecided. Try asking friends or using another method."

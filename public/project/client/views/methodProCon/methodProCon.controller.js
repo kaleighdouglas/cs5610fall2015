@@ -47,21 +47,21 @@
 		}
 		
 		function updateProCon(label, impact) {
-			var proconId = model.selected.id;
+			var proconId = model.selected._id;
 			var procon = {	
 				"id" : proconId,
 				"label" : label,
 				"impact": impact
 			}
 			console.log("selected procon id");
-			console.log(model.selected.id);
+			console.log(model.selected._id);
 			ProConService.updateProCon(decisionId, proconId, procon).then(function(response){
 				model.procons = response;
 			});
 		}
 		
 		function deleteProCon(procon) {
-			ProConService.deleteProCon(decisionId, procon.id).then(function(response){
+			ProConService.deleteProCon(decisionId, procon._id).then(function(response){
 				model.procons = response;
 			});
 		}
