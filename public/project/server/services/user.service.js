@@ -34,6 +34,7 @@ module.exports = function(app, model) {
 	}
 	
 	function FindUserById(req, res) {
+		console.log("findUserById in server called");
 		var id = req.params.id;
 		console.log(id);
 		model.FindUserById(id).then(function(user){

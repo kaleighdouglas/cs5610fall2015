@@ -1,6 +1,6 @@
 //var model = require("../models/decision.model.js")();
 
-module.exports = function(app) {
+module.exports = function(app, model) {
 	app.post("/api/decision/:decisionId/procon", createProCon);
 	app.get("/api/decision/:decisionId/procon", getAllProCons);
 	app.get("/api/decision/:decisionId/procon/:id", getProCon);

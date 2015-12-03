@@ -41,8 +41,9 @@
         }
         
         function findUserById(id) {
+            console.log("find user by Id called in service");
             var deferred = $q.defer();
-            $http.get("/api/user"+id)
+            $http.get("/api/user/"+id)
                 .success(function(response){
                     deferred.resolve(response);
                 });

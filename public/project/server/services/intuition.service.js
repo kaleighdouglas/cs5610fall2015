@@ -1,6 +1,6 @@
 //var model = require("../models/decision.model.js")();
 
-module.exports = function(app) {
+module.exports = function(app, model) {
 	app.post("/api/decision/:decisionId/intuition", createOption);
 	app.get("/api/decision/:decisionId/intuition", getAllOptions);
 	app.get("/api/decision/:decisionId/intuition/:id", getOption);
