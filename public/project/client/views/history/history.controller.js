@@ -95,6 +95,11 @@
 				model.decisions = response;
 				console.log("deleted decision:");
 				console.log(response);
+				
+				DecisionService.getAllDecisions(userId).then(function(response){
+				model.decisions = response;
+				});
+				
 			});
 		}
 		

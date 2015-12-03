@@ -175,8 +175,21 @@ module.exports = function(app, db, mongoose){
     
  /////////// ProCon Functions
     
-        function getAllProCons(decisionId) {   
-        var ProCons = []
+        function getAllProCons(decisionId) {  
+            var deferred = q.defer();
+
+            DecisionModel.findById(decisionId, function(err, decision){
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(decision.procons);
+                }
+            });
+            return deferred.promise;
+            
+            
+             
+ /*       var ProCons = []
         console.log("getAllProCons called");
         for(var i=0; i<decisions.length; i++) {
             var decision = decisions[i]
@@ -184,13 +197,30 @@ module.exports = function(app, db, mongoose){
                 ProCons = decision.procons;   
                 console.log("ProCons found");
                 console.log(ProCons);
-            }
+            }  
         }
-        return ProCons;
+        return ProCons;  */
     }
     
     function getProCon(decisionId, id) {  
-        var ProCons = getAllProCons(decisionId)
+        var deferred = q.defer();
+
+            DecisionModel.findById(decisionId, function(err, decision){
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    for(var i=0; i<decision.procons.length; i++) {
+                    var procon = decision.procons[i];
+                    if(procon._id == id) {
+                        deferred.resolve(procon);
+                    }
+                    }
+                }
+            });
+            return deferred.promise;
+            
+        
+ /*       var ProCons = getAllProCons(decisionId)
         var foundProCon = null
         for(var i=0; i<ProCons.length; i++) {
             var ProCon = ProCons[i]
@@ -198,12 +228,31 @@ module.exports = function(app, db, mongoose){
                 foundProCon = ProCon;
             }
         }
-        return foundProCon;
+        return foundProCon;  */
     }
     
     
-    function deleteProCon(decisionId, id) {  
-        var ProCons = getAllProCons(decisionId)
+    function deleteProCon(decisionId, id) { 
+        var deferred = q.defer();
+
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                    deferred.reject(err);
+            } else {
+                for(var i=0; i<decision.procons.length; i++) {
+                var procon = decision.procons[i]
+                if(procon.id == id) {
+                    decision.procons.splice(i, 1);
+                    decision.save(function(err, status){
+                    deferred.resolve(status);
+                });
+                }
+                }
+            }
+        });
+        return deferred.promise;
+             
+  /*      var ProCons = getAllProCons(decisionId)
         for(var i=0; i<ProCons.length; i++) {
             var ProCon = ProCons[i]
             if(ProCon.id == id) {
@@ -214,35 +263,108 @@ module.exports = function(app, db, mongoose){
         console.log(id);
         console.log("remaining ProCons:");
         console.log(ProCons);
-        return ProCons;
+        return ProCons;  */
     }
     
     function createProCon(decisionId, procon) {
         console.log("new procon in decision.models");
-        //console.log("procon:");
-        //console.log(procon);
-        //console.log("decisionId");
-        //console.log(decisionId);
-        procon["id"] = guid();
+        var deferred = q.defer();
+
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                    deferred.reject(err);
+            } else {
+                procon._id = mongoose.Types.ObjectId();
+                decision.procons.push(procon);
+                decision.save(function(err, decision){
+                    deferred.resolve(decision.procons);
+                });
+            }
+        });
+        return deferred.promise;
+        
+  /*      procon["id"] = guid();
         var ProCons = getAllProCons(decisionId);
         ProCons.push(procon);
-        return ProCons;
+        return ProCons; */
     }
   
     function updateProCon(decisionId, id, procon) {
-        var ProCons = getAllProCons(decisionId);
+        var deferred = q.defer();
+
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                for(var i=0; i<decision.procons.length; i++) {
+                if(decision.procons[i]._id == id) {
+                    decision.procons[i].literal = procon.literal;
+                    decision.save(function(err, status){
+                        deferred.resolve(status);
+                    });
+                }
+                }
+            }   
+        });
+        return deferred.promise;
+        
+  /*      var ProCons = getAllProCons(decisionId);
         for(var i=0; i<ProCons.length; i++) {
             var currentProCon = ProCons[i]
             if(currentProCon.id == id) {
                 ProCons[i] = procon;
             }
         }
-        return ProCons;
+        return ProCons; */
     }
     
     function getProConResult(decisionId) {
         console.log("ProCon Result in Model");
-        var ProCons = getAllProCons(decisionId);
+        var deferred = q.defer();
+
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                console.log("err on first function");
+                deferred.reject(err);
+            } else {
+                console.log("entered else");
+                var sum = 0;
+                for(var i=0; i<decision.procons.length; i++) {
+                    var currentProCon = decision.procons[i]
+                    sum = sum + currentProCon.impact;
+                    console.log("result sum");
+                    console.log(sum);
+                }
+                DecisionModel.findById(decisionId, function(err, decision){
+                if(err) {
+                    console.log(err);
+                    deferred.reject(err);
+                } else {
+                    var posResult = "YES!";
+                    var negResult = "NO";
+                    var undecidedResult = "Undecided. Try asking friends or using another method."
+                    if (sum > 0) {
+                        decision["myDecision"] = posResult;
+                    } else if(sum < 0) {
+                        decision["myDecision"] = negResult;
+                    } else {
+                        decision["myDecision"] = undecidedResult;
+                    }
+                    decision["finalDecision"] = decision["myDecision"];
+                    
+                    console.log("finalDecision");
+                    console.log(decision.finalDecision);
+                    decision.save(function(err, decision){
+                        deferred.resolve(decision);
+                    });
+                }
+                });
+            }
+        });
+        return deferred.promise;
+       
+        
+   /*     var ProCons = getAllProCons(decisionId);
         var sum = 0;
         for(var i=0; i<ProCons.length; i++) {
             var currentProCon = ProCons[i]
@@ -265,13 +387,29 @@ module.exports = function(app, db, mongoose){
         decision["finalDecision"] = decision["myDecision"];
         console.log("my decision");
         console.log(decision.myDecision);
-        return decision;
+        return decision;   */
     }
     
     
 /////// Intuition Functions
     function createOption(decisionId, option) {
-        console.log("decisionId in createOption function in model");
+        console.log("new option in decision.models");
+        var deferred = q.defer();
+
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                    deferred.reject(err);
+            } else {
+                option._id = mongoose.Types.ObjectId();
+                decision.options.push(option);
+                decision.save(function(err, decision){
+                    deferred.resolve(decision.options);
+                });
+            }
+        });
+        return deferred.promise;
+            
+  /*      console.log("decisionId in createOption function in model");
         console.log(decisionId);
         option["id"] = guid();
         var Options = getAllOptions(decisionId);
@@ -280,11 +418,22 @@ module.exports = function(app, db, mongoose){
         Options.push(option);
         console.log("all options after adding new");
         console.log(Options);
-        return Options;
+        return Options;  */
     }
     
     function getAllOptions(decisionId) {
-        var Options = []
+        var deferred = q.defer();
+
+            DecisionModel.findById(decisionId, function(err, decision){
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(decision.options);
+                }
+            });
+            return deferred.promise;
+         
+  /*      var Options = []
         for(var i=0; i<decisions.length; i++) {
             var decision = decisions[i]
             if(decision.id == decisionId) {
@@ -293,22 +442,74 @@ module.exports = function(app, db, mongoose){
                 Options = decision.options;   
             }
         }
-        return Options;
+        return Options; */
     }
     
-    function getOption() {
+    
+    function getOption(decisionId, id) {
+        var deferred = q.defer();
+
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                for(var i=0; i<decision.options.length; i++) {
+                var option = decision.options[i];
+                if(option._id == id) {
+                    deferred.resolve(option);
+                }
+                }
+            }
+        });
+        return deferred.promise;
     }
     
-    function getIntuitionResult() {
-        
+    
+    function getIntuitionResult(decisionId) {   //Incomplete
+        console.log("Guess Result in Model");
     }
     
-    function updateOption() {
-        
+    
+    function updateOption(decisionId, id, option) {
+        var deferred = q.defer();
+
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                for(var i=0; i<decision.options.length; i++) {
+                if(decision.options[i]._id == id) {
+                    decision.options[i].literal = option.literal;
+                    decision.save(function(err, status){
+                        deferred.resolve(status);
+                    });
+                }
+                }
+            }   
+        });
+        return deferred.promise;
     }
     
-    function deleteOption() {
-        
+    
+    function deleteOption(decisionId, id) {
+        var deferred = q.defer();
+
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                    deferred.reject(err);
+            } else {
+                for(var i=0; i<decision.options.length; i++) {
+                var option = decision.options[i]
+                if(option.id == id) {
+                    decision.options.splice(i, 1);
+                    decision.save(function(err, status){
+                    deferred.resolve(status);
+                });
+                }
+                }
+            }
+        });
+        return deferred.promise;
     }
 	
 };

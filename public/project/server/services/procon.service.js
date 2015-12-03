@@ -13,36 +13,54 @@ module.exports = function(app, model) {
 		//console.log("create procon in procon.service");
 		var decisionId = req.params.decisionId;
 		var procon = req.body;
-		res.json(model.createProCon(decisionId, procon));
+		model.createProCon(decisionId, procon).then(function(procons){
+			res.json(procons);
+            });
+		//res.json(model.createProCon(decisionId, procon));
 	}
 	
 	function getAllProCons(req, res) {
 		var decisionId = req.params.decisionId;
-		res.json(model.getAllProCons(decisionId));		
+		model.getAllProCons(decisionId).then(function(procons){
+			res.json(procons);
+            });
+		//res.json(model.getAllProCons(decisionId));		
 	}
 	
 	function getProCon(req, res) {
 		var decisionId = req.params.decisionId;
 		var id = req.params.id;
-		res.json(model.getProCon(decisionId, id));
+		model.getProCon(decisionId, id).then(function(procon){
+			res.json(procon);
+            });
+		//res.json(model.getProCon(decisionId, id));
 	}
 	
 	function getProConResult(req, res) {
 		console.log("getting procon result in procon.service");
 		var decisionId = req.params.decisionId;
-		res.json(model.getProConResult(decisionId));
+		model.getProConResult(decisionId).then(function(result){
+			res.json(result);
+            });
+		//res.json(model.getProConResult(decisionId));
 	}
 	
 	function updateProCon(req, res) {
 		var decisionId = req.params.decisionId;
 		var id = req.params.id;
 		var procon = req.body;
-		res.json(model.updateProCon(decisionId, id, procon));
+		model.updateProCon(decisionId, id, procon).then(function(status){
+					res.json(status);
+            });
+		//res.json(model.updateProCon(decisionId, id, procon));
 	}
 	
 	function deleteProCon(req, res) {
 		var decisionId = req.params.decisionId;
 		var id = req.params.id;
-		res.json(model.deleteProCon(decisionId, id));
+		model.deleteProCon(decisionId, id).then(function(status){
+					res.json(status);
+            });
+		//res.json(model.deleteProCon(decisionId, id));
 	}
 }

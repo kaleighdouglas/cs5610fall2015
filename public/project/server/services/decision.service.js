@@ -21,7 +21,7 @@ module.exports = function(app, model) {
 	function getAllDecisions(req, res) {
 		var userId = req.params.userId;
 		model.getAllDecisions(userId).then(function(decisions){
-			console.log("finding all users from service");
+			console.log("finding all decisions from service");
 			console.log(decisions);
 			res.json(decisions);
             });

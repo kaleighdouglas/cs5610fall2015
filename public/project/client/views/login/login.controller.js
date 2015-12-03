@@ -12,11 +12,15 @@
 	    
 		function login(username, userPassword) {
 			UserService.findUserByUsernameAndPassword(username, userPassword).then(function(response){
-				$rootScope.user = response; 
-				console.log("user login");
-				console.log(response);
-				$location.path("/question");
-				
+				if(response == null) {
+					model.loginMessage = "-- Invalid username/password combination. Please try again. --"
+					//alert("-- Invalid username / password combination. Please try again. --");
+				} else {
+					$rootScope.user = response; 
+					console.log("user login");
+					console.log(response);
+					$location.path("/question");
+				}
 			});
 	/*		if (possibleUser != null) {
 				$rootScope.user = possibleUser

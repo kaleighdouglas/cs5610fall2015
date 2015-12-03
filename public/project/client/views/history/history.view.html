@@ -12,10 +12,34 @@
 		</div>  -->
 
 
-		<div class="ui-widget">
-			<label for="questionSearch">Search by Question: </label>
-			<input id="questionSearch"></input>  <!-- ng-model="model.question" -->
+<!--		<div class="ui-widget">
+			<h4>Search by Question:</h4> -->
+		<div class="row">
+			<div class="col-xs-8">
+		<!--		<label for="questionSearch" class="col-xs-4">Search by Question: </label>  -->
+				<input type="text" class="form-control" ng-model="model.question" id="questionSearch"></input>  <!--  -->
+			</div>
+			<div class="col-xs-4">
+				<button ng-click="model.searchByQuestion(model.question)" class= "btn btn-default btn-colorful btn-block" role="button">Search By Question</button>
+			</div>	
 		</div>
+		
+		<div class="row">
+			&nbsp
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12">
+				<button ng-click="model.decisionDetails(decision)" class="btn-link btn-block" role="button">{{decision.question}}</button>
+			</div>
+		</div>
+		
+		<div class="row">
+			&nbsp
+		</div>
+<!--		</div>   -->
+		
+		
 
 
 		   

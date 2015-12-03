@@ -73,6 +73,7 @@
             var deferred = $q.defer();
             $http.get("/api/decision/"+decisionId+"/proconResult")
                 .success(function(response){
+                    console.log(response);
                     deferred.resolve(response);
                 });
                 

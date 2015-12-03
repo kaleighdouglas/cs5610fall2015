@@ -10,39 +10,56 @@ module.exports = function(app, model) {
 	
 	
 	function createOption(req, res) {
-		//console.log("create procon in procon.service");
 		var decisionId = req.params.decisionId;
 		var option = req.body;
-		res.json(model.createOption(decisionId, option));
+		model.createOption(decisionId, option).then(function(options){
+			res.json(options);
+            });
+		//res.json(model.createOption(decisionId, option));
 	}
 	
 	function getAllOptions(req, res) {
 		var decisionId = req.params.decisionId;
-		res.json(model.getAllOptions(decisionId));		
+		model.getAllOptions(decisionId).then(function(options){
+			res.json(options);
+            });
+		//res.json(model.getAllOptions(decisionId));		
 	}
 	
 	function getOption(req, res) {
 		var decisionId = req.params.decisionId;
 		var id = req.params.id;
-		res.json(model.getOption(decisionId, id));
+		model.getOption(decisionId, id).then(function(option){
+			res.json(option);
+            });
+		//res.json(model.getOption(decisionId, id));
 	}
 	
 	function getIntuitionResult(req, res) {
 		console.log("getting intuition result in procon.service");
 		var decisionId = req.params.decisionId;
-		res.json(model.getIntuitionResult(decisionId));
+		model.getIntuitionResult(decisionId).then(function(result){
+			res.json(result);
+            });
+		//res.json(model.getIntuitionResult(decisionId));
 	}
 	
 	function updateOption(req, res) {
 		var decisionId = req.params.decisionId;
 		var id = req.params.id;
 		var option = req.body;
-		res.json(model.updateOption(decisionId, id, option));
+		model.updateProCon(decisionId, id, option).then(function(status){
+					res.json(status);
+            });
+		//res.json(model.updateOption(decisionId, id, option));
 	}
 	
 	function deleteOption(req, res) {
 		var decisionId = req.params.decisionId;
 		var id = req.params.id;
-		res.json(model.deleteOption(decisionId, id));
+		model.deleteOption(decisionId, id).then(function(status){
+					res.json(status);
+            });
+		//res.json(model.deleteOption(decisionId, id));
 	}
 }

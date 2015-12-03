@@ -22,6 +22,7 @@
 		//console.log(decisionId);
 		
 		function init() {
+			console.log("proCon Init function");
 			DecisionService.getDecision(decisionId).then(function(response){
 				model.decision = response;
 			});
@@ -56,13 +57,22 @@
 			console.log("selected procon id");
 			console.log(model.selected._id);
 			ProConService.updateProCon(decisionId, proconId, procon).then(function(response){
+				console.log("update procon response");
+				console.log(response);
+				
+				ProConService.getAllProCons(decisionId).then(function(response){
 				model.procons = response;
+				});
 			});
 		}
 		
 		function deleteProCon(procon) {
 			ProConService.deleteProCon(decisionId, procon._id).then(function(response){
+				console.log(response);
+				
+				ProConService.getAllProCons(decisionId).then(function(response){
 				model.procons = response;
+				});
 			});
 		}
 		
