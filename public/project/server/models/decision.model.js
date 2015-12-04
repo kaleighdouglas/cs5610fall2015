@@ -30,15 +30,6 @@ module.exports = function(app, db, mongoose){
     };
     return api;
     
-    function guid() {
-        function s4() {
-            return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-        }
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-            s4() + '-' + s4() + s4() + s4();
-    }
 	
 	function createDecision(userId, decision) { 
         console.log("creating new decision in decision.model");
@@ -126,7 +117,8 @@ module.exports = function(app, db, mongoose){
 	
 	function updateDecision(ID, decision) { 
         var deferred = q.defer();
-        decision.delete("_id");
+        delete decision["_id"];
+        
         DecisionModel.update({_id: ID}, {$set: decision}, function(err, status) {
             if(err) {
                 deferred.reject(err);
@@ -135,18 +127,8 @@ module.exports = function(app, db, mongoose){
             }
         });
         return deferred.promise; 
-    }
-        
-  /*      for(var i=0; i<decisions.length; i++) {
-            var currentDecision = decisions[i]
-            if(currentDecision.id == ID) {
-                decisions[i].question = decision.question;
-                console.log("decision being updated in model: ");
-                console.log(decision); 
-            }
         }
-        return getAllDecisions(decision.userId);
-    } */
+        
 	
 	function deleteDecision(ID) {
         var deferred = q.defer();

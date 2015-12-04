@@ -8,6 +8,7 @@
 		
 		$scope.$location = $location;
 		var model = this;
+		model.submitDecision = submitDecision;
 		
 		var userId = $routeParams.userId;
 		console.log("userId in intuition method");
@@ -32,7 +33,26 @@
 		}
 		init()
 		
-
+		function submitDecision() {
+			for(var i=0; i<model.options.length; i++) {
+				if(document.getElementById(model.options[i].label).checked) {
+					console.log("checked radio");
+					console.log(model.options[i].label);
+					model.decision.myDecision = model.options[i].label;
+					model.decision.finalDecision = model.options[i].label;
+					//console.log(model.decision);
+					DecisionService.updateDecision(decisionId, model.decision).then(function(response){
+						console.log("update decision response");
+						console.log(response);
+				
+						DecisionService.getDecision(decisionId).then(function(response){
+						model.decision = response;
+						console.log(model.decision);
+						});
+					});
+				}
+			}
+		}
 		
 /*		function callback(value) {
             console.log(value);
