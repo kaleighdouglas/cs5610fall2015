@@ -39,14 +39,14 @@
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input ng-model="optionName" type="text" class="form-control" placeholder="Option Name">
+							<input ng-model="model.selected.label" type="text" class="form-control" placeholder="Option Name">
 						</div>
 					</div>
 				</td>
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input ng-model="optionDescription" type="text" class="form-control" placeholder="About This Option">
+							<input ng-model="model.selected.description" type="text" class="form-control" placeholder="About This Option">
 							<!-- <input type="image" class="form-control" id="inputOptionImage">  -->
 						</div>
 					</div>
@@ -54,13 +54,13 @@
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input ng-model="optionURL" type="url" class="form-control" placeholder="http://www.google.com">
+							<input ng-model="model.selected.url" type="url" class="form-control" placeholder="http://www.google.com">
 						</div>
 					</div>
 				</td>
 				<td>
-					<button ng-click="model.createOption(optionName, optionDescription, optionURL)" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
-					<button ng-click="model.updateOption(optionName, optionDescription, optionURL)" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
+					<button ng-click="model.createOption(model.selected.label, model.selected.description, model.selected.url)" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
+					<button ng-click="model.updateOption(model.selected.label, model.selected.description, model.selected.url)" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
 				</td>
 			</tr>
 			</thead>
@@ -77,15 +77,15 @@
 			
 			
 						<!-- Example Question 1 -->
-			<tr ng-repeat="option in model.options">
+			<tr ng-repeat="option in model.options" ng-class="{'success' : option == model.selected}">
 				<td>{{option.label}}</td>
 				<td>{{option.description}}</td>
 				<td>
 					<button type="button" class="btn btn-link">{{option.url}}</button>
 				</td>
 				<td>
-					<button ng-click="model.deleteOption(option)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-					<button ng-click="model.selectOption(option)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
+					<button ng-click="model.selectOption(option)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button ng-click="model.deleteOption(option)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
 				</td>
 			</tr>
 			<!-- Example Question 2 

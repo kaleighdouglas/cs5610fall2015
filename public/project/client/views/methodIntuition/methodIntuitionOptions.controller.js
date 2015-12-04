@@ -6,7 +6,6 @@
 	    
     function MethodIntuitionOptionsController($routeParams, DecisionService, IntuitionService) {  //$scope, $rootScope, $location,
 		var model = this;
-		model.create
 		model.createOption = createOption;
 		model.updateOption = updateOption;
 		model.deleteOption = deleteOption;
@@ -43,20 +42,49 @@
 				model.options = response;
 				console.log("options returned to controller:");
 				console.log(response);
+				model.selected = null;
 				});
 		}
 		
-		function updateOption() {
-			
-			
+		function updateOption(name, description, url) {
+			var optionId = model.selected._id;
+			var option = {	
+				"_id" : optionId,
+				"label" : name,
+				"description": description,
+				"url" : url
+			}
+			console.log("selected option id");
+			console.log(model.selected._id);
+			IntuitionService.updateOption(decisionId, optionId, option).then(function(response){
+				console.log("update option response");
+				console.log(response);
+				
+				IntuitionService.getAllOptions(decisionId).then(function(response){
+				model.options = response;
+				});
+			});
 		}
 		
-		function deleteOption() {
-			
+		function deleteOption(option) {
+			IntuitionService.deleteOption(decisionId, option._id).then(function(response){
+				console.log(response);
+				
+				IntuitionService.getAllOptions(decisionId).then(function(response){
+				model.options = response;
+				model.selected = null;
+				});
+			});
 		}
 		
-		function selectOption() {
-			
+		function selectOption(option) {
+			if(option == model.selected){
+				model.selected = null;
+			} else{
+				model.selected = option;
+				console.log("selected Option:");
+				console.log(option);
+			}
 		}
 		
 		
