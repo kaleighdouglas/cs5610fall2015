@@ -126,7 +126,7 @@ module.exports = function(app, db, mongoose){
 	
 	function updateDecision(ID, decision) { 
         var deferred = q.defer();
-        //form.delete("_id");
+        decision.delete("_id");
         DecisionModel.update({_id: ID}, {$set: decision}, function(err, status) {
             if(err) {
                 deferred.reject(err);
@@ -291,6 +291,10 @@ module.exports = function(app, db, mongoose){
   
     function updateProCon(decisionId, id, procon) {
         var deferred = q.defer();
+        console.log("new version of procon being updated");
+        console.log(procon);
+        console.log("id being passed into updateProCon in model");
+        console.log(id);
 
         DecisionModel.findById(decisionId, function(err, decision){
             if(err) {
@@ -298,9 +302,15 @@ module.exports = function(app, db, mongoose){
             } else {
                 for(var i=0; i<decision.procons.length; i++) {
                 if(decision.procons[i]._id == id) {
+                    console.log("procon");
+                    console.log(procon);
                     decision.procons[i].literal = procon.literal;
-                    decision.save(function(err, status){
-                        deferred.resolve(status);
+                    console.log("procons list updated")
+                    console.log(decision.procons);
+                    decision.save(function(err, decision){
+                        console.log("decision saved");
+                        console.log(decision);
+                        deferred.resolve(decision);
                     });
                 }
                 }

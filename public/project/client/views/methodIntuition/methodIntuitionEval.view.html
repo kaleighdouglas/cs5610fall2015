@@ -1,5 +1,5 @@
 
-<div ng-controller="MethodIntuitionEvalController">
+<div ng-controller="MethodIntuitionEvalController as model">
 	
 	<div class="table-responsive">
 		
@@ -16,25 +16,108 @@
 		<h3 class="text-center"> Question : Where should we go for dinner? </h3>
 		<h4 class="page-header text-center"> Intuition Method </h4>    
 		
-		<!-- Inner Tabs -->
+		<!-- Inner Tabs
 		<ul class="nav nav-tabs">
 			<li role="presentation"><a href="#/methodIntuitionOptions">Options</a></li>
 			<li role="presentation" class="active"><a href="">Evaluation</a></li>
-		</ul>     
+		</ul>       -->
 		
 		<div class="panel panel-default"> 
+		<div class="panel-heading">
+			Choose One:
+		</div>
 		<div class="panel-body">
 		
+		<div class="table-responsive">
+			<table class="table">   <!-- nbsp -->
+				<thead>
+					<tr>
+						<th>&nbsp</th>
+						<th>Option</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr ng-repeat="option in model.options">
+						<td class="radio col-xs-2" align="right">
+							<input type="radio" name="optionsRadios" id={{option.label}}>
+						</td>
+						<td>
+							<a ng-href="{{option.url}}" target="_blank" class="btn" role="button">{{option.label}}</a>
+						</td>
+						<td>
+							<p>{{option.description}}</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		
-		<div class="container-fluid"
+		
+
+                
+		<!-- Nav Buttons -->
+		
+		<div class="row">
+			<div class="col-xs-12">
+				<button ng-click="model.submitDecision()" ng-hide="model.decision.myDecision" class="btn btn-default btn-colorful btn-block" role="button"> Submit Your Decision</button>
+			</div>
+		</div>
+		
+		<div clas="row">
+			<h4 class="text-center" ng-show="model.decision.myDecision">My Decision: {{model.decision.myDecision}}</h4>
+		</div>
+		
+		<div class="row button col-xs-12">
+			<div class="col-sm-4 text-center">
+				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/IntuitionOptions" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Options</a>
+			</div>
+			
+			<div class="col-sm-4 text-center">
+				<button ng-click="model.submitDecision()" ng-show="model.decision.myDecision" class="btn btn-default btn-sm" role="button"> Resubmit Your Decision</button>
+			</div>
+			
+			<div class=" col-sm-4 text-center">
+				<a href="#/advice" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
+			<!--		<button ng-click="register()" btn-default>Register</button>  -->
+			</div>
+		</div>
+		
+		
+			
+			
+		<!-- Next Button 
+			
+		<div class="row col-xl-10 text-center">
+			<a href="#/advice" class="btn btn-default" role="button"> Next : Get More Opinions</a>
+		</div>   -->
+			
+		</div>		
+		</div>                        
+	</div>
+	</div>
+	</div>
+</div>
+
+
+
+
+
+		
+		
+		
+		
+		
+		
      
-			<!-- Options -->
+			<!-- Options
 			<div class="row col-xl-12">              
 				<form>
 					<div class="form-group">
 						<label for="radio" class="col-xs-12" control-label">Choose One:</label>
 						<div class="col-xs-12">
-							<!-- Option 1 -->
+							<!-- Option 1 
 							<div class="row">
 								<div class="radio col-xs-2" align="right">
 									<input type="radio" name="optionsRadios" id="optionsRadiosC1" value="option1" checked>
@@ -52,7 +135,7 @@
 								</div>
 							</div>
 						
-							<!-- Option 2 -->
+							<!-- Option 2
 							<div class="row">
 								<div class="radio col-xs-2" align="right">
 									<input type="radio" name="optionsRadios" id="optionsRadiosC2" value="option2">
@@ -70,7 +153,7 @@
 								</div>
 							</div>
 							
-							<!-- Option 3 -->
+							<!-- Option 3
 							<div class="row">
 								<div class="radio col-xs-2" align="right">
 									<input type="radio" name="optionsRadios" id="optionsRadiosC3" value="option3">
@@ -88,7 +171,7 @@
 								</div>
 							</div>
 							
-							<!-- Option 4 -->
+							<!-- Option 4
 							<div class="row">
 								<div class="radio col-xs-2" align="right">
 									<input type="radio" name="optionsRadios" id="optionsRadiosC4" value="option4">
@@ -108,25 +191,7 @@
 						</div>         
 					</div>     
 				</form> 
-			</div>
-                
-			
-			
-		<!-- Next Button -->
-			
-		<div class="row col-xl-10 text-center">
-			<a href="#/advice" class="btn btn-default" role="button"> Next : Get More Opinions</a>
-		<!--		<button ng-click="register()" btn-default>Register</button>  -->
-		</div>
-			
-	</div>		
-	</div>                        
-</div>
-
-
-
-
-
+			</div>  -->
 
 
 

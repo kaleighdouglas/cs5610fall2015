@@ -4,9 +4,35 @@
 		.module("DecisionsApp")
 		.controller("MethodIntuitionEvalController", MethodIntuitionEvalController);
 	    
-    function MethodIntuitionEvalController($scope, $rootScope, $location) {
+    function MethodIntuitionEvalController($scope, $rootScope, $location, $routeParams, DecisionService, IntuitionService) {
 		
 		$scope.$location = $location;
+		var model = this;
+		
+		var userId = $routeParams.userId;
+		console.log("userId in intuition method");
+		console.log(userId);
+		var decisionId = $routeParams.decisionId;
+		console.log("decisionId in intuition method:");
+		console.log(decisionId);
+		
+		function init() {
+			DecisionService.getDecision(decisionId).then(function(response){
+				console.log("decision");
+				console.log(response);
+				model.decision = response;
+			});
+			
+			IntuitionService.getAllOptions(decisionId).then(function(response){
+				console.log("intuition eval options");
+				console.log(response);
+				model.options = response;
+				
+			});
+		}
+		init()
+		
+
 		
 /*		function callback(value) {
             console.log(value);

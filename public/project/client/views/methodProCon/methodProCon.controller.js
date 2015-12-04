@@ -50,7 +50,7 @@
 		function updateProCon(label, impact) {
 			var proconId = model.selected._id;
 			var procon = {	
-				"id" : proconId,
+				"_id" : proconId,
 				"label" : label,
 				"impact": impact
 			}

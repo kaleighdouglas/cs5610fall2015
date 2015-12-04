@@ -14,11 +14,11 @@
 		<h3 class="text-center"> Question : {{model.decision.question}} </h3>
 		<h4 class="page-header text-center"> Intuition Method </h4>    
 		
-		<!-- Inner Tabs -->
+		<!-- Inner Tabs
 		<ul class="nav nav-tabs">
 			<li role="presentation" class="active"><a href="">Options</a></li>
 			<li role="presentation"><a href="#/methodIntuitionEval">Evaluation</a></li>
-		</ul>     
+		</ul>       -->
 		
 		<div class="panel panel-default"> 
 		<div class="panel-body">
@@ -116,12 +116,30 @@
 		</table>
 			
 			
-		<!-- Next Button -->
+			
+			
+			
+		<!-- Nav Buttons -->
+		
+		<div class="row button col-xs-12">
+			<div class="col-sm-4 text-center">
+				<a href="#/question" class="btn btn-default btn-sm btn-colorful" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Question</a>
+			</div>
+			<div class="col-sm-4 text-center">
+				&nbsp
+			</div>
+				
+			<div class=" col-sm-4 text-center">
+				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/IntuitionEval" class="btn btn-default btn-sm btn-colorful" role="button"><span class="glyphicon glyphicon-arrow-right"></span> Submit Your Opinion</a>
+			</div>	
+		</div>
+		
+			
+		<!-- Next Button
 			
 		<div class="text-center">
-			<a href="#/methodIntuitionEval" class="btn btn-default" role="button"> Next : Submit Your Opinion</a>
-		<!--		<button ng-click="register()" btn-default>Register</button>  -->
-		</div>
+			<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/IntuitionEval" class="btn btn-default" role="button"> Next : Submit Your Opinion</a>
+		</div>  -->
 			
 			
 	</div>                        
