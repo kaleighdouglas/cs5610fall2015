@@ -1,6 +1,6 @@
 //var model = require("../models/user.model.js")();
 
-module.exports = function(app, model) {
+module.exports = function(app, model, passport, GoogleStrategy, googleCredentials) {
 	app.post("/api/user", CreateUser);
 	app.get("/api/user", FindAllUsers);
 	app.get("/api/user/:id", FindUserById);
@@ -8,6 +8,78 @@ module.exports = function(app, model) {
 	app.get("/api/user?username=username&password=password", findUserByCredentials);
 	app.put("/api/user/:id", UpdateUser);
 	app.delete("/api/user/:id", DeleteUser);
+	
+	
+	passport.serializeUser(function (user, done){
+		console.log("serializeUser");
+		console.log(user);
+		done(null, user);
+	});
+	
+	passport.deserializeUser(function (obj, done){
+		model  //
+			.findById(obj._id)
+			.then(function(user){
+				done(null, user);
+			});
+	});
+	
+	passport.use(new GoogleStrategy({
+		clientID: googleCredentials.clientId,
+		clientSecret: googleCredentials.clientSecret,
+		callbackURL: "http://127.0.0.1:3000/auth/google/callback"
+		},
+		function(accessToken, refreshToken, profile, done){
+			process.nextTick(function() {
+				console.log(accessToken);
+				console.log(refreshToken);
+				console.log(profile);
+				model  //
+					.CreateGoogleUser(profile)
+					.then(function(user){
+						return done(null, user);
+					});
+			});
+		}
+	));
+	
+	app.get('/login', function(req, res){
+		res.render('login', { user: req.user });
+	});
+	
+	app.get("/auth/google",
+		passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/contacts.readonly']}),
+		function(req, res){	
+	});
+	
+	app.get('/auth/google/callback', 
+		passport.authenticate('google', { failureRedirect: '/#/login' }),
+		function(req, res) {
+			res.redirect('/project/client/index.html#/home');
+	});
+		
+	app.get('/logout', function(req, res){
+		req.logout();
+		res.redirect('/');
+	});
+		
+	app.get('loggedin', function(req, res){
+		if (req.isAuthenticated()){
+			model  //
+				.findById(req.user._id)
+				.then(function(user){
+					res.json(user);
+				});
+		} else {
+			res.send('0');
+		}
+	});
+
+	
+	
+	
+	
+	
 	
 	
 	function CreateUser(req, res) {

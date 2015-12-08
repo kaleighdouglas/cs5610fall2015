@@ -56,12 +56,6 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;     
     }
      
-  /*      console.log(decision);
-        decisions.push(decision);
-        //console.log("all decisions for user");
-        //console.log(decisions);
-        return decision;
-    } */
 	
 	function getAllDecisions(userId) {
         var deferred = q.defer();
@@ -76,16 +70,6 @@ module.exports = function(app, db, mongoose){
         });
         return deferred.promise;
     }   
-        
- /*       var userDecisions = []
-        for(var i=0; i<decisions.length; i++) {
-            var decision = decisions[i]
-            if(decision.userId == userId) {
-                userDecisions.push(decision);
-            }
-        }
-        return userDecisions;
-    } */
     
 	
 	function getDecisionById(ID) {
@@ -101,19 +85,6 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;
 	}
     
-	/*	var foundDecision = null
-        for(var i=0; i<decisions.length; i++) {
-            var decision = decisions[i]
-            if(decision.id == ID) {
-                foundDecision = decision;
-            }
-        }    
-        return foundDecision; 
-	} */
-	
-/*	function findFormByTitle(title) {
-    }   */
-
 	
 	function updateDecision(ID, decision) { 
         var deferred = q.defer();
@@ -143,17 +114,6 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;    
     }
     
-    /*    var userId = 0;
-        for(var i=0; i<decisions.length; i++) {
-            var decision = decisions[i]
-            if(decision.id == ID) {
-                userId = decision.userId;
-                decisions.splice(i, 1);
-            }
-        }
-        return getAllDecisions(userId);
-    } */
-    
     
  /////////// ProCon Functions
     
@@ -168,21 +128,8 @@ module.exports = function(app, db, mongoose){
                 }
             });
             return deferred.promise;
-            
-            
-             
- /*       var ProCons = []
-        console.log("getAllProCons called");
-        for(var i=0; i<decisions.length; i++) {
-            var decision = decisions[i]
-            if(decision.id == decisionId) {
-                ProCons = decision.procons;   
-                console.log("ProCons found");
-                console.log(ProCons);
-            }  
-        }
-        return ProCons;  */
     }
+    
     
     function getProCon(decisionId, id) {  
         var deferred = q.defer();
@@ -200,17 +147,6 @@ module.exports = function(app, db, mongoose){
                 }
             });
             return deferred.promise;
-            
-        
- /*       var ProCons = getAllProCons(decisionId)
-        var foundProCon = null
-        for(var i=0; i<ProCons.length; i++) {
-            var ProCon = ProCons[i]
-            if(ProCon.id == id) {
-                foundProCon = ProCon;
-            }
-        }
-        return foundProCon;  */
     }
     
     
@@ -233,20 +169,8 @@ module.exports = function(app, db, mongoose){
             }
         });
         return deferred.promise;
-             
-  /*      var ProCons = getAllProCons(decisionId)
-        for(var i=0; i<ProCons.length; i++) {
-            var ProCon = ProCons[i]
-            if(ProCon.id == id) {
-                ProCons.splice(i, 1);
-            }
-        }
-        console.log("deleting procon with id:");
-        console.log(id);
-        console.log("remaining ProCons:");
-        console.log(ProCons);
-        return ProCons;  */
     }
+    
     
     function createProCon(decisionId, procon) {
         console.log("new procon in decision.models");
@@ -264,19 +188,11 @@ module.exports = function(app, db, mongoose){
             }
         });
         return deferred.promise;
-        
-  /*      procon["id"] = guid();
-        var ProCons = getAllProCons(decisionId);
-        ProCons.push(procon);
-        return ProCons; */
     }
+    
   
     function updateProCon(decisionId, id, procon) {
         var deferred = q.defer();
-        console.log("new version of procon being updated");
-        console.log(procon);
-        console.log("id being passed into updateProCon in model");
-        console.log(id);
 
         DecisionModel.findById(decisionId, function(err, decision){
             if(err) {
@@ -284,14 +200,9 @@ module.exports = function(app, db, mongoose){
             } else {
                 for(var i=0; i<decision.procons.length; i++) {
                 if(decision.procons[i]._id == id) {
-                    console.log("procon");
-                    console.log(procon);
-                    decision.procons[i].literal = procon.literal;
-                    console.log("procons list updated")
-                    console.log(decision.procons);
+                    decision.procons.splice(i, 1);
+                    decision.procons.push(procon);
                     decision.save(function(err, decision){
-                        console.log("decision saved");
-                        console.log(decision);
                         deferred.resolve(decision);
                     });
                 }
@@ -299,16 +210,8 @@ module.exports = function(app, db, mongoose){
             }   
         });
         return deferred.promise;
-        
-  /*      var ProCons = getAllProCons(decisionId);
-        for(var i=0; i<ProCons.length; i++) {
-            var currentProCon = ProCons[i]
-            if(currentProCon.id == id) {
-                ProCons[i] = procon;
-            }
-        }
-        return ProCons; */
     }
+    
     
     function getProConResult(decisionId) {
         console.log("ProCon Result in Model");
@@ -400,17 +303,6 @@ module.exports = function(app, db, mongoose){
             }
         });
         return deferred.promise;
-            
-  /*      console.log("decisionId in createOption function in model");
-        console.log(decisionId);
-        option["id"] = guid();
-        var Options = getAllOptions(decisionId);
-        console.log("existing options in createOption function in model");
-        console.log(Options);
-        Options.push(option);
-        console.log("all options after adding new");
-        console.log(Options);
-        return Options;  */
     }
     
     function getAllOptions(decisionId) {
@@ -424,17 +316,6 @@ module.exports = function(app, db, mongoose){
                 }
             });
             return deferred.promise;
-         
-  /*      var Options = []
-        for(var i=0; i<decisions.length; i++) {
-            var decision = decisions[i]
-            if(decision.id == decisionId) {
-                console.log("existing options")
-                console.log(decision.options);
-                Options = decision.options;   
-            }
-        }
-        return Options; */
     }
     
     
@@ -471,7 +352,8 @@ module.exports = function(app, db, mongoose){
             } else {
                 for(var i=0; i<decision.options.length; i++) {
                 if(decision.options[i]._id == id) {
-                    decision.options[i].literal = option.literal;
+                    decision.options.splice(i, 1);
+                    decision.options.push(option);
                     decision.save(function(err, status){
                         deferred.resolve(status);
                     });

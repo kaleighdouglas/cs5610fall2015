@@ -48,7 +48,7 @@ module.exports = function(app, model) {
 		var decisionId = req.params.decisionId;
 		var id = req.params.id;
 		var option = req.body;
-		model.updateProCon(decisionId, id, option).then(function(status){
+		model.updateOption(decisionId, id, option).then(function(status){
 					res.json(status);
             });
 		//res.json(model.updateOption(decisionId, id, option));

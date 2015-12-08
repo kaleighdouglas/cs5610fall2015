@@ -54,7 +54,7 @@
 				"description": description,
 				"url" : url
 			}
-			console.log("selected option id");
+			console.log("update option id");
 			console.log(model.selected._id);
 			IntuitionService.updateOption(decisionId, optionId, option).then(function(response){
 				console.log("update option response");
@@ -62,6 +62,7 @@
 				
 				IntuitionService.getAllOptions(decisionId).then(function(response){
 				model.options = response;
+				model.selected = null;
 				});
 			});
 		}

@@ -76,7 +76,7 @@
 			</tr>   -->
 			
 			
-						<!-- Example Question 1 -->
+			<!-- Procons -->
 			<tr ng-repeat="procon in model.procons">
 				<td>{{procon.label}}</td>
 				<td>{{procon.impact}}</td>
@@ -85,6 +85,46 @@
 					<button ng-click="model.deleteProCon(procon)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
 				</td>
 			</tr>
+
+			</tbody>
+		</table>
+			
+			
+		<!--Nav Buttons -->
+		
+		<div class="row">
+			<div class="col-xs-12">
+				<button ng-click="model.calculateDecision()" ng-hide="model.decision.myDecision" class="btn btn-default btn-colorful btn-block" role="button"> Calculate Your Decision</button>
+			</div>
+		</div>
+		
+		<div clas="row">
+			<h4 class="text-center" ng-show="model.decision.myDecision">My Decision: {{model.decision.myDecision}}</h4>
+		</div>
+		
+		<div class="row button col-xs-12">
+			<div class="col-sm-4 text-center">
+				<a href="#/question" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Question</a>
+			</div>
+			
+			<div class="col-sm-4 text-center">
+				<button ng-click="model.calculateDecision()" ng-show="model.decision.myDecision" class="btn btn-default btn-sm btn-colorful" role="button"> Recalculate Your Decision</button>
+			</div>
+			
+			<div class=" col-sm-4 text-center">
+				<a href="#/advice" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
+			<!--		<button ng-click="register()" btn-default>Register</button>  -->
+			</div>
+		</div>
+			
+			
+	</div>                        
+</div>
+
+
+
+
+
 			<!-- Example Question 2 
 			<tr>
 				<td>Expensive Travel</td>
@@ -116,37 +156,3 @@
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
 				</td>
 			</tr>		 -->
-			</tbody>
-		</table>
-			
-			
-		<!--Nav Buttons -->
-		
-		<div class="row">
-			<div class="col-xs-12">
-				<button ng-click="model.calculateDecision()" ng-hide="model.decision.myDecision" class="btn btn-default btn-colorful btn-block" role="button"> Calculate Your Decision</button>
-			</div>
-		</div>
-		
-		<div clas="row">
-			<h4 class="text-center" ng-show="model.decision.myDecision">My Decision: {{model.decision.myDecision}}</h4>
-		</div>
-		
-		<div class="row button col-xs-12">
-			<div class="col-sm-4 text-center">
-				<a href="#/question" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Question</a>
-			</div>
-			
-			<div class="col-sm-4 text-center">
-				<button ng-click="model.calculateDecision()" ng-show="model.decision.myDecision" class="btn btn-default btn-sm" role="button"> Recalculate Your Decision</button>
-			</div>
-			
-			<div class=" col-sm-4 text-center">
-				<a href="#/advice" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
-			<!--		<button ng-click="register()" btn-default>Register</button>  -->
-			</div>
-		</div>
-			
-			
-	</div>                        
-</div>

@@ -5,6 +5,7 @@ module.exports = function(app, db, mongoose){
     var DecisionUserSchema = require("./user.schema.js") (mongoose);
     var DecisionUserModel = mongoose.model("DecisionUserModel", DecisionUserSchema);
     var api = {
+        CreateGoogleUser: CreateGoogleUser,
 		CreateUser: CreateUser,
 		FindAllUsers: FindAllUsers,
 		FindUserById: FindUserById,
@@ -26,6 +27,28 @@ module.exports = function(app, db, mongoose){
             s4() + '-' + s4() + s4() + s4();
     } */
 	
+    function CreateGoogleUser(googleUser){
+        var deferred = q.defer();
+        
+        DecisionUserModel.find({googleId: googleUser.id}, function(err, doc){
+            var user = null;
+            if(doc && doc.length >0){
+                user = doc[0];
+            } else{
+                user = new DecisionUserModel();
+            }
+            user.googleId = googleUser.id;
+            user.firstName = googleUser.name.givenName;
+            user.lastName = googleUser.name.familyName;
+            user.save(function(err, doc){
+                deferred.resolve(doc);
+            });
+        });
+        return deferred.promise;
+    }
+    
+    
+    
 	
 	function CreateUser(user) {
         var deferred = q.defer();
