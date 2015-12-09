@@ -15,9 +15,9 @@
 		<li ng-class="{'active' : $location.url().indexOf('question') != -1}"><a href="#/question">New Question</a></li>
 		<li ng-class="{'active' : $location.url().indexOf('history') != -1}"><a href="#/history">History</a></li>
 		<li ng-class="{'active' : $location.url().indexOf('profile') != -1}"><a href="#/profile">Profile</a></li>
-		<li ng-class="{'active' : $location.url().indexOf('register') != -1}"><a href="#/register">Register</a></li>
-<!--		<li ng-class="{'active' : $location.url().indexOf('login') != -1}"><a href="#/login">Login</a></li>  -->
-		<li ng-class="{'active' : $location.url().indexOf('login') != -1}"><a href="/auth/google">Login</a></li>
+<!--		<li ng-class="{'active' : $location.url().indexOf('register') != -1}"><a href="#/register">Register</a></li>  -->
+		<li ng-class="{'active' : $location.url().indexOf('login') != -1}"><a href="#/login">Login</a></li>  
+		<li ng-show="!user" ng-class="{'active' : $location.url().indexOf('login') != -1}"><a href="/auth/google">Login With Google</a></li>  -->
 		<li><a href="#">Logout</a></li>
 	</ul>
 </div>

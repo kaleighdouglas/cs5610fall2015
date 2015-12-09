@@ -8,8 +8,17 @@
 	  	$scope.$location = $location
 		var model = this;
 		model.login = login;
-	  	  
-	    
+		model.googleLogin = googleLogin;
+		
+			
+		function googleLogin(){
+			UserService.findGoogleUser().then(function(response){
+				console.log("getting googleuser in login controller");
+				console.log(response);
+				$rootScope.user = response;
+			})
+		};
+			
 		function login(username, userPassword) {
 			UserService.findUserByUsernameAndPassword(username, userPassword).then(function(response){
 				if(response == null) {
@@ -22,13 +31,7 @@
 					$location.path("/question");
 				}
 			});
-	/*		if (possibleUser != null) {
-				$rootScope.user = possibleUser
-				console.log("login")
-				$location.path("/profile")
-			} else {console.log("login not valid")	
-			}  */
-		} 
+		}   
 	}   
 	
 }) ();

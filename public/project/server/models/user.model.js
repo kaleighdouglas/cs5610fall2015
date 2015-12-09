@@ -40,6 +40,7 @@ module.exports = function(app, db, mongoose){
             user.googleId = googleUser.id;
             user.firstName = googleUser.name.givenName;
             user.lastName = googleUser.name.familyName;
+            //user.email = googleUser.emails[0].value;
             user.save(function(err, doc){
                 deferred.resolve(doc);
             });

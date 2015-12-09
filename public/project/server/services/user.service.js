@@ -1,6 +1,6 @@
 //var model = require("../models/user.model.js")();
 
-module.exports = function(app, model, passport, GoogleStrategy, googleCredentials) {
+module.exports = function(app, model, passport, GoogleStrategy, googleCredentials, cookieParser, session) {
 	app.post("/api/user", CreateUser);
 	app.get("/api/user", FindAllUsers);
 	app.get("/api/user/:id", FindUserById);
@@ -18,7 +18,7 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 	
 	passport.deserializeUser(function (obj, done){
 		model  //
-			.findById(obj._id)
+			.FindUserById(obj._id)  //.findById
 			.then(function(user){
 				done(null, user);
 			});
@@ -43,6 +43,14 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 		}
 	));
 	
+	app.get('/account', ensureAuthenticated, function(req, res){
+		res.render('account', {user: req.user});
+	});
+	
+	app.get('/profile', ensureAuthenticated, function(req, res){
+		res.render('profile', {user: req.user});
+	});
+	
 	app.get('/login', function(req, res){
 		res.render('login', { user: req.user });
 	});
@@ -55,7 +63,7 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 	app.get('/auth/google/callback', 
 		passport.authenticate('google', { failureRedirect: '/#/login' }),
 		function(req, res) {
-			res.redirect('/project/client/index.html#/home');
+			res.redirect('/project/client/index.html#/profile');
 	});
 		
 	app.get('/logout', function(req, res){
@@ -63,10 +71,15 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 		res.redirect('/');
 	});
 		
-	app.get('loggedin', function(req, res){
+	app.get('/loggedin', function(req, res){
+		console.log("inside loggedin function")
+		console.log(req.user);
 		if (req.isAuthenticated()){
+			console.log("inside if clause in loggedin function in user.service");
+			console.log("req.user.id");
+			console.log(req.user.id);
 			model  //
-				.findById(req.user._id)
+				.FindUserById(req.user._id)  //.findById
 				.then(function(user){
 					res.json(user);
 				});
@@ -77,7 +90,10 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 
 	
 	
-	
+	function ensureAuthenticated(req, res, next) {
+		if (req.isAuthenticated()) { return next(); }
+		res.redirect('/login');
+	}
 	
 	
 	

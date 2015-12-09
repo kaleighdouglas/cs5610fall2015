@@ -9,20 +9,27 @@
 		var model = this;
 		model.update = update;
 		
-		// update fields to existing user
-		var currentUser = $rootScope.user;
-		console.log("current user");
-		console.log(currentUser);
-		//function init() {
+		var currentUser = null;
+		
+		UserService.findGoogleUser().then(function(response){
+			console.log("getting googleuser in profile controller");
+			console.log(response);
+			$rootScope.user = response;		
 			
+			// update fields to existing user
+			currentUser = $rootScope.user;
+			console.log("current user");
+			console.log(currentUser);
+		
 			model.userName = currentUser.username;
-			model.userFName = currentUser.firstname;
-			model.userLName = currentUser.lastname;
+			model.userFName = currentUser.firstName;
+			model.userLName = currentUser.lastName;
 			model.userEmail = currentUser.email;
 			model.userPassword = currentUser.password;
-		//}
-		//init()
-  
+
+		});
+
+  		
 	  	
 		function update(userName, firstName, lastName, userEmail, userPassword) {
 			console.log("updating user...")			
@@ -31,9 +38,10 @@
 				"username" : userName,
 				"password"  : userPassword,
 				"email"  : userEmail,
-				"firstname" : firstName,
-				"lastname"  : lastName,
+				"firstName" : firstName,
+				"lastName"  : lastName,
 				"_id" : currentUser._id,
+				"googleId" : currentUser.googleId
 			}; 
 
 			UserService.updateUser(currentUser._id, revisedUser).then(function(response){

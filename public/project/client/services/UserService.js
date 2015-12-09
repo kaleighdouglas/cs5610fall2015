@@ -8,6 +8,7 @@
     function UserService($http, $q) {
         
         var service = {
+            findGoogleUser: findGoogleUser,
             findUserByUsernameAndPassword: findUserByUsernameAndPassword,
             findAllUsers: findAllUsers,
             findUserById: findUserById,
@@ -16,6 +17,17 @@
             updateUser: updateUser
         };
         return service;
+        
+        function findGoogleUser(){
+            console.log("Get GoogleUser in UserService");
+            var deferred = $q.defer();
+            $http.get("/loggedin")
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
          
   
         function findUserByUsernameAndPassword(username, password) {
