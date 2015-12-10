@@ -16,8 +16,20 @@
 		<h4 class="page-header text-center"> Weight of my opinion: 50% </h4>    
 		    
 		
-		<div class="panel panel-default"> 
-		<div class="panel-body">
+<!--		<div class="panel panel-default"> 
+		<div class="panel-body">  -->
+			
+		<div class="row search">
+			<div class="col-xs-8">
+		<!--		<label for="advisorSearch" class="col-xs-4">Search by Question: </label>  -->
+				<input type="text" class="form-control" ng-model="model.search" id="advisorSearch"></input>  <!--  -->
+			</div>
+			<div class="col-xs-4">
+				<button ng-click="model.findOneContact(model.search)" class= "btn btn-default btn-colorful btn-block" role="button">Search By Name or Email</button>
+			</div>	
+		</div>
+			
+			
 		
 		
 		<!-- Table -->
@@ -35,14 +47,14 @@
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input ng-model="model.advisorName" type="text" class="form-control" placeholder="Search by name or email">
+							<input ng-model="model.selected.name" type="text" class="form-control" placeholder="Jane Doe">
 						</div>
 					</div>
 				</td>
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input ng-model="model.advisorEmail" type="email" class="form-control" placeholder="">
+							<input ng-model="model.selected.email" type="email" class="form-control" placeholder="janedoe@xyz.com">
 						</div>
 					</div>
 				</td>
@@ -56,13 +68,13 @@
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input ng-model="model.advisorWeight" class="slider" type="range" min="0" max="100" value="50" step="1">
+							<input ng-model="model.selected.weight" class="slider" type="range" min="0" max="100" value="50" step="1">
 						</div>
 					</div>
 				</td>
 				<td>
-					<button ng-click="model.findOneContact(model.advisorName)" class="btn btn-default"><scan class="glyphicon glyphicon-search"></scan></button>
-					<button ng-click="model.addAdvisor(model.advisorName, model.advisorEmail, model.advisorWeight)" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
+				<!--	<button ng-click="model.findOneContact(model.advisorName)" class="btn btn-default"><scan class="glyphicon glyphicon-search"></scan></button>  -->
+					<button ng-click="model.addAdvisor(model.selected.name, model.selected.email, model.selected.weight)" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>	
 				</td>			
 			</tr>
@@ -80,7 +92,7 @@
 			
 			
 			<!-- Example Question 1 -->
-			<tr ng-repeat="advisor in model.advisors" ng-class="{'success' : option == model.selected}">
+			<tr ng-repeat="advisor in model.advisors" ng-class="{'success' : advisor == model.selected}">
 				<td>{{advisor.name}}</td>
 				<td>{{advisor.email}}</td>
 				<td>
@@ -91,7 +103,7 @@
 					</div>
 				</td>
 				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
+					<button ng-click="model.selectAdvisor(advisor)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
 				</td>

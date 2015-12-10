@@ -11,6 +11,10 @@
 		var currentUser = null;
 		model.findOneContact = findOneContact;
 		model.addAdvisor = addAdvisor;
+		model.selectAdvisor = selectAdvisor;
+		//model.selected.name = model.selected.name;
+		//model.selected.email = model.selected.email;
+		//model.selected.weight = model.selected.weight;
 		
 		var decisionId = $routeParams.decisionId;
 		
@@ -36,23 +40,26 @@
 		}
 		
 		function findOneContact(keyword){
-			
 			UserService.findOneContact(currentUser.email, currentUser.token, keyword).then(function(response){
 				//model.advisorName = response.feed.entry[0].gd$name.gd$fullName.$t;
 				//model.advisorEmail = response.feed.entry[0].gd$email.address;
 				if(response.gd$name.gd$fullName.$t == null){
 					console.log("contact's name could not be found, please search again")
 				} else{
-					model.advisorName = response.gd$name.gd$fullName.$t;
+					var selectedName = response.gd$name.gd$fullName.$t;
 				}
 				
 				if(response.gd$email == null){
 					console.log("contact's email could not be found, please search again")
 				} else{
-					model.advisorEmail = response.gd$email[0].address;
+					var selectedEmail = response.gd$email[0].address;
 					console.log("advisor's email");
-					console.log(model.advisorEmail);}
-				
+					console.log(selectedEmail);
+				}
+				model.selected = {
+					"name" : selectedName,
+					"email" : selectedEmail
+				}
 			});
 		}
 		
@@ -68,8 +75,28 @@
 				model.advisors = response;
 				console.log("advisors returned to controller:");
 				console.log(response);
+				model.selected = null;
 				});
 		}
+		
+		
+		
+		function selectAdvisor(advisor) {
+			if(advisor == model.selected){
+				model.selected = null;
+			} else{
+				model.selected = advisor;
+				console.log("selected Advisor:");
+				console.log(advisor);
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
 		
 /*		function callback(value) {
             console.log(value);
