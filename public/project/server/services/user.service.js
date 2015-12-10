@@ -35,7 +35,7 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 				console.log(refreshToken);
 				console.log(profile);
 				model  //
-					.CreateGoogleUser(profile)
+					.CreateGoogleUser(profile, accessToken)
 					.then(function(user){
 						return done(null, user);
 					});
@@ -56,7 +56,7 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 	});
 	
 	app.get("/auth/google",
-		passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/contacts.readonly']}),
+		passport.authenticate('google', {scope: ["https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/contacts.readonly"]}),
 		function(req, res){	
 	});
 	
@@ -68,16 +68,11 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 		
 	app.get('/logout', function(req, res){
 		req.logout();
-		res.redirect('/');
+		res.redirect('/project/client/index.html#/home');
 	});
 		
 	app.get('/loggedin', function(req, res){
-		console.log("inside loggedin function")
-		console.log(req.user);
 		if (req.isAuthenticated()){
-			console.log("inside if clause in loggedin function in user.service");
-			console.log("req.user.id");
-			console.log(req.user.id);
 			model  //
 				.FindUserById(req.user._id)  //.findById
 				.then(function(user){
@@ -94,7 +89,6 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 		if (req.isAuthenticated()) { return next(); }
 		res.redirect('/login');
 	}
-	
 	
 	
 	

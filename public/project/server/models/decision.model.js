@@ -26,7 +26,14 @@ module.exports = function(app, db, mongoose){
         getOption: getOption,
         getIntuitionResult: getIntuitionResult,
         updateOption: updateOption,
-        deleteOption: deleteOption
+        deleteOption: deleteOption,
+        
+        //Advisor Functions
+        createAdvisor: createAdvisor,
+        getAllAdvisors: getAllAdvisors,
+        getAdvisor: getAdvisor,
+        updateAdvisor: updateAdvisor,
+        deleteAdvisor: deleteAdvisor
     };
     return api;
     
@@ -384,6 +391,49 @@ module.exports = function(app, db, mongoose){
             }
         });
         return deferred.promise;
+    }
+    
+    
+    //Advisor Functions
+    function createAdvisor(decisionId, advisor){
+        console.log("new advisor in decision.model");
+        var deferred = q.defer();
+
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                    deferred.reject(err);
+            } else {
+                advisor._id = mongoose.Types.ObjectId();
+                decision.advisors.push(advisor);
+                decision.save(function(err, decision){
+                    deferred.resolve(decision.advisors);
+                });
+            }
+        });
+        return deferred.promise;
+        
+    }
+    function getAllAdvisors(decisionId){
+        var deferred = q.defer();
+    
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(decision.advisors);
+            }
+        });
+        return deferred.promise;
+        
+    }
+    function getAdvisor(){
+    }
+    
+    function updateAdvisor(){
+    }
+    
+    function deleteAdvisor(){
+        
     }
 	
 };

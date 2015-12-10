@@ -27,7 +27,7 @@ module.exports = function(app, db, mongoose){
             s4() + '-' + s4() + s4() + s4();
     } */
 	
-    function CreateGoogleUser(googleUser){
+    function CreateGoogleUser(googleUser, accessToken){
         var deferred = q.defer();
         
         DecisionUserModel.find({googleId: googleUser.id}, function(err, doc){
@@ -40,6 +40,7 @@ module.exports = function(app, db, mongoose){
             user.googleId = googleUser.id;
             user.firstName = googleUser.name.givenName;
             user.lastName = googleUser.name.familyName;
+            user.token = accessToken;
             //user.email = googleUser.emails[0].value;
             user.save(function(err, doc){
                 deferred.resolve(doc);

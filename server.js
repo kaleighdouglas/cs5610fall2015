@@ -29,9 +29,9 @@ var db = mongoose.connect(connectionString);
 
 
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(multer()); // for parsing multipart/form-data
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(multer()); 
 app.use(session({secret: 'this is the secret'}));
 app.use(cookieParser());
 app.use(passport.initialize());

@@ -75,6 +75,10 @@
                 templateUrl: "views/advice/advice.view.html",
                 controller: "AdviceController"
             })
+            .when("/user/:userId/decision/:decisionId/advice", {
+                templateUrl: "views/advice/advice.view.html",
+                //controller: "AdviceController"
+            })
             .when("/decision", {
                 templateUrl: "views/decision/decision.view.html",
                 controller: "DecisionController"

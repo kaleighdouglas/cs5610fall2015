@@ -5,7 +5,8 @@ module.exports = function(mongoose) {
         "username": String,
         "password": String,
         "email" : String,
-        "googleId" : String
+        "googleId" : String,
+        "token" : String
     }, {collection: "cs5610.project.user"});
     
     return DecisionUserSchema;

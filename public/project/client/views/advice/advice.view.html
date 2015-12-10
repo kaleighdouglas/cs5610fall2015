@@ -1,5 +1,5 @@
 
-<div ng-controller="AdviceController">
+<div ng-controller="AdviceController as model">
 
 		
 	<ul class="nav nav-tabs">
@@ -16,6 +16,9 @@
 		<h4 class="page-header text-center"> Weight of my opinion: 50% </h4>    
 		    
 		
+		<div class="panel panel-default"> 
+		<div class="panel-body">
+		
 		
 		<!-- Table -->
 		<table class="table table-striped table-bordered table-responsive">
@@ -23,7 +26,7 @@
 			<tr>
 				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Name</th>
 				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Email</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Deadline</th>
+			<!--	<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Deadline</th>  -->
 				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Weight %</th>
 				<th> Action</th>
 			</tr>
@@ -32,35 +35,35 @@
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input ng-model="advisorName" type="text" class="form-control" placeholder="Jane">
+							<input ng-model="model.advisorName" type="text" class="form-control" placeholder="Search by name or email">
 						</div>
 					</div>
 				</td>
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input ng-model="advisorEmail" type="email" class="form-control" placeholder="janedoe@xyz.com">
+							<input ng-model="model.advisorEmail" type="email" class="form-control" placeholder="">
 						</div>
 					</div>
 				</td>
-				<td>
+		<!--		<td>
 					<div class="form-group">
 						<div class="col-xl-10">
 							<input ng-model="advisorDueDate" type="date" class="form-control">
 						</div>
 					</div>
-				</td>
+				</td> -->
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
-							<input class="slider" type="range" min="0" max="100" value="50" step="1">
+							<input ng-model="model.advisorWeight" class="slider" type="range" min="0" max="100" value="50" step="1">
 						</div>
 					</div>
 				</td>
 				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>
+					<button ng-click="model.findOneContact(model.advisorName)" class="btn btn-default"><scan class="glyphicon glyphicon-search"></scan></button>
+					<button ng-click="model.addAdvisor(model.advisorName, model.advisorEmail, model.advisorWeight)" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>	
 				</td>			
 			</tr>
 			</thead>
@@ -77,10 +80,9 @@
 			
 			
 			<!-- Example Question 1 -->
-			<tr>
-				<td>Matthew</td>
-				<td>matthew@xyz.com</td>
-				<td> 11/01/2015</td>
+			<tr ng-repeat="advisor in model.advisors" ng-class="{'success' : option == model.selected}">
+				<td>{{advisor.name}}</td>
+				<td>{{advisor.email}}</td>
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
@@ -94,7 +96,7 @@
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
 				</td>
 			</tr>
-			<!-- Example Question 2 -->
+			<!-- Example Question 2 
 			<tr>
 				<td>Ryan</td>
 				<td>ryan@xyz.com</td>
@@ -111,8 +113,8 @@
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
 				</td>
-			</tr>
-			<!-- Example Question 3 -->
+			</tr> -->
+			<!-- Example Question 3 
 			<tr>
 				<td>Danielle</td>
 				<td>danielle@xyz.com</td>
@@ -129,7 +131,7 @@
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
 				</td>
-			</tr>		
+			</tr>		-->
 			</tbody>
 		</table>
                 

@@ -7,4 +7,5 @@ module.exports = function(app, db, mongoose, passport, GoogleStrategy, googleCre
     require("./services/decision.service.js")(app, decisionModel);
     require("./services/procon.service.js")(app, decisionModel);
     require("./services/intuition.service.js")(app, decisionModel);
+    require("./services/advisor.service.js")(app, decisionModel);
 };

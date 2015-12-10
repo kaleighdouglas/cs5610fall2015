@@ -8,6 +8,8 @@
     function UserService($http, $q) {
         
         var service = {
+            findAllContacts: findAllContacts,
+            findOneContact: findOneContact,
             findGoogleUser: findGoogleUser,
             findUserByUsernameAndPassword: findUserByUsernameAndPassword,
             findAllUsers: findAllUsers,
@@ -17,6 +19,35 @@
             updateUser: updateUser
         };
         return service;
+        
+        
+        function findAllContacts(email, token){
+            console.log("email in UserService, findAllContacts function");
+            console.log(email);
+            var deferred = $q.defer();
+            $http.get("https://www.google.com/m8/feeds/contacts/"+email+"/full?access_token="+token+"&alt=json&max-results=100&updated-min=2012-01-01T00:00:00&v=3.0&q=.com")
+         //   $http.get("https://www.google.com/m8/feeds/contacts/"+email+"/full?access_token="+token+"&alt=json&max-results=100&updated-min=2012-01-01T00:00:00&v=3.0&q=kaleigh")
+        //  $http.get("https://www.google.com/m8/feeds/groups/"+email+"/full?access_token="+token+"&alt=json")
+
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
+        
+        function findOneContact(email, token, keyword){
+            console.log("keyword in UserService, findOneContact function");
+            console.log(keyword);
+            var deferred = $q.defer();
+            $http.get("https://www.google.com/m8/feeds/contacts/"+email+"/full?access_token="+token+"&alt=json&v=3.0&q="+keyword)
+
+                .success(function(response){
+                    deferred.resolve(response.feed.entry[0]);
+                });
+                
+            return deferred.promise;
+        }
         
         function findGoogleUser(){
             console.log("Get GoogleUser in UserService");
