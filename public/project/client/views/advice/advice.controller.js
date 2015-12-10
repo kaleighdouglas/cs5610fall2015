@@ -4,23 +4,22 @@
 		.module("DecisionsApp")
 		.controller("AdviceController", AdviceController);
 	    
-    function AdviceController($scope, $rootScope, $location, $routeParams, UserService, AdvisorService) {
-		
+    function AdviceController($scope, $rootScope, $location, $routeParams, UserService, AdvisorService, DecisionService) {
 		$scope.$location = $location;
 		var model = this;		
 		var currentUser = null;
 		model.findOneContact = findOneContact;
 		model.addAdvisor = addAdvisor;
 		model.selectAdvisor = selectAdvisor;
-		//model.selected.name = model.selected.name;
-		//model.selected.email = model.selected.email;
-		//model.selected.weight = model.selected.weight;
 		
 		var decisionId = $routeParams.decisionId;
 		
 		function init() {
 			AdvisorService.getAllAdvisors(decisionId).then(function(response){
 				model.advisors = response;
+			});
+			DecisionService.getDecision(decisionId).then(function(response){
+				model.decision = response;
 			});
 		}
 		init()

@@ -1,5 +1,5 @@
 
-<div ng-controller="DecisionController">
+<div ng-controller="DecisionController as model">
 
 		
 	<ul class="nav nav-tabs">
@@ -12,7 +12,9 @@
 	<div class="panel panel-default"> 
 	<div class="panel-body">
 		
-		<h3 class="text-center"> Question : Where should we go on vacation? </h3>
+		<h3 class="text-center"> Question : {{model.decision.question}} </h3>
+		<h4 class="text-center"> Creator : {{model.creator.firstName}} </h4>
+		<h4> &nbsp </h4>
 
 		
 		<!-- Table -->
@@ -26,36 +28,27 @@
 			</tr>
 			</thead>
 			
-			<tbody>
-			<!-- Existing Forms -->
-<!--			<tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
-				<td><button>{{form.name}}</button></td>
-				<td>
-					<button ng-click="deleteForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
-					<button ng-click="selectForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-				</td>
-			</tr>   -->
+			<tbody>			
 			
-			
-			<!-- Example Question 1 -->
+			<!-- Creator Opinion -->
 			<tr>
-				<td>Me</td>
-				<td>Newport</td>
+				<td>{{model.creator.firstName}}</td>
+				<td>{{model.decision.myDecision}}</td>
 				<td>50%</td>
 				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
+					<button ng-click="model.viewCreatorDecision()" class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
 				</td>
 			</tr>
-			<!-- Example Question 2 -->
-			<tr>
-				<td>Matthew</td>
-				<td>Philadelphia</td>
-				<td>25%</td>
+			<!-- Advisor Opinions -->
+			<tr ng-repeat="advisor in model.advisors">
+				<td>{{advisor.name}}</td>
+				<td>{{advisor.decision}}</td>
+				<td>{{advisor.weight}}</td>
 				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
+					<button ng-click="model.viewAdvisorDecision(advisor)" class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
 				</td>
 			</tr>
-			<!-- Example Question 3 -->
+			<!-- Example Question 3
 			<tr>
 				<td>Ryan</td>
 				<td>Newport</td>
@@ -63,8 +56,8 @@
 				<td>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
 				</td>
-			</tr>	
-			<!-- Example Question 4 -->
+			</tr>	  -->
+			<!-- Example Question 4
 			<tr>
 				<td>Danielle</td>
 				<td>Portland</td>
@@ -72,7 +65,7 @@
 				<td>
 					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
 				</td>
-			</tr>	
+			</tr>	  -->
 			</tbody>
 		</table>
           

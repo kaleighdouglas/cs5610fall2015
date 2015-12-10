@@ -63,7 +63,7 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 	app.get('/auth/google/callback', 
 		passport.authenticate('google', { failureRedirect: '/#/login' }),
 		function(req, res) {
-			res.redirect('/project/client/index.html#/profile');
+			res.redirect('/project/client/index.html#/question');
 	});
 		
 	app.get('/logout', function(req, res){

@@ -83,6 +83,10 @@
                 templateUrl: "views/decision/decision.view.html",
                 controller: "DecisionController"
             })
+            .when("/user/:userId/decision/:decisionId", {
+                templateUrl: "views/decision/decision.view.html",
+                //controller: "DecisionController"
+            })
             .otherwise({
                 redirectTo: "/home"
             });   

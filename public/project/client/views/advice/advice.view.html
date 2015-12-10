@@ -12,7 +12,7 @@
 	<div class="panel panel-default"> 
 	<div class="panel-body">
 		
-		<h3 class="text-center"> Advice For : Where should we go on vacation? </h3>
+		<h3 class="text-center"> Advice For : {{model.decision.question}} </h3>
 		<h4 class="page-header text-center"> Weight of my opinion: 50% </h4>    
 		    
 		
@@ -155,19 +155,35 @@
 				<label for="adviceCheckbox">Check to weigh all opinions equally</label>
 			</div>
 		</form>	
+		
+		
+		
+		<!-- Nav Buttons -->
+		
+		
+		<div class="row button col-xs-12">
+			<div class="col-sm-6 text-center">
+				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/IntuitionEval" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Opinion</a>
+			</div>
+			
+			<div class=" col-sm-6 text-center">
+				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-arrow-right"></span> View Decision</a>
+			<!--	<a href="#/advice" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
+					<button ng-click="register()" btn-default>Register</button>  -->
+			</div>
+		</div>
+		
 			
 			
-		<!-- Decision Button -->
+		<!-- Decision Button 
 		<div class="row col-xl-10 text-center">
 			<a href="#/advice" class="btn btn-default" role="button"> Submit Request for Opinions </a>
-		<!--		<button ng-click="register()" btn-default>Register</button>  -->
-		</div>
+		</div> -->
 			
-		<!-- Next Button -->
+		<!-- Next Button
 		<div class="row col-xl-10 text-center">
 			<a href="#/decision" class="btn btn-default" role="button"> Next : View Decision</a>
-		<!--		<button ng-click="register()" btn-default>Register</button>  -->
-		</div>
+		</div>   -->
 		
 		</div>                        
 		</div>

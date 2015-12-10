@@ -4,12 +4,21 @@
 		.module("DecisionsApp")
 		.controller("QuestionController", QuestionController);
 	    
-    function QuestionController($scope, $rootScope, $location, $routeParams, DecisionService) {
+    function QuestionController($scope, $rootScope, $location, $routeParams, DecisionService, UserService) {
 		var model = this;
 		$scope.$location = $location;
 		model.gotoMethod = gotoMethod;
 		
-		var userId = $rootScope.user._id;
+		//var userId = $rootScope.user._id;
+		var userId = null;
+		var currentUser = null;
+		UserService.findGoogleUser().then(function(response){
+			$rootScope.user = response;	
+			currentUser = $rootScope.user;
+			userId = currentUser._id;
+			console.log("current user in question controller");
+			console.log(currentUser);
+		});
 
 		
 		
@@ -60,7 +69,7 @@
 				//window.location = "#/methodIntuitionOptions";
 			}
 			else {
-				alert("NO");
+				console.log("error in question.controller");
 			}
 		}
 		

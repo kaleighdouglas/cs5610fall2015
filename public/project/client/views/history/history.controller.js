@@ -28,7 +28,6 @@
 		}
 		init()
 		
-		
 		function decisionSearch() {
 			var questionList = []
 			console.log("decision list length")
@@ -79,13 +78,13 @@
 		
 		
 		function creatorName(decision) {
-		console.log("decision in creatorName function");
-		console.log(decision);
-		UserService.findUserById(decision.creatorId).then(function(response){
-			console.log("returned creator");
-			console.log(response);
-			model.creatorFirstName = response.firstName;
-				});
+			console.log("decision in creatorName function");
+			console.log(decision);
+			UserService.findUserById(decision.creatorId).then(function(response){
+				console.log("returned creator");
+				console.log(response);
+				model.creatorFirstName = response.firstName;
+			});
 		}
 					
 		

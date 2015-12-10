@@ -18,7 +18,7 @@ module.exports = function(mongoose) {
                     "url" : String  
                 }],
 		"advisors": [{
-					"userId" : mongoose.Schema.Types.ObjectId,
+					"_id" : mongoose.Schema.Types.ObjectId,
 					"name" : String,
 					"email" : String,
 					"weight" : { type: Number, min: 0, max: 1.00 },

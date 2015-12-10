@@ -50,7 +50,7 @@
 			<tr>
 				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Question</th>
 				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Decision</th>
-				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Decision Maker</th>
+		<!--		<th><span class="glyphicon glyphicon-triangle-bottom"></span> Decision Maker</th>  -->
 				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Deadline</th>
 				<th> Action</th>
 			</tr>
@@ -71,10 +71,10 @@
 			
 			<!-- Example Question 1 -->
 			<tr ng-repeat="decision in model.decisions">
-		<!--		<td><a ng-href="#/user/{{decision.userId}}/decision/{{decision.id}}/IntuitionOptions" class="btn" role="button">{{decision.question}}</a></td>  --->
-				<td><button ng-click="model.decisionDetails(decision)" class="btn-link" role="button">{{decision.question}}</button></td>
+				<td><a ng-href="#/user/{{decision.userId}}/decision/{{decision._id}}" class="btn-link" role="button">{{decision.question}}</a></td> 
+		<!--		<td><button ng-click="model.decisionDetails(decision)" class="btn-link" role="button">{{decision.question}}</button></td>   --->
 				<td>{{decision.finalDecision}}</td>
-				<td>{{decision.creatorId}}</td>  <!-- change to creator's name   -->
+		 <!-- 		<td>{{decision.creatorId}}</td>  change to creator's name   -->
 				<td>{{decision.deadline}}</td>
 				<td>
 					<button ng-click="model.deleteDecision(decision)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	

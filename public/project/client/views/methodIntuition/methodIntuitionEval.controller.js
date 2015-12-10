@@ -33,6 +33,8 @@
 		}
 		init()
 		
+		
+		
 		function submitDecision() {
 			for(var i=0; i<model.options.length; i++) {
 				if(document.getElementById(model.options[i].label).checked) {

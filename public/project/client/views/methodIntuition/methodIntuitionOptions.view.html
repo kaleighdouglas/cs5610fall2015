@@ -31,7 +31,7 @@
 			<tr>
 				<th><scan></scan> Option</th>
 				<th><scan></scan> Description</th>
-				<th><scan></scan> URL (include http://...)</th>
+				<th><scan></scan> URL (http://...)</th>
 				<th><scan></scan> Action</th>
 			</tr>
 			
@@ -66,17 +66,8 @@
 			</thead>
 			
 			<tbody>
-			<!-- Existing Forms -->
-<!--			<tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
-				<td><button>{{form.name}}</button></td>
-				<td>
-					<button ng-click="deleteForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
-					<button ng-click="selectForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-				</td>
-			</tr>   -->
 			
-			
-						<!-- Example Question 1 -->
+			<!-- Example Question 1 -->
 			<tr ng-repeat="option in model.options" ng-class="{'success' : option == model.selected}">
 				<td>{{option.label}}</td>
 				<td>{{option.description}}</td>
@@ -123,14 +114,14 @@
 		
 		<div class="row button col-xs-12">
 			<div class="col-sm-4 text-center">
-				<a href="#/question" class="btn btn-default btn-sm btn-colorful" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Question</a>
+				<a href="#/question" class="btn btn-default btn-sm btn-block btn-colorful" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Question</a>
 			</div>
 			<div class="col-sm-4 text-center">
 				&nbsp
 			</div>
 				
 			<div class=" col-sm-4 text-center">
-				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/IntuitionEval" class="btn btn-default btn-sm btn-colorful" role="button"><span class="glyphicon glyphicon-arrow-right"></span> Submit Your Opinion</a>
+				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/IntuitionEval" class="btn btn-default btn-sm btn-block btn-colorful" role="button"><span class="glyphicon glyphicon-arrow-right"></span> Submit Your Opinion</a>
 			</div>	
 		</div>
 		

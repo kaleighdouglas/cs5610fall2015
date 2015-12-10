@@ -13,7 +13,7 @@
 	<div class="panel panel-default"> 
 	<div class="panel-body">
 		
-		<h3 class="text-center"> Question : Where should we go for dinner? </h3>
+		<h3 class="text-center"> Question : {{model.decision.question}} </h3>
 		<h4 class="page-header text-center"> Intuition Method </h4>    
 		
 		<!-- Inner Tabs
@@ -71,15 +71,15 @@
 		
 		<div class="row button col-xs-12">
 			<div class="col-sm-4 text-center">
-				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/IntuitionOptions" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Options</a>
+				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/IntuitionOptions" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Options</a>
 			</div>
 			
 			<div class="col-sm-4 text-center">
-				<button ng-click="model.submitDecision()" ng-show="model.decision.myDecision" class="btn btn-default btn-sm" role="button"> Resubmit Your Decision</button>
+				<button ng-click="model.submitDecision()" ng-show="model.decision.myDecision" class="btn btn-default btn-sm btn-block btn-colorful" role="button"> Resubmit Your Decision</button>
 			</div>
 			
 			<div class=" col-sm-4 text-center">
-				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/advice" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
+				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/advice" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
 			<!--	<a href="#/advice" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
 					<button ng-click="register()" btn-default>Register</button>  -->
 			</div>
