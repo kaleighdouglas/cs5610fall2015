@@ -3,6 +3,7 @@
 module.exports = function(app, model, passport, GoogleStrategy, googleCredentials, cookieParser, session) {
 	app.post("/api/user", CreateUser);
 	app.get("/api/user", FindAllUsers);
+	app.get("/api/tempUser", FindTempUser);
 	app.get("/api/user/:id", FindUserById);
 	app.get("/api/user?username=username", findUserByUsername);
 	app.get("/api/user?username=username&password=password", findUserByCredentials);
@@ -113,6 +114,12 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 				})
 				//res.json(model.FindAllUsers());
 			}		
+	}
+	
+	function FindTempUser(req, res) {
+		model.FindTempUser().then(function(user){
+			res.json(user);
+		});
 	}
 	
 	function FindUserById(req, res) {

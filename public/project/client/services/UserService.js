@@ -13,6 +13,7 @@
             findGoogleUser: findGoogleUser,
             findUserByUsernameAndPassword: findUserByUsernameAndPassword,
             findAllUsers: findAllUsers,
+            findTempUser: findTempUser,
             findUserById: findUserById,
             createUser: createUser,
             deleteUserById: deleteUserById,
@@ -87,6 +88,17 @@
             console.log("find user by Id called in service");
             var deferred = $q.defer();
             $http.get("/api/user/"+id)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
+        
+        function findTempUser() {
+            console.log("find temp user called in service");
+            var deferred = $q.defer();
+            $http.get("/api/tempUser")
                 .success(function(response){
                     deferred.resolve(response);
                 });

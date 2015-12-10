@@ -13,11 +13,21 @@
 		var userId = null;
 		var currentUser = null;
 		UserService.findGoogleUser().then(function(response){
+			if(response == 0){
+				UserService.findTempUser().then(function(response){
+				var tempUser = response;
+				console.log("temp user");
+				console.log(tempUser);
+				userId = tempUser._id;
+				});
+				
+			} else{
 			$rootScope.user = response;	
 			currentUser = $rootScope.user;
 			userId = currentUser._id;
 			console.log("current user in question controller");
 			console.log(currentUser);
+			}
 		});
 
 		

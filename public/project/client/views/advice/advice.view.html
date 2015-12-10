@@ -75,7 +75,7 @@
 				<td>
 				<!--	<button ng-click="model.findOneContact(model.advisorName)" class="btn btn-default"><scan class="glyphicon glyphicon-search"></scan></button>  -->
 					<button ng-click="model.addAdvisor(model.selected.name, model.selected.email, model.selected.weight)" class="btn btn-default"><scan class="glyphicon glyphicon-plus"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>	
+					<button ng-click="model.updateAdvisor(model.selected.name, model.selected.email, model.selected.weight)" class="btn btn-default"><scan class="glyphicon glyphicon-ok"></scan></button>	
 				</td>			
 			</tr>
 			</thead>
@@ -104,8 +104,9 @@
 				</td>
 				<td>
 					<button ng-click="model.selectAdvisor(advisor)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
+					<button ng-click="model.deleteAdvisor(advisor)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
+					<button class="btn btn-default"><scan class="glyphicon glyphicon-send"></scan></button>
+			<!--		<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	 -->
 				</td>
 			</tr>
 			<!-- Example Question 2 

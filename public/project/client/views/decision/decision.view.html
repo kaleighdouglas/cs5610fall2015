@@ -68,6 +68,19 @@
 			</tr>	  -->
 			</tbody>
 		</table>
+		
+		<!-- Nav Button -->
+		<div class="row col-xs-12">
+			<div class="col-sm-2 text-center">
+				&nbsp
+			</div>
+			<div class="col-sm-8 text-center">
+				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/advice" class="btn btn-default btn-sm btn-block btn-colorful" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Advisors</a>
+			</div>
+			<div class="col-sm-2 text-center">
+				&nbsp
+			</div>
+		</div>
           
 		<!-- Decision -->  
 		<div class="row">   
@@ -75,9 +88,11 @@
 				<h3> Pie Chart Here </h3>
 			</div>  
 			<div class="col-sm-6 text-center">	
-				<h3>Decision : Newport </h3>
+				<h3>Decision : {{model.decision.finalDecision}} </h3>
 			</div>
 		</div>
+		
+
 			
 		
 <!--		<div class="form-group">

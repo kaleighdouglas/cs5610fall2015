@@ -124,17 +124,17 @@ module.exports = function(app, db, mongoose){
     
  /////////// ProCon Functions
     
-        function getAllProCons(decisionId) {  
-            var deferred = q.defer();
+    function getAllProCons(decisionId) {  
+        var deferred = q.defer();
 
-            DecisionModel.findById(decisionId, function(err, decision){
-                if(err) {
-                    deferred.reject(err);
-                } else {
-                    deferred.resolve(decision.procons);
-                }
-            });
-            return deferred.promise;
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(decision.procons);
+            }
+        });
+        return deferred.promise;
     }
     
     
@@ -415,7 +415,6 @@ module.exports = function(app, db, mongoose){
     }
     function getAllAdvisors(decisionId){
         var deferred = q.defer();
-    
         DecisionModel.findById(decisionId, function(err, decision){
             if(err) {
                 deferred.reject(err);
@@ -423,17 +422,50 @@ module.exports = function(app, db, mongoose){
                 deferred.resolve(decision.advisors);
             }
         });
-        return deferred.promise;
-        
+        return deferred.promise;   
     }
+    
     function getAdvisor(){
     }
     
-    function updateAdvisor(){
+    function updateAdvisor(decisionId, id, advisor){
+        var deferred = q.defer();
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                for(var i=0; i<decision.advisors.length; i++) {
+                if(decision.advisors[i]._id == id) {
+                    decision.advisors.splice(i, 1);
+                    decision.advisors.push(advisor);
+                    decision.save(function(err, decision){
+                        deferred.resolve(decision);
+                    });
+                }
+                }
+            }   
+        });
+        return deferred.promise;
     }
     
-    function deleteAdvisor(){
-        
+    function deleteAdvisor(decisionId, id){
+        var deferred = q.defer();
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                    deferred.reject(err);
+            } else {
+                for(var i=0; i<decision.advisors.length; i++) {
+                var advisor = decision.advisors[i]
+                if(advisor.id == id) {
+                    decision.advisors.splice(i, 1);
+                    decision.save(function(err, status){
+                    deferred.resolve(status);
+                });
+                }
+                }
+            }
+        });
+        return deferred.promise;
     }
 	
 };

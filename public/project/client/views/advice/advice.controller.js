@@ -11,6 +11,8 @@
 		model.findOneContact = findOneContact;
 		model.addAdvisor = addAdvisor;
 		model.selectAdvisor = selectAdvisor;
+		model.deleteAdvisor = deleteAdvisor;
+		model.updateAdvisor = updateAdvisor;
 		
 		var decisionId = $routeParams.decisionId;
 		
@@ -90,10 +92,37 @@
 			}
 		}
 		
+		function deleteAdvisor(advisor){
+			AdvisorService.deleteAdvisor(decisionId, advisor._id).then(function(response){
+				console.log(response);
+				
+				AdvisorService.getAllAdvisors(decisionId).then(function(response){
+				model.advisors = response;
+				});
+			});
+		}
 		
+		function updateAdvisor(name, email, weight){
+			var advisorId = model.selected._id;
+			var advisor = {	
+				"_id" : advisorId,
+				"name" : name,
+				"email" : email,
+				"weight" : weight
+			}
+			console.log("selected advisor id");
+			console.log(model.selected._id);
+			AdvisorService.updateAdvisor(decisionId, advisorId, advisor).then(function(response){
+				console.log("update advisor response");
+				console.log(response);
+				
+				AdvisorService.getAllAdvisors(decisionId).then(function(response){
+				model.advisors = response;
+				});
+			});
+		}
 		
-		
-		
+
 		
 		
 		

@@ -7,6 +7,7 @@ module.exports = function(app, db, mongoose){
     var api = {
         CreateGoogleUser: CreateGoogleUser,
 		CreateUser: CreateUser,
+        FindTempUser: FindTempUser,
 		FindAllUsers: FindAllUsers,
 		FindUserById: FindUserById,
         findUserByUsername: findUserByUsername,
@@ -66,13 +67,39 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;
     }
 
-  /*      user["id"] = guid();
-        users.push(user);
-        console.log("user created. New user:");
-        console.log(user);
-        return user;
-    } */
 	
+    
+    function FindTempUser(){
+        var deferred = q.defer();
+        
+        DecisionUserModel.findOne({username: "temp"}, function(err, user){
+            if(err) {
+                deferred.reject(err);
+                console.log(err);
+            } else if(user == null){
+                console.log("temp user is null");
+                var newTempUser = {
+                    "username": "temp"
+                }
+                DecisionUserModel.create(newTempUser, function(err, user) {
+                    if(err) {
+                        deferred.reject(err);
+                    } else {
+                        deferred.resolve(user);
+                    }
+                });
+
+            } else {
+                deferred.resolve(user);
+                console.log("temp user:");
+                console.log(user);
+            }
+        });
+
+        return deferred.promise;
+
+    }
+    
     
 	function FindAllUsers() {
         var deferred = q.defer();
