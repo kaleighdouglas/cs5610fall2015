@@ -4,44 +4,6 @@
 	
 	<div class="table-responsive">  
 		
-
-
-<!--		<div class="ui-widget">
-			<label for="tags">Tags: </label>
-			<input id="tags">
-		</div>  -->
-
-
-<!--		<div class="ui-widget">
-			<h4>Search by Question:</h4> -->
-		<div class="row">
-			<div class="col-xs-8">
-		<!--		<label for="questionSearch" class="col-xs-4">Search by Question: </label>  -->
-				<input type="text" class="form-control" ng-model="model.question" id="questionSearch"></input>  <!--  -->
-			</div>
-			<div class="col-xs-4">
-				<button ng-click="model.searchByQuestion(model.question)" class= "btn btn-default btn-colorful btn-block" role="button">Search By Question</button>
-			</div>	
-		</div>
-		
-		<div class="row">
-			&nbsp
-		</div>
-		
-		<div class="row">
-			<div class="col-xs-12">
-				<button ng-click="model.decisionDetails(decision)" class="btn-link btn-block" role="button">{{decision.question}}</button>
-			</div>
-		</div>
-		
-		<div class="row">
-			&nbsp
-		</div>
-<!--		</div>   -->
-		
-		
-
-
 		   
 		
 		<!-- Table -->
@@ -57,19 +19,8 @@
 			</thead>
 			
 			<tbody>
+				
 			<!-- Decision History -->
-<!--			<tr ng-repeat="question in questions" ng-class="{'success' : $index == selectedFormIndex}">
-				<td><button>{{question.title}}</button></td>
-				<td><button>{{question.decision}}</button></td>
-				<td><button>{{question.creator}}</button></td>
-				<td><button>{{question.date}}</button></td>
-				<td>
-					<button ng-click="selectForm($index)" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span></button>
-					<button ng-click="deleteForm($index)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
-				</td>
-			</tr>   -->
-			
-			<!-- Example Question 1 -->
 			<tr ng-repeat="decision in model.decisions">
 				<td><a ng-href="#/user/{{decision.userId}}/decision/{{decision._id}}" class="btn-link" role="button">{{decision.question}}</a></td> 
 		<!--		<td><button ng-click="model.decisionDetails(decision)" class="btn-link" role="button">{{decision.question}}</button></td>   --->
@@ -81,48 +32,12 @@
 				</td>
 			</tr>
 			
-
-		<!-- Example Question 2 
-			<tr>
-				<td><a href="#" class="btn" role="button">Which apartment should I rent?</a></td>
-				<td>Bedford Street</td>
-				<td>Ryan</td>
-				<td>10/7/15</td>
-				<td>
-					<button class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span></button>
-					<button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
-				</td>
-			</tr> -->
-			<!-- Example Question 3
-			<tr>
-				<td><a href="#" class="btn" role="button">Which restaurant should we go to for dinner?</a></td>
-				<td>Zaza</td>
-				<td>Matthew</td>
-				<td>10/5/15</td>
-				<td>
-					<button class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span></button>
-					<button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
-				</td>
-			</tr>  -->
-			
-			<!-- Example Question 4
-			<tr>
-				<td><a href="#" class="btn" role="button">Which course should I take?</a></td>
-				<td>Web Development</td>
-				<td>Me</td>
-				<td>8/15/15</td>
-				<td>
-					<button class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span></button>
-					<button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
-				</td>
-			</tr>		 -->
 			</tbody>
 		</table>
 			
 		<!-- New Question Button -->
 		<div class="text-center">
 			<a href="#/question" class="btn btn-default" role="button"> Create New Question</a>
-		<!--		<button ng-click="register()" btn-default>Register</button>  -->
 		</div>
         	
 		
