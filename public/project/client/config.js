@@ -48,7 +48,7 @@
             })
             .when("/user/:userId/decision/:decisionId/IntuitionOptions", {
                 templateUrl: "views/methodIntuition/methodIntuitionOptions.view.html",
-               // controller: "MethodProConController"
+               // controller: "MethodIntuitionOptionsController"
             })
             .when("/methodIntuitionEval", {
                 templateUrl: "views/methodIntuition/methodIntuitionEval.view.html",
@@ -56,7 +56,7 @@
             })
             .when("/user/:userId/decision/:decisionId/IntuitionEval", {
                 templateUrl: "views/methodIntuition/methodIntuitionEval.view.html",
-               // controller: "MethodProConController"
+               // controller: "MethodIntuitionEvalController"
             })
             // Grid Method
             .when("/methodGridOptions", {

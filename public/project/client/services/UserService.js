@@ -10,6 +10,7 @@
         var service = {
             findAllContacts: findAllContacts,
             findOneContact: findOneContact,
+            findMatchingContacts: findMatchingContacts,
             findGoogleUser: findGoogleUser,
             findUserByUsernameAndPassword: findUserByUsernameAndPassword,
             findAllUsers: findAllUsers,
@@ -45,6 +46,17 @@
 
                 .success(function(response){
                     deferred.resolve(response.feed.entry[0]);
+                });
+                
+            return deferred.promise;
+        }
+        
+        function findMatchingContacts(email, token, keyword){
+            var deferred = $q.defer();
+            $http.get("https://www.google.com/m8/feeds/contacts/"+email+"/full?access_token="+token+"&alt=json&v=3.0&q="+keyword)
+
+                .success(function(response){
+                    deferred.resolve(response.feed.entry);
                 });
                 
             return deferred.promise;

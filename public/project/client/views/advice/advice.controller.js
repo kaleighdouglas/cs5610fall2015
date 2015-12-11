@@ -9,6 +9,7 @@
 		var model = this;		
 		var currentUser = null;
 		model.findOneContact = findOneContact;
+		model.findMatchingContacts = findMatchingContacts;
 		model.addAdvisor = addAdvisor;
 		model.selectAdvisor = selectAdvisor;
 		model.deleteAdvisor = deleteAdvisor;
@@ -104,6 +105,42 @@
 				}
 			});
 		}
+		
+		function findMatchingContacts(keyword){
+			UserService.findMatchingContacts(currentUser.email, currentUser.token, keyword).then(function(response){
+				if(response == null){
+					console.log("contact's name could not be found, please search again")
+				} else{
+					var matchingNames = response;
+					console.log("matching names");
+					console.log(matchingNames);
+					//var selectedName = response.gd$name.gd$fullName.$t;
+				}
+				
+				if(response == null){
+					console.log("contact's email could not be found, please search again")
+				} else{
+					var matchingEmails = response;
+					//var selectedEmail = response.gd$email[0].address;
+					console.log("matching emails");
+					console.log(matchingEmails);				
+				}
+			});
+		}
+		
+/*		$(function() {
+			var emailList = ["ActionScript",
+						"AppleScript",
+						"Asp",
+						"BASIC",
+						"C",
+						"C++"]
+	
+				$( "#tags" ).autocomplete({
+                	source: emailList
+            	});	
+		}); */
+		
 		
 		function addAdvisor(name, email, weight){
 			var newAdvisor = {
