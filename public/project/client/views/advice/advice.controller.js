@@ -38,18 +38,22 @@
 		
 		function emailDecision(advisor){
 			if(model.decision.methodType == "ProCon"){
-				var emailBody = "/user/"+advisor._id+"/decision/"+decisionId+"/ProCon";
-				var subject = "DecisionsDecisions...";
+				var proconBody = "DecisionsDecisions is helping me decide on the following question: "+model.decision.question+
+				"%0D%0D I would love to get your opinion! Use the following link to help me decide:%0D "+
+				"http://cs5610-oharakaleigh.rhcloud.com/project/client/index.html#/user/"+advisor._id+"/decision/"+decisionId+"/ProCon";
+				var proconSubject = "DecisionsDecisions...";
 				
-				$window.location = "mailto:"+ advisor.email +"?subject="+subject+"&body="+emailBody;
+				window.location.href = "mailto:"+ advisor.email +"?subject="+proconSubject+"&body="+proconBody;
 				
-		/*		var mailto_link = 'mailto:' + advisor.email + '?subject=' + subject + '&body=' + emailBody;
-
-    			var win = window.open(mailto_link, 'emailWindow');
-    			if (win && win.open && !win.closed) win.close(); */
 				
 			} else if(model.decision.methodType == "Guess"){
-				$location.path("/user/"+advisor._id+"/decision/"+decisionId+"/IntuitionEval");
+				var guessBody = "DecisionsDecisions is helping me decide on the following question: "+model.decision.question+
+				"%0D%0D I would love to get your opinion! Use the following link to help me decide:%0D "+
+				"http://cs5610-oharakaleigh.rhcloud.com/project/client/index.html#/user/"+advisor._id+"/decision/"+decisionId+"/IntuitionEval";
+				var guessSubject = "DecisionsDecisions...";
+				
+				window.location.href = "mailto:"+ advisor.email +"?subject="+guessSubject+"&body="+guessBody;
+				
 				
 			} else if(model.decision.methodType == "Grid"){
 				console.log("grid method in advice.controller");
