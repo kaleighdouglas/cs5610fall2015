@@ -13,6 +13,7 @@
 		model.selectAdvisor = selectAdvisor;
 		model.deleteAdvisor = deleteAdvisor;
 		model.updateAdvisor = updateAdvisor;
+		model.emailDecision = emailDecision;
 		
 		var decisionId = $routeParams.decisionId;
 		
@@ -33,6 +34,27 @@
 			findAllContacts()
 			//findOneContact("kaleigh")
 		});
+		
+		
+		function emailDecision(advisor){
+			if(model.decision.methodType == "ProCon"){
+				var emailBody = "/user/"+advisor._id+"/decision/"+decisionId+"/ProCon";
+				var subject = "DecisionsDecisions...";
+				
+				$window.location = "mailto:"+ advisor.email +"?subject="+subject+"&body="+emailBody;
+				
+		/*		var mailto_link = 'mailto:' + advisor.email + '?subject=' + subject + '&body=' + emailBody;
+
+    			var win = window.open(mailto_link, 'emailWindow');
+    			if (win && win.open && !win.closed) win.close(); */
+				
+			} else if(model.decision.methodType == "Guess"){
+				$location.path("/user/"+advisor._id+"/decision/"+decisionId+"/IntuitionEval");
+				
+			} else if(model.decision.methodType == "Grid"){
+				console.log("grid method in advice.controller");
+			}
+		}
 		
 		function findAllContacts(){
 			UserService.findAllContacts(currentUser.email, currentUser.token).then(function(response){

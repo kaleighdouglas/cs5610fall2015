@@ -105,7 +105,12 @@
 				<td>
 					<button ng-click="model.selectAdvisor(advisor)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
 					<button ng-click="model.deleteAdvisor(advisor)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-send"></scan></button>
+					
+					
+				<!--	<a ng-href="mailto:{{advisor.email}}&amp;subject=Help%20Me%20Decide&amp;body=The%20body%20of%20the%20email"
+						class="btn btn-default" role="button"><span class="glyphicon glyphicon-send"></span>
+					</a>   -->
+					<button ng-click="model.emailDecision(advisor)" class="btn btn-default"><scan class="glyphicon glyphicon-send"></scan></button>
 			<!--		<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	 -->
 				</td>
 			</tr>
