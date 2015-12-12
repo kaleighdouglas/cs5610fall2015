@@ -11,6 +11,7 @@ module.exports = function(app, db, mongoose){
 		FindAllUsers: FindAllUsers,
 		FindUserById: FindUserById,
         findUserByUsername: findUserByUsername,
+        findUserByEmail: findUserByEmail,
 		findUserByCredentials: findUserByCredentials,
 		UpdateUser: UpdateUser,
 		DeleteUser: DeleteUser
@@ -108,8 +109,7 @@ module.exports = function(app, db, mongoose){
 
         return deferred.promise;
     }
-  /*      return users;
-    } */
+    
 	
 	function FindUserById(ID) {   
         var deferred = q.defer();
@@ -125,15 +125,6 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;
     }
       
- /*      var foundUser = null
-        for(var i=0; i<users.length; i++) {
-            var user = users[i]
-            if(user.id == ID) {
-                foundUser = user;
-            }
-        }    
-        return foundUser; 
-    } */
     
     function findUserByUsername(username) {
         var deferred = q.defer();
@@ -148,17 +139,20 @@ module.exports = function(app, db, mongoose){
 
         return deferred.promise;
     } 
-    
-  /*      var foundUser = null
-        for(var i=0; i<users.length; i++) {
-            var user = users[i]
-            if(user.username == username) {
-                foundUser = user;
-            }
-        }
-        return foundUser; 
-    } */
 	
+    
+    function findUserByEmail(email){
+        var deferred = q.defer();  
+        DecisionUserModel.findOne({email: email}, function(err, user){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(user);
+            }
+        });
+        return deferred.promise;
+    }
+    
     
 	function findUserByCredentials(credentials) {
         var deferred = q.defer();
@@ -176,16 +170,6 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;
     
     }
-
- /*       var foundUser = null
-        for(var i=0; i<users.length; i++) {
-            var user = users[i]
-            if(user.username == credentials.username && user.password == credentials.password) {
-                foundUser = user;
-            }
-        }
-        return foundUser; 
-	}  */
 	
     
 	function UpdateUser(ID, user) {
@@ -203,16 +187,6 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;
     }   
         
- /*       for(var i=0; i<users.length; i++) {
-            var currentUser = users[i]
-            if(currentUser.id == ID) {
-                users[i] = user;
-            }
-        }
-        console.log("updating user in model");
-        console.log(user);
-        return user;
-    } */
 	
 	function DeleteUser(ID) {
         var deferred = q.defer();
@@ -228,13 +202,5 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;
     }
         
-  /*      for(var i=0; i<users.length; i++) {
-            var user = users[i]
-            if(user.id == ID) {
-                users.splice(i, 1);
-            }
-        }
-        return users;
-    } */
 
 };

@@ -396,23 +396,25 @@ module.exports = function(app, db, mongoose){
     
     //Advisor Functions
     function createAdvisor(decisionId, advisor){
-        console.log("new advisor in decision.model");
         var deferred = q.defer();
 
         DecisionModel.findById(decisionId, function(err, decision){
             if(err) {
                     deferred.reject(err);
             } else {
-                advisor._id = mongoose.Types.ObjectId();
+                if(advisor._id == null) {
+                    console.log("advisor not a registered user, creating new ID")
+                    advisor._id = mongoose.Types.ObjectId();    
+                }
                 decision.advisors.push(advisor);
                 decision.save(function(err, decision){
                     deferred.resolve(decision.advisors);
                 });
             }
         });
-        return deferred.promise;
-        
+        return deferred.promise;  
     }
+    
     function getAllAdvisors(decisionId){
         var deferred = q.defer();
         DecisionModel.findById(decisionId, function(err, decision){

@@ -6,6 +6,7 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 	app.get("/api/tempUser", FindTempUser);
 	app.get("/api/user/:id", FindUserById);
 	app.get("/api/user?username=username", findUserByUsername);
+	app.get("/api/user?email=email", findUserByEmail);
 	app.get("/api/user?username=username&password=password", findUserByCredentials);
 	app.put("/api/user/:id", UpdateUser);
 	app.delete("/api/user/:id", DeleteUser);
@@ -28,8 +29,8 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 	passport.use(new GoogleStrategy({
 		clientID: googleCredentials.clientId,
 		clientSecret: googleCredentials.clientSecret,
-		//callbackURL: "http://127.0.0.1:3000/auth/google/callback"
-		callbackURL: "http://cs5610-oharakaleigh.rhcloud.com/auth/google/callback"
+		callbackURL: "http://127.0.0.1:3000/auth/google/callback"
+		//callbackURL: "http://cs5610-oharakaleigh.rhcloud.com/auth/google/callback"
 		},
 		function(accessToken, refreshToken, profile, done){
 			process.nextTick(function() {
@@ -109,6 +110,9 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 		else if(req.query.username != null) {
             findUserByUsername(req, res);
 		}
+		else if(req.query.email != null) {
+            findUserByEmail(req, res);
+		}
 			else {
 				model.FindAllUsers().then(function(users){
 					res.json(users);
@@ -140,6 +144,14 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 					res.json(user);
             });
 		//res.json(model.findUserByUsername(username));
+	}
+	
+	function findUserByEmail(req, res) {
+		var email = req.query.email;
+		console.log(email);
+		model.findUserByEmail(email).then(function(user){
+					res.json(user);
+            });
 	}
 	
 	function findUserByCredentials(req, res) { 

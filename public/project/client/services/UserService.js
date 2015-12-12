@@ -16,6 +16,7 @@
             findAllUsers: findAllUsers,
             findTempUser: findTempUser,
             findUserById: findUserById,
+            findUserByEmail: findUserByEmail,
             createUser: createUser,
             deleteUserById: deleteUserById,
             updateUser: updateUser
@@ -104,6 +105,16 @@
                     deferred.resolve(response);
                 });
                 
+            return deferred.promise;
+        }
+        
+        function findUserByEmail(email) {
+            console.log("find user by email called in service");
+            var deferred = $q.defer();
+            $http.get("/api/user?email="+email)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
             return deferred.promise;
         }
         

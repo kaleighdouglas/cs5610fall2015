@@ -143,19 +143,27 @@
 		
 		
 		function addAdvisor(name, email, weight){
-			var newAdvisor = {
-					"name" : name,
-					"email" : email,
-					"weight" : weight
-				}
-				console.log("new Advisor");
-				console.log(newAdvisor);
-				AdvisorService.createAdvisor(decisionId, newAdvisor).then(function(response){
-				model.advisors = response;
-				console.log("advisors returned to controller:");
-				console.log(response);
-				model.selected = null;
-				});
+			var advisorId = null;
+			UserService.findUserByEmail(email).then(function(response){
+				advisorId = response
+				console.log("advisorId in addAdvisor in controller");
+				console.log(advisorId);
+			
+				var newAdvisor = {
+						"name" : name,
+						"email" : email,
+						"weight" : weight,
+						"_id" : advisorId
+					}
+					console.log("new Advisor being sent to server");
+					console.log(newAdvisor);
+					AdvisorService.createAdvisor(decisionId, newAdvisor).then(function(response){
+					model.advisors = response;
+					console.log("advisors returned to controller:");
+					console.log(response);
+					model.selected = null;
+					});
+			});
 		}
 		
 		
