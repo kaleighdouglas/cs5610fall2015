@@ -189,6 +189,7 @@ module.exports = function(app, db, mongoose){
 	
     
 	function UpdateUser(ID, user) {
+        console.log("updating user in user.model");
         var deferred = q.defer();
         //user.delete("_id");
 
