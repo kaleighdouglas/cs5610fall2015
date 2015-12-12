@@ -105,7 +105,7 @@ module.exports = function(app, db, mongoose){
             }
         });
         return deferred.promise; 
-        }
+    }
         
 	
 	function deleteDecision(ID) {

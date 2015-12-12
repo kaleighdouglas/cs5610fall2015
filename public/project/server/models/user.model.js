@@ -189,8 +189,8 @@ module.exports = function(app, db, mongoose){
 	
     
 	function UpdateUser(ID, user) {
-        console.log("updating user in user.model");
         var deferred = q.defer();
+        delete user["_id"];
         //user.delete("_id");
 
         DecisionUserModel.update({_id: ID}, {$set: user}, function(err, status) {
@@ -200,7 +200,6 @@ module.exports = function(app, db, mongoose){
                 deferred.resolve(status);
             }
         });
-
         return deferred.promise;
     }   
         
