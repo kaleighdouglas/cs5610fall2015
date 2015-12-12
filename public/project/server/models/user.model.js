@@ -16,17 +16,7 @@ module.exports = function(app, db, mongoose){
 		DeleteUser: DeleteUser
     };
     return api;
-	
     
- /*   function guid() {
-        function s4() {
-            return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-        }
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-            s4() + '-' + s4() + s4() + s4();
-    } */
 	
     function CreateGoogleUser(googleUser, accessToken){
         var deferred = q.defer();
@@ -42,7 +32,9 @@ module.exports = function(app, db, mongoose){
             user.firstName = googleUser.name.givenName;
             user.lastName = googleUser.name.familyName;
             user.token = accessToken;
-            //user.email = googleUser.emails[0].value;
+            if(googleUser.emails != null){
+                user.email = googleUser.emails[0].value;  //Doesn't always return email
+            }
             user.save(function(err, doc){
                 deferred.resolve(doc);
             });
