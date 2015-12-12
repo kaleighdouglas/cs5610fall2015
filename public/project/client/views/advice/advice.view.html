@@ -1,13 +1,21 @@
 
 <div ng-controller="AdviceController as model">
 
-		
-	<ul class="nav nav-tabs">
-		<li role="presentation"><a href="#/question">Question</a></li>
-		<li role="presentation"><a href="#/methodGridEval">Method</a></li>
-		<li role="presentation" class="active"><a href="#/advice">Advice</a></li>
-		<li role="presentation"><a href="#/decision">Decision</a></li>
-	</ul>     
+	<div class="progress">
+	<!--	<div class="progress-bar progress-bar-complete progress-bar-striped" style="width: 20%">
+			<span class="sr-only">Question</span>
+		</div>
+		<div class="progress-bar progress-bar-complete progress-bar-striped" style="width: 40%">
+			<span class="sr-only">Evaluation</span>
+		</div> -->
+		<div class="progress-bar progress-bar-complete progress-bar-striped" style="width: 80%">
+			<span>Advice</span>
+		</div>
+		<div class="progress-bar progress-bar-incomplete" style="width: 20%">
+			<span class="sr-only">Decision</span>
+		</div>
+	</div>
+			
 	
 	<div class="panel panel-default"> 
 	<div class="panel-body">

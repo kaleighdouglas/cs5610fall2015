@@ -24,6 +24,16 @@ body {
 }
 
 
+.progress-bar-incomplete {
+  background-color: lightgrey;
+  color: black;
+}
+.progress-bar-complete {
+  background-color: darkslategray;
+  color: whitesmoke;
+}
+
+
 .inputComment {
   font-size:12pt;
   width:70%;

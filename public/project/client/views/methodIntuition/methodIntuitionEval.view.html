@@ -2,13 +2,25 @@
 <div ng-controller="MethodIntuitionEvalController as model">
 	
 	<div class="table-responsive">
-		
-	<ul class="nav nav-tabs">
-		<li role="presentation"><a href="#/question">Question</a></li>
-		<li role="presentation" class="active"><a href="#/methodIntuitionEval">Method</a></li>
-		<li role="presentation"><a href="#/advice">Advice</a></li>
-		<li role="presentation"><a href="#/decision">Decision</a></li>
-	</ul>     
+	
+	<div class="progress">
+	<!--	<div class="progress-bar progress-bar-complete" style="width: 20%">
+			<span class="sr-only">Question</span>
+		</div>
+		<div class="progress-bar progress-bar-complete" style="width: 20%">
+			<span class="sr-only">Options</span>
+		</div>  -->
+		<div class="progress-bar progress-bar-complete progress-bar-striped" style="width: 60%">
+			<span>Evaluation</span>
+		</div>
+		<div class="progress-bar progress-bar-incomplete" style="width: 20%">
+			<span class="sr-only">Advice</span>
+		</div>
+		<div class="progress-bar progress-bar-incomplete" style="width: 20%">
+			<span class="sr-only">Decision</span>
+		</div>
+	</div>
+	
 	
 	<div class="panel panel-default"> 
 	<div class="panel-body">
@@ -79,7 +91,7 @@
 			</div>
 			
 			<div class=" col-sm-4 text-center">
-				<a ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/advice" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
+				<a ng-show="user" ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/advice" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
 			<!--	<a href="#/advice" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
 					<button ng-click="register()" btn-default>Register</button>  -->
 			</div>
