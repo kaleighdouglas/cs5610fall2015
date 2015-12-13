@@ -107,7 +107,9 @@ module.exports = function(app, db, mongoose){
                 
                 for(var i=0; i<decision.advisors.length; i++) {
                     var currentAdvisor = decision.advisors[i]
-                    decisionList.push(currentAdvisor.decision);
+                    if(currentAdvisor.decision != null) {
+                        decisionList.push(currentAdvisor.decision);
+                    }
                 }
                 console.log("decisionList");
                 console.log(decisionList);
