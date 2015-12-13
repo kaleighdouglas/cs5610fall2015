@@ -25,19 +25,20 @@
 				console.log(model.decision);
 				
 				UserService.findUserById(model.decision.creatorId).then(function(response){
-				model.creator = response;
-				console.log("creator in decision controller");
-				console.log(model.creator);
-				});
-			});
-			DecisionService.getFinalDecision(decisionId).then(function(response){
-				console.log("final decision in decision controller");
-				console.log(response);
-				model.decision.finalDecision = response;
-				
-				DecisionService.updateDecision(decisionId, model.decision).then(function(response){
-				console.log("update decision in controller");
-				console.log(response);
+					model.creator = response;
+					console.log("creator in decision controller");
+					console.log(model.creator);
+					});
+			
+				DecisionService.getFinalDecision(decisionId).then(function(response){
+					console.log("final decision in decision controller");
+					console.log(response);
+					model.decision.finalDecision = response;
+					
+					DecisionService.updateDecision(decisionId, model.decision).then(function(response){
+					console.log("update decision in controller");
+					console.log(response);
+					});
 				});
 			}); 
 			
