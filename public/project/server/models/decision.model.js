@@ -8,6 +8,7 @@ module.exports = function(app, db, mongoose){
 		createDecision: createDecision,
 		getAllDecisions: getAllDecisions,
 		getDecisionById: getDecisionById,
+        getFinalDecision: getFinalDecision,
 	//	findFormByTitle: findFormByTitle,
 		updateDecision: updateDecision,
 		deleteDecision: deleteDecision,
@@ -50,7 +51,9 @@ module.exports = function(app, db, mongoose){
             decision["options"] = [];
             decision["attributes"] = [];
         }    
-        decision["advisors"] = [];
+        decision["advisors"] = [
+            {"_id" : userId,
+            "name" : "Me"}];
         
         var deferred = q.defer();
         DecisionModel.create(decision, function(err, decision) {
@@ -80,7 +83,7 @@ module.exports = function(app, db, mongoose){
     
 	
 	function getDecisionById(ID) {
-        var deferred = q.defer();
+        var deferred = q.defer();  
 
         DecisionModel.findById(ID, function(err, decision){
             if(err) {
@@ -92,11 +95,50 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;
 	}
     
+    
+    function getFinalDecision(ID) {
+        var deferred = q.defer();  
+
+        DecisionModel.findById(ID, function(err, decision){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                var decisionList = [];
+                
+                for(var i=0; i<decision.advisors.length; i++) {
+                    var currentAdvisor = decision.advisors[i]
+                    decisionList.push(currentAdvisor.decision);
+                }
+                console.log("decisionList");
+                console.log(decisionList);
+                
+                var topDecisionCount = 0;
+                var topDecision = null;
+                
+                for(var i=0; i<decisionList.length; i++) {
+                    var currentDecision = decisionList[i];
+                    var decisionCount = 0
+                    for(var i=0; i<decisionList.length; i++) {
+                        if (decisionList[i] == currentDecision){
+                        decisionCount = decisionCount + 1;
+                        }
+                    }
+                    if(decisionCount > topDecisionCount){
+                        topDecision = currentDecision;
+                    }
+                }
+                decision.finalDecision = topDecision;
+                deferred.resolve(decision.finalDecision);
+            }
+        });
+        return deferred.promise;
+    }
+    
 	
 	function updateDecision(ID, decision) { 
         var deferred = q.defer();
         delete decision["_id"];
-        
+
         DecisionModel.update({_id: ID}, {$set: decision}, function(err, status) {
             if(err) {
                 deferred.reject(err);
@@ -219,14 +261,51 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;
     }
     
-    
     function getProConResult(decisionId) {
         console.log("ProCon Result in Model");
         var deferred = q.defer();
 
         DecisionModel.findById(decisionId, function(err, decision){
             if(err) {
-                console.log("err on first function");
+                deferred.reject(err);
+            } else {
+                console.log("entered else");
+                var sum = 0;
+                for(var i=0; i<decision.procons.length; i++) {
+                    var currentProCon = decision.procons[i]
+                    sum = sum + currentProCon.impact;
+                    console.log("result sum");
+                    console.log(sum);
+                }
+                var posResult = "YES!";
+                var negResult = "NO";
+                var undecidedResult = "Undecided. Try asking friends or using another method."
+                if (sum > 0) {
+                    decision["myDecision"] = posResult;
+                } else if(sum < 0) {
+                    decision["myDecision"] = negResult;
+                } else {
+                    decision["myDecision"] = undecidedResult;
+                }
+                decision["finalDecision"] = decision["myDecision"];
+                
+                //console.log("finalDecision");
+                //console.log(decision.finalDecision);
+                decision.save(function(err, decision){
+                    deferred.resolve(decision);
+                });
+            }
+        });
+        return deferred.promise;
+    }
+    
+    
+/*    function getProConResult(decisionId) {
+        console.log("ProCon Result in Model");
+        var deferred = q.defer();
+
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
                 deferred.reject(err);
             } else {
                 console.log("entered else");
@@ -263,7 +342,7 @@ module.exports = function(app, db, mongoose){
                 });
             }
         });
-        return deferred.promise;
+        return deferred.promise;   */
        
         
    /*     var ProCons = getAllProCons(decisionId);
@@ -289,8 +368,8 @@ module.exports = function(app, db, mongoose){
         decision["finalDecision"] = decision["myDecision"];
         console.log("my decision");
         console.log(decision.myDecision);
-        return decision;   */
-    }
+        return decision;   
+    } */
     
     
 /////// Intuition Functions
@@ -427,7 +506,22 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;   
     }
     
-    function getAdvisor(){
+    function getAdvisor(decisionId, id){
+        var deferred = q.defer();
+
+        DecisionModel.findById(decisionId, function(err, decision){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                for(var i=0; i<decision.advisors.length; i++) {
+                var advisor = decision.advisors[i];
+                if(advisor._id == id) {
+                    deferred.resolve(advisor);
+                }
+                }
+            }
+        });
+        return deferred.promise;
     }
     
     function updateAdvisor(decisionId, id, advisor){
@@ -441,7 +535,7 @@ module.exports = function(app, db, mongoose){
                     decision.advisors.splice(i, 1);
                     decision.advisors.push(advisor);
                     decision.save(function(err, decision){
-                        deferred.resolve(decision);
+                        deferred.resolve(advisor);
                     });
                 }
                 }

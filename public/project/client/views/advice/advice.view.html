@@ -20,21 +20,23 @@
 	<div class="panel panel-default"> 
 	<div class="panel-body">
 		
-		<h3 class="text-center"> Advice For : {{model.decision.question}} </h3>
-		<h4 class="page-header text-center"> Weight of my opinion: 50% </h4>    
-		    
+	<h3 class="text-center"> Advice For : {{model.decision.question}} </h3>
+	<h4 class="page-header text-center"> Weight of my opinion: 50% </h4>    
 		
-<!--		<div class="panel panel-default"> 
-		<div class="panel-body">  -->
-			
+	
+		
+	<div class="table-responsive">
 		<div class="row search">
-			<div class="col-xs-8">
+			<div class="col-sm-8">
 		<!--		<label for="advisorSearch" class="col-xs-4">Search by Question: </label>  -->
-				<input type="text" class="form-control" ng-model="model.search" id="advisorSearch"></input>  <!--  -->
+				<input type="text" class="form-control" ng-model="model.search" id="advisorSearch" placeholder="Enter Name or Email"></input>  <!--  -->
 			</div>
-			<div class="col-xs-4">
-				<button ng-click="model.findOneContact(model.search)" class= "btn btn-default btn-colorful btn-block" role="button">Search By Name or Email</button>
+			<div class="col-sm-4">
+				<button ng-click="model.findOneContact(model.search)" class= "btn btn-default btn-colorful btn-block" role="button">Search</button>
 			</div>	
+		</div>
+		<div class="row text-center bottom-space">
+			<h4>{{model.searchMessage}}</h4>
 		</div>
 		
 <!--		<div class="row search">
@@ -55,7 +57,8 @@
 		
 		
 		<!-- Table -->
-		<table class="table table-striped table-bordered table-responsive">
+		
+		<table class="table table-striped table-bordered">
 			<thead>
 			<tr>
 				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Name</th>
@@ -102,17 +105,7 @@
 			</tr>
 			</thead>
 			
-			<tbody>
-			<!-- Existing Forms -->
-<!--			<tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
-				<td><button>{{form.name}}</button></td>
-				<td>
-					<button ng-click="deleteForm($index)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
-					<button ng-click="selectForm($index)" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
-				</td>
-			</tr>   -->
-			
-			
+			<tbody>	
 			<!-- Example Question 1 -->
 			<tr ng-repeat="advisor in model.advisors" ng-class="{'success' : advisor == model.selected}">
 				<td>{{advisor.name}}</td>
@@ -128,47 +121,11 @@
 					<button ng-click="model.selectAdvisor(advisor)" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
 					<button ng-click="model.deleteAdvisor(advisor)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
 					<button ng-click="model.emailDecision(advisor)" class="btn btn-default"><span class="glyphicon glyphicon-send"></span></button>
-			<!--		<button class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span></button>	 -->
 				</td>
 			</tr>
-			<!-- Example Question 2 
-			<tr>
-				<td>Ryan</td>
-				<td>ryan@xyz.com</td>
-				<td> 11/01/2015</td>
-				<td>
-					<div class="form-group">
-						<div class="col-xl-10">
-							<input class="slider" type="range" min="0" max="100" value="10" step="1">
-						</div>
-					</div>
-				</td>
-				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
-				</td>
-			</tr> -->
-			<!-- Example Question 3 
-			<tr>
-				<td>Danielle</td>
-				<td>danielle@xyz.com</td>
-				<td>11/01/2015</td>
-				<td>
-					<div class="form-group">
-						<div class="col-xl-10">
-							<input class="slider" type="range" min="0" max="100" value="15" step="1">
-						</div>
-					</div>
-				</td>
-				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
-				</td>
-			</tr>		-->
 			</tbody>
 		</table>
+		</div>
                 
 			
 		<!-- Checkbox -->

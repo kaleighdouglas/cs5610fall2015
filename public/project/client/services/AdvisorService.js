@@ -38,6 +38,10 @@
         }
         
         function getAdvisor(decisionId, id) {
+            console.log("decisionId in getAdvisor function");
+            console.log(decisionId);
+            console.log("advisorId in getAdvisor Function");
+            console.log(id);
             var deferred = $q.defer();
             $http.get("/api/decision/"+decisionId+"/advisor/"+id)
                 .success(function(response){

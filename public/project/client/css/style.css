@@ -15,14 +15,17 @@ body {
 
 .search{
   margin-top: 6%;
-  margin-bottom: 6%
+  margin-bottom: 3%
+}
+
+.bottom-space{
+  margin-bottom: 3%
 }
 
 .btn-colorful {
   background-color: darkslategray;
   color: whitesmoke;
 }
-
 
 .progress-bar-incomplete {
   background-color: lightgrey;

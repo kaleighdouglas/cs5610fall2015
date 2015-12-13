@@ -83,17 +83,20 @@
 		}
 		
 		function findOneContact(keyword){
+			model.searchMessage = "";
 			UserService.findOneContact(currentUser.email, currentUser.token, keyword).then(function(response){
 				//model.advisorName = response.feed.entry[0].gd$name.gd$fullName.$t;
 				//model.advisorEmail = response.feed.entry[0].gd$email.address;
-				if(response.gd$name.gd$fullName.$t == null){
-					console.log("contact's name could not be found, please search again")
+				if(response == null || response.gd$name.gd$fullName.$t == null){
+					console.log("contact's name could not be found, please search again");
+					model.searchMessage = "contact could not be found, please search again";
 				} else{
 					var selectedName = response.gd$name.gd$fullName.$t;
 				}
 				
-				if(response.gd$email == null){
-					console.log("contact's email could not be found, please search again")
+				if(response == null || response.gd$email == null){
+					console.log("contact's email could not be found, please search again");
+					model.searchMessage = "contact could not be found, please search again";
 				} else{
 					var selectedEmail = response.gd$email[0].address;
 					console.log("advisor's email");

@@ -11,6 +11,7 @@
             createDecision: createDecision,
 			getAllDecisions: getAllDecisions,
 			getDecision: getDecision,
+            getFinalDecision: getFinalDecision,
 			deleteDecision: deleteDecision,
 			updateDecision: updateDecision
         };
@@ -43,6 +44,16 @@
         function getDecision(decisionId) {
             var deferred = $q.defer();
             $http.get("/api/decision/"+decisionId)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+                
+            return deferred.promise;
+        }
+        
+        function getFinalDecision(decisionId) {
+            var deferred = $q.defer();
+            $http.get("/api/finaldecision/"+decisionId)
                 .success(function(response){
                     deferred.resolve(response);
                 });

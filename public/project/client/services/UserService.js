@@ -46,7 +46,13 @@
             $http.get("https://www.google.com/m8/feeds/contacts/"+email+"/full?access_token="+token+"&alt=json&v=3.0&q="+keyword)
 
                 .success(function(response){
-                    deferred.resolve(response.feed.entry[0]);
+                    console.log("response from findOneContact in UserService");
+                    console.log(response);
+                    if(response.feed.entry != null){
+                        deferred.resolve(response.feed.entry[0]);
+                    } else{
+                        deferred.resolve(null);
+                    }
                 });
                 
             return deferred.promise;

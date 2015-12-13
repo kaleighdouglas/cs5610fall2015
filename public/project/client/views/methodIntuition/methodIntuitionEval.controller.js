@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("MethodIntuitionEvalController", MethodIntuitionEvalController);
 	    
-    function MethodIntuitionEvalController($scope, $rootScope, $location, $routeParams, DecisionService, IntuitionService) {
+    function MethodIntuitionEvalController($scope, $rootScope, $location, $routeParams, DecisionService, IntuitionService, AdvisorService) {
 		
 		$scope.$location = $location;
 		var model = this;
@@ -27,8 +27,13 @@
 			IntuitionService.getAllOptions(decisionId).then(function(response){
 				console.log("intuition eval options");
 				console.log(response);
-				model.options = response;
-				
+				model.options = response;	
+			});
+			
+			AdvisorService.getAdvisor(decisionId, userId).then(function(response){
+				console.log("intuition eval current advisor");
+				console.log(response);
+				model.currentUser = response;	
 			});
 		}
 		init()
@@ -40,72 +45,32 @@
 				if(document.getElementById(model.options[i].label).checked) {
 					console.log("checked radio");
 					console.log(model.options[i].label);
-					model.decision.myDecision = model.options[i].label;
-					model.decision.finalDecision = model.options[i].label;
-					//console.log(model.decision);
-					DecisionService.updateDecision(decisionId, model.decision).then(function(response){
-						console.log("update decision response");
+					model.currentUser.decision = model.options[i].label;
+					console.log("current user's decision");
+					console.log(model.currentUser.decision);
+					AdvisorService.updateAdvisor(decisionId, model.currentUser._id, model.currentUser).then(function(response){
+						console.log("updated user");
 						console.log(response);
+						model.currentUser = response;
+					});
+					
+					//model.decision.myDecision = model.options[i].label;
+					//model.decision.finalDecision = model.options[i].label;
+					//console.log(model.decision);
+					
+			/*		DecisionService.updateDecision(decisionId, model.decision).then(function(response){
+						console.log("update decision response");
+						console.log(response);  */
 				
 						DecisionService.getDecision(decisionId).then(function(response){
 						model.decision = response;
+						console.log("decision after updating advisor's decision");
 						console.log(model.decision);
 						});
-					});
+					//});
 				}
 			}
 		}
-		
-/*		function callback(value) {
-            console.log(value);
-        }
-			
-		var currentUser = $rootScope.user;		
-		$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-		var currentFormId = null
-		
-		$scope.addForm = addForm;
-		$scope.updateForm = updateForm;
-		$scope.deleteForm = deleteForm;
-		$scope.selectForm = selectForm;   
-		
-
-		
-		function addForm() {
-			var newForm = {
-				"name" : $scope.formName,
-			}; 
-			FormService.createFormForUser($rootScope.user.id, newForm, callback);
-			$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-		}
-		
-		
-		function updateForm() {
-			var newForm = {
-				"name" : $scope.formName,
-				"id" : currentFormId,
-				"userid" : currentUser.id,		
-			};
-			FormService.updateFormById(currentFormId, newForm, callback);
-			$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-			console.log($scope.forms);
-		}   
-		
-		
-		function deleteForm(index) {
-			$scope.selectedFormIndex = index;
-			var formid = $scope.forms[index].id
-			FormService.deleteFormById(formid, callback)
-			$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-		}
-		
-		
-		function selectForm(index) {
-			$scope.selectedFormIndex = index;
-			var formid = $scope.forms[index].id;
-			currentFormId = formid
-			$scope.formName = $scope.forms[index].name;  
-		}  */
 		} 
 }) ();
 

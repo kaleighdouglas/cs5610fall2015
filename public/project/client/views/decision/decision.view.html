@@ -27,7 +27,8 @@
 
 		
 		<!-- Table -->
-		<table class="table table-striped table-bordered table-responsive">
+		<div class="table-responsive">
+		<table class="table table-striped table-bordered">
 			<thead>
 			<tr>
 				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Person</th>
@@ -39,7 +40,7 @@
 			
 			<tbody>			
 			
-			<!-- Creator Opinion -->
+			<!-- Creator Opinion
 			<tr>
 				<td>{{model.creator.firstName}}</td>
 				<td>{{model.decision.myDecision}}</td>
@@ -47,7 +48,7 @@
 				<td>
 					<button ng-click="model.viewCreatorDecision()" class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
 				</td>
-			</tr>
+			</tr>    -->
 			<!-- Advisor Opinions -->
 			<tr ng-repeat="advisor in model.advisors">
 				<td>{{advisor.name}}</td>
@@ -57,26 +58,9 @@
 					<button ng-click="model.viewAdvisorDecision(advisor)" class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
 				</td>
 			</tr>
-			<!-- Example Question 3
-			<tr>
-				<td>Ryan</td>
-				<td>Newport</td>
-				<td>10%</td>
-				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
-				</td>
-			</tr>	  -->
-			<!-- Example Question 4
-			<tr>
-				<td>Danielle</td>
-				<td>Portland</td>
-				<td>15%</td>
-				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
-				</td>
-			</tr>	  -->
 			</tbody>
 		</table>
+		</div>
 		
 		<!-- Nav Button -->
 		<div class="row col-xs-12">

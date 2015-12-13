@@ -4,6 +4,7 @@ module.exports = function(app, model) {
 	app.post("/api/user/:userId/decision", createDecision);
 	app.get("/api/user/:userId/decision", getAllDecisions);
 	app.get("/api/decision/:decisionId", getDecisionById);
+	app.get("/api/finaldecision/:decisionId", getFinalDecision);
 	app.put("/api/decision/:decisionId", updateDecision);
 	app.delete("/api/decision/:decisionId", deleteDecision);
 	
@@ -34,6 +35,13 @@ module.exports = function(app, model) {
 			res.json(decision);
             });
 		//res.json(model.getDecision(decisionId));
+	}
+	
+	function getFinalDecision(req, res) {
+		var decisionId = req.params.decisionId;
+		model.getFinalDecision(decisionId).then(function(decision){
+			res.json(decision);
+            });
 	}
 	
 	function updateDecision(req, res) {

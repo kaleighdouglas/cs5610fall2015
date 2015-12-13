@@ -36,8 +36,8 @@ module.exports = function(app, model) {
 		var decisionId = req.params.decisionId;
 		var id = req.params.id;
 		var advisor = req.body;
-		model.updateAdvisor(decisionId, id, advisor).then(function(status){
-					res.json(status);
+		model.updateAdvisor(decisionId, id, advisor).then(function(advisor){
+					res.json(advisor);
             });
 	}
 	
