@@ -22,8 +22,8 @@
 	<div class="panel-body">
 		
 		<h3 class="text-center"> Question : {{model.decision.question}} </h3>
-		<h4 class="text-center"> Creator : {{model.creator.firstName}} </h4>
-		<h4> &nbsp </h4>
+		<h3 class="text-center">Decision : {{model.decision.finalDecision}} </h3>
+		<h4 class="text-center small-buffer"> Creator : {{model.creator.firstName}} </h4>
 
 		
 		<!-- Table -->
@@ -33,7 +33,7 @@
 			<tr>
 				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Person</th>
 				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Opinion</th>
-				<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Weight</th>
+			<!--	<th><scan class="glyphicon glyphicon-triangle-bottom"></scan> Weight</th>  -->
 				<th> Results</th>
 			</tr>
 			</thead>
@@ -53,7 +53,7 @@
 			<tr ng-repeat="advisor in model.advisors">
 				<td>{{advisor.name}}</td>
 				<td>{{advisor.decision}}</td>
-				<td>{{advisor.weight}}</td>
+			<!--	<td>{{advisor.weight}}</td>  -->
 				<td>
 					<button ng-click="model.viewAdvisorDecision(advisor)" class="btn btn-default"><scan class="glyphicon glyphicon-info-sign"></scan></button>	
 				</td>
@@ -62,8 +62,18 @@
 		</table>
 		</div>
 		
+		<!-- Decision 
+		<div class="row">   
+			<!--<div class="col-sm-6 text-center">
+				<h3> Pie Chart Here </h3>
+			</div>
+			<div class="col-sm-12 text-center">	
+				<h3>Decision : {{model.decision.finalDecision}} </h3>
+			</div>
+		</div>   --> 
+		
 		<!-- Nav Button -->
-		<div class="row col-xs-12">
+		<div class="row col-xs-12 button">
 			<div class="col-sm-2 text-center">
 				&nbsp
 			</div>
@@ -75,15 +85,7 @@
 			</div>
 		</div>
           
-		<!-- Decision -->  
-		<div class="row">   
-			<div class="col-sm-6 text-center">
-				<h3> Pie Chart Here </h3>
-			</div>  
-			<div class="col-sm-6 text-center">	
-				<h3>Decision : {{model.decision.finalDecision}} </h3>
-			</div>
-		</div>
+
 		
 
 			

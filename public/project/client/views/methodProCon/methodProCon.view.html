@@ -103,21 +103,21 @@
 		
 		<div class="row">
 			<div class="col-xs-12">
-				<button ng-click="model.calculateDecision()" ng-hide="model.decision.myDecision" class="btn btn-default btn-colorful btn-block" role="button"> Calculate Your Decision</button>
+				<button ng-click="model.calculateDecision()" ng-hide="model.currentUser.decision" class="btn btn-default btn-colorful btn-block" role="button"> Calculate Your Decision</button>
 			</div>
 		</div>
 		
 		<div clas="row">
-			<h4 class="text-center" ng-show="model.decision.myDecision">My Decision: {{model.decision.myDecision}}</h4>
+			<h4 class="text-center" ng-show="model.currentUser.decision">My Decision: {{model.currentUser.decision}}</h4>
 		</div>
 		
 		<div class="row button col-xs-12">
 			<div class="col-sm-4 text-center">
-				<a href="#/question" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Question</a>
+				<a ng-show="user" href="#/question" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Revise Question</a>
 			</div>
 			
 			<div class="col-sm-4 text-center">
-				<button ng-click="model.calculateDecision()" ng-show="model.decision.myDecision" class="btn btn-default btn-sm btn-block btn-colorful" role="button"> Recalculate Your Decision</button>
+				<button ng-click="model.calculateDecision()" ng-show="model.currentUser.decision" class="btn btn-default btn-sm btn-block btn-colorful" role="button"> Recalculate Your Decision</button>
 			</div>
 			
 			<div class=" col-sm-4 text-center">

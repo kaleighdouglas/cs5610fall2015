@@ -283,19 +283,22 @@ module.exports = function(app, db, mongoose){
                 var negResult = "NO";
                 var undecidedResult = "Undecided. Try asking friends or using another method."
                 if (sum > 0) {
-                    decision["myDecision"] = posResult;
+                    deferred.resolve(posResult);
+                    //decision["myDecision"] = posResult;
                 } else if(sum < 0) {
-                    decision["myDecision"] = negResult;
+                    deferred.resolve(negResult);
+                    //decision["myDecision"] = negResult;
                 } else {
-                    decision["myDecision"] = undecidedResult;
+                    deferred.resolve(undecidedResult);
+                    //decision["myDecision"] = undecidedResult;
                 }
-                decision["finalDecision"] = decision["myDecision"];
+                //decision["finalDecision"] = decision["myDecision"];
                 
                 //console.log("finalDecision");
                 //console.log(decision.finalDecision);
-                decision.save(function(err, decision){
-                    deferred.resolve(decision);
-                });
+            /*    decision.save(function(err, decision){
+                    deferred.resolve(decision); 
+                });   */
             }
         });
         return deferred.promise;

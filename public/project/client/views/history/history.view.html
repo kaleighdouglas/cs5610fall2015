@@ -26,7 +26,7 @@
 		<!--		<td><button ng-click="model.decisionDetails(decision)" class="btn-link" role="button">{{decision.question}}</button></td>   --->
 				<td>{{decision.finalDecision}}</td>
 		 <!-- 		<td>{{decision.creatorId}}</td>  change to creator's name   -->
-				<td>{{decision.deadline}}</td>
+				<td>{{decision.deadline | date: 'mediumDate'}}</td>
 				<td>
 					<button ng-click="model.deleteDecision(decision)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>	
 				</td>
@@ -37,8 +37,16 @@
 		</div>  
 			
 		<!-- New Question Button -->
-		<div class="text-center">
-			<a href="#/question" class="btn btn-default" role="button"> Create New Question</a>
+		<div class="text-center button">
+			<div class="col-sm-4">
+				&nbsp
+			</div>			
+			<div class="text-center col-sm-4"">
+				<a href="#/question" class="btn btn-default btn-block btn-colorful" role="button"> Create New Question</a>
+			</div>
+			<div class="col-sm-4">
+				&nbsp
+			</div>
 		</div>
         	
 		

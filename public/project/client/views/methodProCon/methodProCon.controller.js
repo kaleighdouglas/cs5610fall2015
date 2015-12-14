@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("MethodProConController", MethodProConController);
 	    
-    function MethodProConController($routeParams, DecisionService, ProConService) { //$scope, $rootScope, $location
+    function MethodProConController($routeParams, DecisionService, ProConService, AdvisorService) { //$scope, $rootScope, $location
 		
 		//$scope.$location = $location;
 		var model = this;
@@ -30,6 +30,12 @@
 			ProConService.getAllProCons(decisionId).then(function(response){
 				model.procons = response;
 			});
+			AdvisorService.getAdvisor(decisionId, userId).then(function(response){
+				console.log("intuition eval current advisor");
+				console.log(response);
+				model.currentUser = response;	
+			});
+	
 		}
 		init()
 		
@@ -88,12 +94,19 @@
 			console.log("calculate Decision called in controller");
 			console.log("decision id in controller results function");
 			console.log(decisionId);
-			ProConService.getProConResult(decisionId).then(function(response){
+			ProConService.getProConResult(decisionId, model.currentUser).then(function(response){
 				model.decision = response;
 				console.log("response in controller");
 				console.log(response);
+				
+				//model.currentUser.decision = model.decision.myDecision;
+				model.currentUser.decision = response;
+				AdvisorService.updateAdvisor(decisionId, userId, model.currentUser).then(function(response){
+				console.log("current advisor with decision");
+				console.log(response);
+				model.currentUser = response;	
 			});
-			
+			});
 		}
 		
 		
