@@ -18,6 +18,7 @@
 		model.emailDecision = emailDecision;
 		model.goToOpinion = goToOpinion;
 		model.submitDeadline = submitDeadline;
+		model.submitEmail = submitEmail;
 		
 		var decisionId = $routeParams.decisionId;
 		
@@ -37,10 +38,24 @@
 		UserService.findGoogleUser().then(function(response){
 			console.log("getting googleuser in advice controller");
 			console.log(response);
-			currentUser = response;		
-			//findAllContacts()
+			currentUser = response;
+			model.creatorEmail = currentUser.email;
 		});
 		
+		
+		
+		function submitEmail(email){		
+			console.log("updating email");
+			console.log(email);	
+			currentUser.email = email;
+
+			UserService.updateUser(currentUser._id, currentUser).then(function(response){
+				$rootScope.user = response;
+				console.log("updated user with email in advisor controller");
+				console.log(response);
+				model.creatorEmail = currentUser.email;
+			});	
+		}
 		
 
 		function emailDecision(advisor){

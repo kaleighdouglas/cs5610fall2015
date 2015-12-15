@@ -51,6 +51,10 @@ body {
   margin-right: 8%;
 }
 
+.vertical-bottom {
+  vertical-align: bottom;
+}
+
 .inputComment {
   font-size:12pt;
   width:70%;

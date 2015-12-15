@@ -182,6 +182,8 @@ module.exports = function(app, db, mongoose){
                 deferred.reject(err);
             } else {
                 deferred.resolve(status);
+                console.log("UpdateUser in model");
+                console.log(status);
             }
         });
         return deferred.promise;

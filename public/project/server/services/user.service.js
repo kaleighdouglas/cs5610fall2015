@@ -19,8 +19,8 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 	});
 	
 	passport.deserializeUser(function (obj, done){
-		model  //
-			.FindUserById(obj._id)  //.findById
+		model 
+			.FindUserById(obj._id)
 			.then(function(user){
 				done(null, user);
 			});
@@ -37,7 +37,7 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 				console.log(accessToken);
 				console.log(refreshToken);
 				console.log(profile);
-				model  //
+				model 
 					.CreateGoogleUser(profile, accessToken)
 					.then(function(user){
 						return done(null, user);
@@ -46,9 +46,9 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 		}
 	));
 	
-	app.get('/account', ensureAuthenticated, function(req, res){
+/*	app.get('/account', ensureAuthenticated, function(req, res){
 		res.render('account', {user: req.user});
-	});
+	});  */
 	
 	app.get('/profile', ensureAuthenticated, function(req, res){
 		res.render('profile', {user: req.user});
@@ -56,6 +56,30 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 	
 	app.get('/login', function(req, res){
 		res.render('login', { user: req.user });
+	});
+	
+	app.get('/home', function(req, res){
+		res.render('home', { user: req.user });
+	});
+	
+	app.get('/question', function(req, res){
+		res.render('question', { user: req.user });
+	});
+	
+	app.get('/header', function(req, res){
+		res.render('header', { user: req.user });
+	});
+	
+	app.get('/methodProCon', function(req, res){
+		res.render('methodProCon', { user: req.user });
+	});
+	
+	app.get('/advice', ensureAuthenticated, function(req, res){
+		res.render('advice', { user: req.user });
+	});
+	
+	app.get('/history', ensureAuthenticated, function(req, res){
+		res.render('history', { user: req.user });
 	});
 	
 	app.get("/auth/google",
@@ -76,8 +100,8 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 		
 	app.get('/loggedin', function(req, res){
 		if (req.isAuthenticated()){
-			model  //
-				.FindUserById(req.user._id)  //.findById
+			model 
+				.FindUserById(req.user._id)
 				.then(function(user){
 					res.json(user);
 				});

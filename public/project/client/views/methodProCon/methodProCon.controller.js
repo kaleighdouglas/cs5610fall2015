@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("MethodProConController", MethodProConController);
 	    
-    function MethodProConController($routeParams, DecisionService, ProConService, AdvisorService) { //$scope, $rootScope, $location
+    function MethodProConController($routeParams, DecisionService, ProConService, AdvisorService, UserService) { //$scope, $rootScope, $location
 		
 		//$scope.$location = $location;
 		var model = this;
@@ -23,6 +23,11 @@
 		
 		function init() {
 			console.log("proCon Init function");
+			
+			UserService.findGoogleUser().then(function(response){
+			console.log("getting googleuser in procon controller");
+			console.log(response);
+			});
 			DecisionService.getDecision(decisionId).then(function(response){
 				model.decision = response;
 			});

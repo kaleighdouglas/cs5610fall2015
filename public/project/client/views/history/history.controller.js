@@ -16,15 +16,23 @@
 		//$scope.$location = $location;
 		//$scope.title = "where to go for dinner";
 		//var userId = $routeParams.userId;
-		var userId = $rootScope.user._id;
 		
+		//var userId = $rootScope.user._id;
+		var userId = null;
 		
 		function init() {
-			DecisionService.getAllDecisions(userId).then(function(response){
-				model.decisions = response;
-				decisionSearch()
+			UserService.findGoogleUser().then(function(response){
+				console.log("getting googleuser in history controller");
+				console.log(response);
+				$rootScope.user = response;	
+				userId = $rootScope.user._id;
+				
+				
+				DecisionService.getAllDecisions(userId).then(function(response){
+					model.decisions = response;
+					decisionSearch()
+				});
 			});
-			
 		}
 		init()
 		
@@ -37,44 +45,8 @@
 			}
 			console.log("question list");
 			console.log(questionList);
-			//jQuery("#questionSearch").autocomplete({
-			//	source: questionList
-			//});
 		}	
-
-
- /*   <script>
-        $(function() {
-            var availableTags = [
-                "ActionScript",
-                "AppleScript",
-                "Asp",
-                "BASIC",
-                "C",
-                "C++",
-                "Clojure",
-                "COBOL",
-                "ColdFusion",
-                "Erlang",
-                "Fortran",
-                "Groovy",
-                "Haskell",
-                "Java",
-                "JavaScript",
-                "Lisp",
-                "Perl",
-                "PHP",
-                "Python",
-                "Ruby",
-                "Scala",
-                "Scheme"
-            ];
-            $( "#tags" ).autocomplete({
-                source: availableTags
-            });
-        });
-    </script> */		
-		
+	
 		
 		
 		function creatorName(decision) {

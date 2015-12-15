@@ -21,11 +21,24 @@
 	<div class="panel-body">
 		
 	<h3 class="text-center"> Advice For : {{model.decision.question}} </h3>
-	<h4 class="page-header text-center"> Weight of my opinion: 50% </h4>    
+<!--	<h4 class="page-header text-center"> Weight of my opinion: 50% </h4>   -->  
 		
-	
 		
-<!--	<div class="table-responsive">  -->
+	<!-- Email -->
+	<div ng-hide="model.creatorEmail">
+		<label for="creatorEmail" class="col-xs-12">Confirm your google email address before continuing: </label>
+		<div class="row button">
+			<div class="col-sm-8 vertical-bottom">	
+				<input type="email" class="form-control" ng-model="email" id="creatorEmail" required></input>
+			</div>
+			<div class="col-sm-4 vertical-bottom">
+				<button ng-click="model.submitEmail(email)" class= "btn btn-default btn-colorful btn-block" role="button">Submit</button>
+			</div>	
+		</div>
+	</div>
+		
+	<!-- Advisor Info -->	
+	<div ng-show="model.creatorEmail">
 	<div class="row button">
 		<div class="col-sm-8">
 		<!--	<label for="advisorDeadline" class="col-xs-12">Deadline for Opinions: </label> -->
@@ -77,13 +90,7 @@
 						</div>
 					</div>
 				</td>
-		<!--		<td>
-					<div class="form-group">
-						<div class="col-xl-10">
-							<input ng-model="advisorDueDate" type="date" class="form-control">
-						</div>
-					</div>
-				</td> 
+		<!--	 
 				<td>
 					<div class="form-group">
 						<div class="col-xl-10">
@@ -92,7 +99,6 @@
 					</div>
 				</td>-->
 				<td>  
-				<!--	<button ng-click="model.findOneContact(model.advisorName)" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>  -->
 					<button ng-click="model.addAdvisor(model.selected.name, model.selected.email, model.selected.weight)" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
 					<button ng-click="model.updateAdvisor(model.selected.name, model.selected.email, model.selected.weight)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button>	
 				</td>			
@@ -149,7 +155,8 @@
 			</div>
 		</div>
 		
-		</div>                        
+		</div> 
+		</div>                       
 		</div>
 	</div>
 </div>
