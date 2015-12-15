@@ -15,11 +15,11 @@
 		model.calculateDecision = calculateDecision;
 		
 		var userId = $routeParams.userId;
-		//console.log("userId in procon method");
-		//console.log(userId);
+		console.log("userId in procon method");
+		console.log(userId);
 		var decisionId = $routeParams.decisionId;
-		//console.log("decisionId in procon method:");
-		//console.log(decisionId);
+		console.log("decisionId in procon method:");
+		console.log(decisionId);
 		
 		function init() {
 			console.log("proCon Init function");
@@ -100,8 +100,7 @@
 			console.log("decision id in controller results function");
 			console.log(decisionId);
 			ProConService.getProConResult(decisionId, model.currentUser).then(function(response){
-				model.decision = response;
-				console.log("response in controller");
+				console.log("ProCon Result");
 				console.log(response);
 				
 				//model.currentUser.decision = model.decision.myDecision;
