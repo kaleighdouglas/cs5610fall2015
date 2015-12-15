@@ -29,8 +29,8 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 	passport.use(new GoogleStrategy({
 		clientID: googleCredentials.clientId,
 		clientSecret: googleCredentials.clientSecret,
-		//callbackURL: "http://127.0.0.1:3000/auth/google/callback"
-		callbackURL: "http://cs5610-oharakaleigh.rhcloud.com/auth/google/callback"
+		callbackURL: "http://127.0.0.1:3000/auth/google/callback"
+		//callbackURL: "http://cs5610-oharakaleigh.rhcloud.com/auth/google/callback"
 		},
 		function(accessToken, refreshToken, profile, done){
 			process.nextTick(function() {
@@ -66,7 +66,7 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 	app.get('/auth/google/callback', 
 		passport.authenticate('google', { failureRedirect: '/#/login' }),
 		function(req, res) {
-			res.redirect('/project/client/index.html#/question');
+			res.redirect('/project/client/index.html#/home');
 	});
 		
 	app.get('/logout', function(req, res){

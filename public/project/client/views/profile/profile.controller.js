@@ -25,7 +25,6 @@
 			model.userFName = currentUser.firstName;
 			model.userLName = currentUser.lastName;
 			model.userEmail = currentUser.email;
-			model.userPassword = currentUser.password;
 
 		});
 

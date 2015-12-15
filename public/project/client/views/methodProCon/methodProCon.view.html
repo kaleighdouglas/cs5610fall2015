@@ -30,9 +30,9 @@
 		<table class="table table-striped table-bordered">
 			<thead>
 			<tr>
-				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Negative or Positive Effect</th>
-				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Impact (-5 to 5)</th>
-				<th><span class="glyphicon glyphicon-triangle-bottom"></span> Action</th>
+				<th> Negative or Positive Effect</th>  <!--<span class="glyphicon glyphicon-triangle-bottom"></span> -->
+				<th> Impact (-5 to 5)</th>
+				<th> Action</th>
 			</tr>
 			
 			<tr>
@@ -75,18 +75,9 @@
 			</thead>
 			
 			<tbody>
-			<!-- Existing Forms -->
-<!--			<tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
-				<td><button>{{form.name}}</button></td>
-				<td>
-					<button ng-click="deleteForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>
-					<button ng-click="selectForm($index)" class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-				</td>
-			</tr>   -->
-			
-			
+	
 			<!-- Procons -->
-			<tr ng-repeat="procon in model.procons">
+			<tr ng-repeat="procon in model.procons" ng-class="{'success' : procon == model.selected}">
 				<td>{{procon.label}}</td>
 				<td>{{procon.impact}}</td>
 				<td>
@@ -108,7 +99,7 @@
 		</div>
 		
 		<div clas="row">
-			<h4 class="text-center" ng-show="model.currentUser.decision">My Decision: {{model.currentUser.decision}}</h4>
+			<h4 class="text-center" ng-show="model.currentUser.decision">My Decision : {{model.currentUser.decision}}</h4>
 		</div>
 		
 		<div class="row button col-xs-12">
@@ -122,47 +113,9 @@
 			
 			<div class=" col-sm-4 text-center">
 				<a ng-show="user" ng-href="#/user/{{model.decision.userId}}/decision/{{model.decision._id}}/advice" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
-		<!--		<a href="#/advice" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-right"></span> More Opinions</a>
-					<button ng-click="register()" btn-default>Register</button>  -->
 			</div>
 		</div>
 			
 			
 	</div>                        
 </div>
-
-
-
-
-
-			<!-- Example Question 2 
-			<tr>
-				<td>Expensive Travel</td>
-				<td>4</td>
-				<td>Con</td>
-				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
-				</td>
-			</tr> -->
-			<!-- Example Question 3 
-			<tr>
-				<td>Good Food</td>
-				<td>2</td>
-				<td>Pro</td>
-				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
-				</td>
-			</tr>  -->
-			
-			<!-- Example Question 4
-			<tr>
-				<td>Time Consuming to Travel</td>
-				<td>2</td>
-				<td>Con</td>
-				<td>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-pencil"></scan></button>
-					<button class="btn btn-default"><scan class="glyphicon glyphicon-remove"></scan></button>	
-				</td>
-			</tr>		 -->

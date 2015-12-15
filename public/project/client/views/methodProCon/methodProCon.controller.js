@@ -50,6 +50,7 @@
 				model.procons = response;
 				console.log("procons returned to controller:");
 				console.log(response);
+				model.selected = null;
 				});
 		}
 		
@@ -68,6 +69,7 @@
 				
 				ProConService.getAllProCons(decisionId).then(function(response){
 				model.procons = response;
+				model.selected = null;
 				});
 			});
 		}
@@ -78,16 +80,19 @@
 				
 				ProConService.getAllProCons(decisionId).then(function(response){
 				model.procons = response;
+				model.selected = null;
 				});
 			});
 		}
 		
 		function selectProCon(procon) {
-			model.selected = procon;
-			console.log("selected ProCon:");
-			console.log(procon);
-			console.log(model.selected.label);
-			console.log(model.selected.impact);
+			if(procon == model.selected){
+				model.selected = null;
+			} else{
+				model.selected = procon;
+				console.log("selected ProCon:");
+				console.log(procon);
+			}
 		}
 		
 		function calculateDecision() {
@@ -105,62 +110,11 @@
 				console.log("current advisor with decision");
 				console.log(response);
 				model.currentUser = response;	
+				model.selected = null;
 			});
 			});
 		}
 		
-		
-		
-/*		function callback(value) {
-            console.log(value);
-        }
-			
-		var currentUser = $rootScope.user;		
-		$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-		var currentFormId = null
-		
-		$scope.addForm = addForm;
-		$scope.updateForm = updateForm;
-		$scope.deleteForm = deleteForm;
-		$scope.selectForm = selectForm;   
-		
-
-		
-		function addForm() {
-			var newForm = {
-				"name" : $scope.formName,
-			}; 
-			FormService.createFormForUser($rootScope.user.id, newForm, callback);
-			$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-		}
-		
-		
-		function updateForm() {
-			var newForm = {
-				"name" : $scope.formName,
-				"id" : currentFormId,
-				"userid" : currentUser.id,		
-			};
-			FormService.updateFormById(currentFormId, newForm, callback);
-			$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-			console.log($scope.forms);
-		}   
-		
-		
-		function deleteForm(index) {
-			$scope.selectedFormIndex = index;
-			var formid = $scope.forms[index].id
-			FormService.deleteFormById(formid, callback)
-			$scope.forms = FormService.findAllFormsForUser(currentUser.id, callback);
-		}
-		
-		
-		function selectForm(index) {
-			$scope.selectedFormIndex = index;
-			var formid = $scope.forms[index].id;
-			currentFormId = formid
-			$scope.formName = $scope.forms[index].name;  
-		}  */
 		} 
 }) ();
 

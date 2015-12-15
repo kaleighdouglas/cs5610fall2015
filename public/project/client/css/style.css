@@ -46,6 +46,10 @@ body {
   color: whitesmoke;
 }
 
+.horizontal-padding {
+  margin-left: 3%;
+  margin-right: 8%;
+}
 
 .inputComment {
   font-size:12pt;
@@ -61,3 +65,8 @@ body {
 .table-borderless tbody > tr > td {
   border: none;
 }
+
+.table-header thead > tr {
+  background-color: darkseagreen;
+}
+

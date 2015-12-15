@@ -2,7 +2,10 @@
 <div ng-controller="QuestionController as model">
 	<h3 class="page-header">New Question</h3>
 	
-	<div class="container-fluid">
+	<div class="col-sm-1 col-lg-2">
+	</div>
+	
+	<div class="container-fluid col-sm-10 col-lg-8">
 		
 		
 		<div class="progress">
@@ -20,12 +23,6 @@
 			</div>
 		</div>
 		
-	<!--		<ul class="nav nav-tabs">
-				<li role="presentation" class="active"><a href="#/question">Question</a></li>
-				<li role="presentation"><a href="#/methodGridOptions">Method</a></li>
-				<li role="presentation"><a href="#/advice">Advice</a></li>
-				<li role="presentation"><a href="#/decision">Decision</a></li>
-			</ul>      -->
 			
 			<div class="panel panel-default"> 
 			<div class="panel-body"> 
@@ -47,24 +44,25 @@
 						
 						<div class="radio">
 							<label>
-							<input type="radio" name="optionsRadios" id="RadioGrid" value="option2"  checked>
-								Grid Method (for questions with multiple options - used individually or with others)
+							<input type="radio" name="optionsRadios" id="RadioIntuition" value="option2" checked>
+								Intuition Method (for questions with multiple options)
 							</label>
 						</div>
 	
 						<div class="radio">
 							<label>
 							<input type="radio" name="optionsRadios" id="RadioProCon" value="option1">
-								Weighted Pros & Cons (for yes/no questions - used individually or with others)
+								Weighted Pros & Cons (for yes/no questions)
 							</label>
 						</div>	
 						
 						<div class="radio">
 							<label>
-							<input type="radio" name="optionsRadios" id="RadioIntuition" value="option2">
-								Intuition Method (for questions with multiple options - used only with others)
+							<input type="radio" name="optionsRadios" id="RadioGrid" value="option2"  disabled>  <!--(for questions with multiple options - used individually or with others) -->
+								Grid Method - coming soon
 							</label>
 						</div>
+
 					</div>         
 				</div>
 				
@@ -85,5 +83,8 @@
 			
             </div>
         </div>                    
-    </div>                    
+    </div>  
+	
+	<div class="col-sm-1 col-lg-2">
+	</div>                  
 </div>
