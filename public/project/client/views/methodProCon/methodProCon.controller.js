@@ -117,7 +117,12 @@
 					DecisionService.getFinalDecision(decisionId).then(function(response){
 						console.log("decision (after final decision updated) in procon controller");
 						console.log(response);
+						model.decision = response;
 						//model.decision.finalDecision = response;
+						DecisionService.updateDecision(decisionId, model.decision).then(function(response){
+						console.log("decision updated after final decision updated");
+						console.log(response);
+						});
 					}); 
 				});
 			});
@@ -125,4 +130,3 @@
 		
 		} 
 }) ();
-

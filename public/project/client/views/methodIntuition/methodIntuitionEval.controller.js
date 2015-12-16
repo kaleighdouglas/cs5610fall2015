@@ -59,6 +59,10 @@
 							console.log(response);
 							model.decision = response;
 							//model.decision.finalDecision = response;
+							DecisionService.updateDecision(decisionId, model.decision).then(function(response){
+							console.log("decision updated after final decision updated");
+							console.log(response);
+							});
 						}); 
 					});
 				}
@@ -66,4 +70,3 @@
 		}
 		} 
 }) ();
-

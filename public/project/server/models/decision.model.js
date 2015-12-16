@@ -1,4 +1,4 @@
-//var decisions = require("./decision.mock.json");
+
 var q = require("q");
 
 module.exports = function(app, db, mongoose){
@@ -135,8 +135,8 @@ module.exports = function(app, db, mongoose){
                     }
                 });
                 decision.finalDecision = topDecision;
-                //deferred.resolve(decision.finalDecision); 
-                delete decision["_id"];
+                deferred.resolve(decision); 
+           /*     delete decision["_id"];
 
                 DecisionModel.update({_id: ID}, {$set: decision}, function(err, status) {
                     if(err) {
@@ -144,7 +144,7 @@ module.exports = function(app, db, mongoose){
                     } else {
                         deferred.resolve(decision);
                     }
-                }); 
+                });   */
             }
         });
         return deferred.promise;
@@ -318,77 +318,8 @@ module.exports = function(app, db, mongoose){
         return deferred.promise;
     }
     
-    
-/*    function getProConResult(decisionId) {
-        console.log("ProCon Result in Model");
-        var deferred = q.defer();
-
-        DecisionModel.findById(decisionId, function(err, decision){
-            if(err) {
-                deferred.reject(err);
-            } else {
-                console.log("entered else");
-                var sum = 0;
-                for(var i=0; i<decision.procons.length; i++) {
-                    var currentProCon = decision.procons[i]
-                    sum = sum + currentProCon.impact;
-                    console.log("result sum");
-                    console.log(sum);
-                }
-                DecisionModel.findById(decisionId, function(err, decision){
-                if(err) {
-                    console.log(err);
-                    deferred.reject(err);
-                } else {
-                    var posResult = "YES!";
-                    var negResult = "NO";
-                    var undecidedResult = "Undecided. Try asking friends or using another method."
-                    if (sum > 0) {
-                        decision["myDecision"] = posResult;
-                    } else if(sum < 0) {
-                        decision["myDecision"] = negResult;
-                    } else {
-                        decision["myDecision"] = undecidedResult;
-                    }
-                    decision["finalDecision"] = decision["myDecision"];
-                    
-                    console.log("finalDecision");
-                    console.log(decision.finalDecision);
-                    decision.save(function(err, decision){
-                        deferred.resolve(decision);
-                    });
-                }
-                });
-            }
-        });
-        return deferred.promise;   */
        
-        
-   /*     var ProCons = getAllProCons(decisionId);
-        var sum = 0;
-        for(var i=0; i<ProCons.length; i++) {
-            var currentProCon = ProCons[i]
-            sum = sum + currentProCon.impact;
-        }
-        
-        console.log("Pro Con sum:");
-        console.log(sum);
-        var decision = getDecisionById(decisionId);
-        var posResult = "YES!";
-        var negResult = "NO";
-        var undecidedResult = "Undecided. Try asking friends or using another method."
-        if (sum > 0) {
-            decision["myDecision"] = posResult;
-        } else if(sum < 0) {
-            decision["myDecision"] = negResult;
-        } else {
-            decision["myDecision"] = undecidedResult;
-        }
-        decision["finalDecision"] = decision["myDecision"];
-        console.log("my decision");
-        console.log(decision.myDecision);
-        return decision;   
-    } */
+
     
     
 /////// Intuition Functions
