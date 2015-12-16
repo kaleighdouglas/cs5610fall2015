@@ -71,8 +71,8 @@
 				var proconBody = "DecisionsDecisions is helping me decide on the following question: "+model.decision.question+
 				"%0D%0D I would love to get your opinion! Use the following link to help me decide:%0D "+
 				"http://cs5610-oharakaleigh.rhcloud.com/project/client/index.html#/user/"+advisor._id+"/decision/"+decisionId+"/ProCon"+
-				"%0D%0D I need to make a decision by "+deadline+" Thank you!"+
-				"%0D%0D -"+currentUser.firstName;
+				"%0D%0D I'm planning to make a decision by "+deadline+". Thank you!"+
+				"%0D%0D - "+currentUser.firstName;
 				
 				
 				window.location.href = "mailto:"+ advisor.email +"?subject="+subject+"&body="+proconBody;
@@ -83,7 +83,7 @@
 				"%0D%0D I would love to get your opinion! Use the following link to help me decide:%0D "+
 				"http://cs5610-oharakaleigh.rhcloud.com/project/client/index.html#/user/"+advisor._id+"/decision/"+decisionId+"/IntuitionEval"+
 				"%0D%0D I'm planning to make a decision by "+deadline+". Thank you!"+
-				"%0D%0D -"+currentUser.firstName;
+				"%0D%0D - "+currentUser.firstName;
 				
 				window.location.href = "mailto:"+ advisor.email +"?subject="+subject+"&body="+guessBody;
 				
