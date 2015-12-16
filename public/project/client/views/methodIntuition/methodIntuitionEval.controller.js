@@ -4,9 +4,8 @@
 		.module("DecisionsApp")
 		.controller("MethodIntuitionEvalController", MethodIntuitionEvalController);
 	    
-    function MethodIntuitionEvalController($scope, $rootScope, $location, $routeParams, DecisionService, IntuitionService, AdvisorService) {
+    function MethodIntuitionEvalController($rootScope, $routeParams, DecisionService, IntuitionService, AdvisorService) {
 		
-		$scope.$location = $location;
 		var model = this;
 		model.submitDecision = submitDecision;
 		

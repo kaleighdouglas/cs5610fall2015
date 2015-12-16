@@ -124,10 +124,6 @@ module.exports = function(app, db, mongoose){
                
                 decisionList.forEach(function findFinalDecision(item) {
                     decisionCounts[item] = (decisionCounts[item] || 0) + 1;
-                    //console.log("decisionCounts[item]");
-                    //console.log(decisionCounts[item]);
-                    //console.log("item:")
-                    //console.log(item);
                     
                     if(topDecisionCount < decisionCounts[item]) {
                         topDecisionCount = decisionCounts[item];
