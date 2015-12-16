@@ -31,14 +31,14 @@
 					});
 			
 				DecisionService.getFinalDecision(decisionId).then(function(response){
-					console.log("final decision in decision controller");
+					console.log("decision (after final decision updated) in decision controller");
 					console.log(response);
-					model.decision.finalDecision = response;
+					model.decision.finalDecision = response.finalDecision;
 					
-					DecisionService.updateDecision(decisionId, model.decision).then(function(response){
+				/*	DecisionService.updateDecision(decisionId, model.decision).then(function(response){
 					console.log("update decision in controller");
 					console.log(response);
-					});
+					});  */
 				});
 			}); 
 			

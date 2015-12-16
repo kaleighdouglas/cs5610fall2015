@@ -5,8 +5,7 @@
 		.controller("MethodProConController", MethodProConController);
 	    
     function MethodProConController($routeParams, DecisionService, ProConService, AdvisorService, UserService) { //$scope, $rootScope, $location
-		
-		//$scope.$location = $location;
+
 		var model = this;
 		model.createProCon = createProCon;
 		model.deleteProCon = deleteProCon;
@@ -40,7 +39,6 @@
 				console.log(response);
 				model.currentUser = response;	
 			});
-	
 		}
 		init()
 		
@@ -111,11 +109,17 @@
 				//model.currentUser.decision = model.decision.myDecision;
 				model.currentUser.decision = response;
 				AdvisorService.updateAdvisor(decisionId, userId, model.currentUser).then(function(response){
-				console.log("current advisor with decision");
-				console.log(response);
-				model.currentUser = response;	
-				model.selected = null;
-			});
+					console.log("current advisor with decision");
+					console.log(response);
+					model.currentUser = response;	
+					model.selected = null;
+					
+					DecisionService.getFinalDecision(decisionId).then(function(response){
+						console.log("decision (after final decision updated) in procon controller");
+						console.log(response);
+						//model.decision.finalDecision = response;
+					}); 
+				});
 			});
 		}
 		

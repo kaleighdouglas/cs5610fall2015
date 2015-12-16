@@ -48,26 +48,19 @@
 					model.currentUser.decision = model.options[i].label;
 					console.log("current user's decision");
 					console.log(model.currentUser.decision);
+					
 					AdvisorService.updateAdvisor(decisionId, model.currentUser._id, model.currentUser).then(function(response){
 						console.log("updated user");
 						console.log(response);
 						model.currentUser = response;
+						
+						DecisionService.getFinalDecision(decisionId).then(function(response){
+							console.log("decision (after final decision updated) in intuition eval controller");
+							console.log(response);
+							model.decision = response;
+							//model.decision.finalDecision = response;
+						}); 
 					});
-					
-					//model.decision.myDecision = model.options[i].label;
-					//model.decision.finalDecision = model.options[i].label;
-					//console.log(model.decision);
-					
-			/*		DecisionService.updateDecision(decisionId, model.decision).then(function(response){
-						console.log("update decision response");
-						console.log(response);  */
-				
-						DecisionService.getDecision(decisionId).then(function(response){
-						model.decision = response;
-						console.log("decision after updating advisor's decision");
-						console.log(model.decision);
-						});
-					//});
 				}
 			}
 		}

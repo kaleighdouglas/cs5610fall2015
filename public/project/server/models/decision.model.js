@@ -114,23 +114,37 @@ module.exports = function(app, db, mongoose){
                 console.log("decisionList");
                 console.log(decisionList);
                 
+                
+                var decisionCounts = {};
                 var topDecisionCount = 0;
                 var topDecision = null;
                 
-                for(var i=0; i<decisionList.length; i++) {
-                    var currentDecision = decisionList[i];
-                    var decisionCount = 0
-                    for(var i=0; i<decisionList.length; i++) {
-                        if (decisionList[i] == currentDecision){
-                        decisionCount = decisionCount + 1;
-                        }
+                // Citation - For Finding mode of array:
+                // http://codereview.stackexchange.com/questions/68315/finding-the-mode-of-an-array
+               
+                decisionList.forEach(function findFinalDecision(item) {
+                    decisionCounts[item] = (decisionCounts[item] || 0) + 1;
+                    //console.log("decisionCounts[item]");
+                    //console.log(decisionCounts[item]);
+                    //console.log("item:")
+                    //console.log(item);
+                    
+                    if(topDecisionCount < decisionCounts[item]) {
+                        topDecisionCount = decisionCounts[item];
+                        topDecision = item;
                     }
-                    if(decisionCount > topDecisionCount){
-                        topDecision = currentDecision;
-                    }
-                }
+                });
                 decision.finalDecision = topDecision;
-                deferred.resolve(decision.finalDecision);
+                //deferred.resolve(decision.finalDecision); 
+                delete decision["_id"];
+
+                DecisionModel.update({_id: ID}, {$set: decision}, function(err, status) {
+                    if(err) {
+                        deferred.reject(err);
+                    } else {
+                        deferred.resolve(decision);
+                    }
+                }); 
             }
         });
         return deferred.promise;
