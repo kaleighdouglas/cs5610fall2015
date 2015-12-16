@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("MethodIntuitionEvalController", MethodIntuitionEvalController);
 	    
-    function MethodIntuitionEvalController($rootScope, $routeParams, DecisionService, IntuitionService, AdvisorService) {
+    function MethodIntuitionEvalController($rootScope, $routeParams, DecisionService, IntuitionService, AdvisorService, UserService) {
 		
 		var model = this;
 		model.submitDecision = submitDecision;
@@ -17,6 +17,10 @@
 		console.log(decisionId);
 		
 		function init() {
+			UserService.findGoogleUser().then(function(response){
+				console.log("findgoogleuser called in intuition eval controller");
+				//console.log(response);
+			});
 			DecisionService.getDecision(decisionId).then(function(response){
 				console.log("decision");
 				console.log(response);

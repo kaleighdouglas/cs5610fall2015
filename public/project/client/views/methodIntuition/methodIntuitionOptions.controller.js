@@ -4,7 +4,7 @@
 		.module("DecisionsApp")
 		.controller("MethodIntuitionOptionsController", MethodIntuitionOptionsController);
 	    
-    function MethodIntuitionOptionsController($routeParams, DecisionService, IntuitionService) {  //$scope, $rootScope, $location,
+    function MethodIntuitionOptionsController($routeParams, DecisionService, IntuitionService, UserService) {  //$scope, $rootScope, $location,
 		var model = this;
 		model.createOption = createOption;
 		model.updateOption = updateOption;
@@ -26,6 +26,10 @@
 			
 			IntuitionService.getAllOptions(decisionId).then(function(response){
 				model.options = response;
+			});
+			UserService.findGoogleUser().then(function(response){
+				console.log("getting googleuser in intuition options controller");
+				//console.log(response);
 			});
 		}
 		init()

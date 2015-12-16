@@ -74,12 +74,24 @@ module.exports = function(app, model, passport, GoogleStrategy, googleCredential
 		res.render('methodProCon', { user: req.user });
 	});
 	
+	app.get('/methodIntuitionOptions', function(req, res){
+		res.render('methodIntuitionOptions', { user: req.user });
+	});
+	
+	app.get('/methodIntuitionEval', function(req, res){
+		res.render('methodIntuitionEval', { user: req.user });
+	});
+	
 	app.get('/advice', ensureAuthenticated, function(req, res){
 		res.render('advice', { user: req.user });
 	});
 	
 	app.get('/history', ensureAuthenticated, function(req, res){
 		res.render('history', { user: req.user });
+	});
+	
+	app.get('/decision', ensureAuthenticated, function(req, res){
+		res.render('decision', { user: req.user });
 	});
 	
 	app.get("/auth/google",
