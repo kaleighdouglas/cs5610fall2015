@@ -1,14 +1,16 @@
 Web Application project for CS5610 Web Development course in Fall 2015
  
- 
-DecisionsDecisions is a website that aims to help users make decisions. Users can use one of several methods to determine the best decision, as well as ask friends for additional opinions.
-
+ __________________________________________________________
  
 DecisionsDecisions Website: http://cs5610-oharakaleigh.rhcloud.com/project/client/index.html#/home
 
-Initial Project Proposal:
-https://docs.google.com/document/d/1xpoypDLKQV3asVC2nYbruUAnvjzx5wFm99rkG5oMRmY/edit
+  __________________________________________________________
  
+DecisionsDecisions is a website that aims to help users make decisions. Users can use one of several methods to determine the best decision, as well as ask friends for additional opinions.
+
+Initial Project Proposal: https://docs.google.com/document/d/1xpoypDLKQV3asVC2nYbruUAnvjzx5wFm99rkG5oMRmY/edit
+ 
+ __________________________________________________________
  
  
 Features
